@@ -1,0 +1,44 @@
+.custom-card {
+  height: 300px;
+  width: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Optional: prevent horizontal scrollbar */
+.custom-card::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-card::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+
+.glassy-hover:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(160, 90, 255, 0.2);
+  border-color: #d0b2ff;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.transition-border:hover {
+  border-width: 2px !important;
+}
+
+.avatar-sm {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.post-tabs .active-tab {
+  border-bottom: 2px solid #6610f2;
+  color: #6610f2 !important;
+  font-weight: 600;
+}

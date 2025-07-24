@@ -1,0 +1,253 @@
+/* ========== SIDEBAR STYLING ========== */
+
+/* Sidebar base container */
+.sidebar {
+    width: 100px;
+    min-height: 100vh;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Sidebar background theme (violet) */
+.violet-sidebar {
+    background-color: #9874D3;
+    min-height: 100vh;
+}
+
+/* Logo container on top of sidebar */
+.violet-sidebar .logo-container {
+    background-color: #8a76aa;
+    padding: 12px 0;
+    border-top-right-radius: 15px;
+}
+
+.violet-sidebar .logo-container h3 {
+    color: #fff;
+}
+
+/* Sidebar menu layout */
+.violet-sidebar .sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+/* Each menu link base */
+.violet-sidebar .sidebar-menu .menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    width: 100%;
+    gap: 2px; /* reduced gap between icon and label */
+}
+
+/* Menu icon styling (updated to remove border and center) */
+.violet-sidebar .sidebar-menu .menu-icon {
+    font-size: 26px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    border: none;
+}
+
+/* Text label under icon */
+.violet-sidebar .sidebar-menu .menu-item span {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+}
+
+/* === Active Menu Styling === */
+
+.violet-sidebar .sidebar-menu .menu-item.active .menu-icon {
+    background-color: #fff;
+    color: #9874D3;
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.violet-sidebar .sidebar-menu .menu-item.active span {
+    color: #fff;
+    font-weight: 700;
+}
+
+
+/* ========== MAIN CONTENT ========== */
+
+.main-content {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+
+/* ========== HEADER ========== */
+
+.admin-header {
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    border-radius: 0.75rem 0.75rem 0 0;
+    color: white;
+}
+
+.submenu-tabs {
+    display: flex;
+    gap: 16px;
+    padding: 3px 24px;
+    background-color: white;
+    border-bottom: 1px solid #e0e0e0;
+    overflow-x: auto;
+}
+
+.submenu-btn {
+    padding-bottom: 6px;
+    font-size: 14px;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    color: #444;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.submenu-btn.active {
+    color: #7c3aed;
+    border-bottom: 2px solid #7c3aed;
+}
+
+.main-tabs {
+    display: flex;
+    gap: 16px;
+}
+
+.main-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    background: transparent;
+    color: white;
+    transition: background 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.main-tab-btn.active {
+    background-color: white;
+    color: #7c3aed;
+}
+
+
+/* ========== USER INFO DROPDOWN ========== */
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-info .avatar {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+
+.user-text p {
+    margin: 0;
+}
+
+.user-text .role {
+    font-size: 12px;
+    color: #e0e0e0;
+}
+
+.profile-dropdown {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #fff;
+    color: white;
+    width: 220px;
+    z-index: 1000;
+}
+
+.dropdown-item {
+    background: none;
+    border: none;
+    color: #673ab7;
+    width: 100%;
+    text-align: left;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    color: #7c3aed;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* ========== COLOR THEMES ========== */
+
+.violet-header .header-top {
+    background-color: #8a76aa;
+}
+
+.blue-header .header-top {
+    background-color: #3b82f6;
+}
+
+.green-header .header-top {
+    background-color: #10b981;
+}
+
+.red-header .header-top {
+    background-color: #ef4444;
+}
+
+.orange-header .header-top {
+    background-color: #ff9800;
+}
+
+.violet-bg {
+    background-color: #673ab7;
+}
+
+.blue-bg {
+    background-color: #2196f3;
+}
+
+.red-bg {
+    background-color: #e91e63;
+}
+
+.green-bg {
+    background-color: #8bc34a;
+}
+
+.orange-bg {
+    background-color: #ff9800;
+}
+
+.theme-color-box {
+    display: inline-block;
+}

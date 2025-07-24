@@ -4,8 +4,6 @@
 .sidebar {
     width: 100px;
     min-height: 100vh;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
 }
 
 /* Sidebar background theme (violet) */
@@ -17,8 +15,7 @@
 /* Logo container on top of sidebar */
 .violet-sidebar .logo-container {
     background-color: #8a76aa;
-    padding: 12px 0;
-    border-top-right-radius: 15px;
+    padding: 5px 0;
 }
 
 .violet-sidebar .logo-container h3 {
@@ -30,10 +27,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
     list-style: none;
-    margin-top: 20px;
+    margin-top: 5px;
     padding-left: 0;
+    width: 100%;
+}
+
+.violet-sidebar .sidebar-menu li {
+    width: 100% ;
 }
 
 /* Each menu link base */
@@ -46,12 +47,13 @@
     text-decoration: none;
     color: #fff;
     width: 100%;
-    gap: 2px; /* reduced gap between icon and label */
+    gap: 2px;
+    padding: 10px 0px;
 }
 
 /* Menu icon styling (updated to remove border and center) */
 .violet-sidebar .sidebar-menu .menu-icon {
-    font-size: 26px;
+    font-size: 20px;
     color: #fff;
     display: flex;
     align-items: center;
@@ -68,19 +70,28 @@
     font-weight: 500;
 }
 
+.violet-sidebar .sidebar-menu .menu-item:hover {
+    background-color: #f1f1f12f;
+}
+
 /* === Active Menu Styling === */
 
-.violet-sidebar .sidebar-menu .menu-item.active .menu-icon {
-    background-color: #fff;
-    color: #9874D3;
-    border-radius: 8px;
-    padding: 4px;
+.violet-sidebar .sidebar-menu .menu-item.active {
+    border-right: 3px solid #673ab7;
+    background: linear-gradient(to left, #c3aafc, transparent);
 }
 
-.violet-sidebar .sidebar-menu .menu-item.active span {
-    color: #fff;
-    font-weight: 700;
+.violet-sidebar .sidebar-menu .menu-item.active::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 0;
+    width: 4px;
+    height: 80%;
+    background: #6e58a2; /* darker violet shade */
+    border-radius: 2px;
 }
+
 
 
 /* ========== MAIN CONTENT ========== */
@@ -102,8 +113,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 24px;
-    border-radius: 0.75rem 0.75rem 0 0;
+    padding: 0px 24px;
     color: white;
 }
 
@@ -111,7 +121,7 @@
     display: flex;
     gap: 16px;
     padding: 3px 24px;
-    background-color: white;
+    background-color: #e7e7e7;
     border-bottom: 1px solid #e0e0e0;
     overflow-x: auto;
 }

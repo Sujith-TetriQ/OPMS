@@ -1,0 +1,213 @@
+.create-post {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+
+  .createPost-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    h3 {
+      font-size: 14px;
+    }
+
+  }
+}
+
+.create-post label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.create-post select,
+.create-post textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-post textarea {
+  height: 100px;
+}
+
+/* File upload box */
+.file-upload {
+  border: 2px dashed #d1d5db;
+  border-radius: 10px;
+  padding: 18px;
+  text-align: center;
+  margin-top: 15px;
+  background: #ffffff;
+}
+
+/* Upload zone (clickable area) */
+.upload-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  color: #6b7280;
+  user-select: none;
+}
+
+.upload-icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+  color: #6b6b75;
+  /* matches figma gray */
+}
+
+.upload-text {
+  margin: 0;
+  font-size: 15px;
+  color: #374151;
+}
+
+/* Tabs: image / video buttons */
+.file-upload .tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.upload-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #111827;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.03);
+}
+
+.upload-tab .tab-icon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  color: #374151;
+}
+
+/* Active style */
+.upload-tab.active {
+  border-color: #2563eb;
+  /* blue */
+  color: #2563eb;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.08);
+}
+
+/* File preview + remove */
+.file-preview {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.file-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9fafb;
+  border-radius: 999px;
+  padding: 6px 10px;
+  border: 1px solid #e6e6e6;
+  width: 95%;
+}
+
+.file-type-icon {
+  font-size: 16px;
+  color: #374151;
+}
+
+.file-name {
+  font-size: 14px;
+  color: #111827;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.remove-file {
+  border: none;
+  background: none;
+  color: #ef4444;
+  cursor: pointer;
+  font-size: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.post-button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.post-button.enabled {
+  background-color: #6b6b75;
+  /* matches your screenshot */
+  color: white;
+}
+
+.post-button.disabled {
+  background-color: #d1d5db;
+  /* light gray */
+  color: white;
+  cursor: not-allowed;
+}
+
+
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+
+.tab-btn {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+  background-color: #f0f0f5;
+  border-color: #6b6b75;
+  font-weight: 600;
+}

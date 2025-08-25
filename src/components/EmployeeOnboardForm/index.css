@@ -1,0 +1,261 @@
+/* --------------------------------------------
+   Root Theme Colors
+-------------------------------------------- */
+:root {
+  --violet: #6f42c1;
+  --blue: #0d6efd;
+  --green: #198754;
+  --rose: #e83e8c;
+  --orange: #fd7e14;
+}
+
+/* --------------------------------------------
+   Page Wrapper with Theme Support
+-------------------------------------------- */
+.onboarding-page {
+  min-height: 100vh;
+  padding: 2rem 0;
+  transition: background-color 0.3s ease;
+}
+
+.onboarding-page.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.onboarding-page.dark {
+  background-color: #000;
+  color: #f5f5f5;
+}
+
+/* --------------------------------------------
+   Form Container Styles
+-------------------------------------------- */
+.form-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.form-wrapper.dark {
+  background-color: #1b1b1b;
+}
+
+/* --------------------------------------------
+   Form Fields Styling
+-------------------------------------------- */
+.form-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.form-group {
+  flex: 1 1 100%;
+}
+
+@media (min-width: 768px) {
+  .form-group {
+    flex: 1 1 45%;
+  }
+}
+
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+input,
+select,
+textarea,
+.form-control,
+.form-select {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background-color: #fff;
+  color: #333;
+}
+
+.dark input,
+.dark select,
+.dark .form-control,
+.dark .form-select {
+  background-color: #2c2c2c;
+  color: #f5f5f5;
+  border: 1px solid #555;
+}
+
+.dark input::placeholder,
+.dark select option {
+  color: #bbb;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+/* --------------------------------------------
+   Buttons with Theme Colors
+-------------------------------------------- */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+button.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.btn.violet {
+  background-color: var(--violet);
+}
+
+.btn.blue {
+  background-color: var(--blue);
+}
+
+.btn.green {
+  background-color: var(--green);
+}
+
+.btn.rose {
+  background-color: var(--rose);
+}
+
+.btn.orange {
+  background-color: var(--orange);
+}
+
+/* --------------------------------------------
+   Stepper Styling and Animation
+-------------------------------------------- */
+.bs-stepper-header {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.bs-stepper .step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.animated-step {
+  transition: all 0.3s ease-in-out;
+}
+
+.bs-stepper .step .step-trigger {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-weight: 500;
+  font-size: 16px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  margin-bottom: 0.3rem;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1;
+  border: 2px solid #ccc;
+  background-color: #dee2e6;
+  color: #212529;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.bs-stepper .step .bs-stepper-label {
+  font-size: 0.95rem;
+  color: #6c757d;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.step.active .step-trigger {
+  background-color: currentColor;
+  color: white;
+  font-weight: 700;
+  border: 2px solid white;
+  transform: scale(1.1);
+}
+
+.step.active .bs-stepper-label {
+  color: currentColor;
+  font-weight: 700;
+}
+
+.step.active .step-trigger:hover {
+  transform: scale(1.15);
+}
+
+.step.completed .step-trigger {
+  background-color: currentColor;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+  border: 2px solid currentColor;
+}
+
+.step.completed .bs-stepper-label {
+  color: currentColor;
+  font-weight: 600;
+}
+
+.bs-stepper .step:not(.active):not(.completed) .step-trigger {
+  background-color: #dee2e6;
+  color: #6c757d;
+}
+
+.bs-stepper .step:not(.active):not(.completed) .bs-stepper-label {
+  color: #6c757d;
+}
+
+/* --------------------------------------------
+   Mobile Responsiveness
+-------------------------------------------- */
+@media (max-width: 576px) {
+  .bs-stepper-header {
+    gap: 1.2rem;
+  }
+
+  .bs-stepper .step .step-trigger {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .bs-stepper .step .bs-stepper-label {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .bs-stepper .step .bs-stepper-label {
+    display: none;
+  }
+}

@@ -1,0 +1,170 @@
+/* =======================
+    Theme Variables Setup
+======================= */
+.light {
+  --text-color: #212529;
+  --bg-color: #ffffff;
+  --border-color: #dee2e6;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+   --status-pending: #ffc107;     /* Yellow */
+  --status-approved: #28a745;    /* Green */
+  --status-rejected: #dc3545;    /* Red */
+}
+
+.dark {
+  --text-color: #e0e0e0;
+  --bg-color: #1f2329;
+  --border-color: #3e444b;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+   --status-pending: #fbc02d;     /* Amber */
+  --status-approved: #66bb6a;    /* Light Green */
+  --status-rejected: #ef5350;    /* Light Red */
+}
+
+/* =======================
+    Container Styling
+======================= */
+.all-records-container {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px var(--shadow-color);
+}
+
+/* =======================
+    Inputs and Labels
+======================= */
+.all-records-container input,
+.all-records-container .form-control {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.all-records-container input[type="date"] {
+  font-size: 14px;
+}
+
+.all-records-container input::placeholder,
+.all-records-container .form-control::placeholder {
+  color: rgba(128, 128, 128, 0.6);
+}
+
+.all-records-container label {
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+/* =======================
+    Table Styles
+======================= */
+.leave-records-table {
+  width: 100%;
+  color: var(--text-color);
+  border-color: var(--border-color);
+  background-color: var(--bg-color);
+  border-collapse: collapse;
+  box-shadow: 0 0 5px var(--shadow-color);
+}
+
+.leave-records-table th,
+.leave-records-table td {
+  padding: 0.75rem;
+  vertical-align: middle;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.leave-records-table th {
+  font-weight: 600;
+  text-align: center;
+}
+
+.leave-records-table td {
+  text-align: center;
+}
+
+.leave-records-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* =======================
+    Avatar Styling
+======================= */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+}
+
+/* =======================
+    Status Badge Styling
+======================= */
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #fff;
+  display: inline-block;
+  min-width: 75px;
+  text-align: center;
+  box-shadow: 0 1px 3px var(--shadow-color);
+}
+
+.status-badge.pending {
+  background-color: var(--status-pending);
+}
+
+.status-badge.approved {
+  background-color: var(--status-approved);
+}
+
+.status-badge.rejected {
+  background-color: var(--status-rejected);
+}
+
+/* Remove avatar-cell gap on mobile */
+@media (max-width: 768px) {
+  .all-records-container {
+    padding: 0.5rem;
+  }
+
+  .leave-records-table th,
+  .leave-records-table td {
+    padding: 0.5rem;
+    font-size: 13px;
+  }
+
+  .avatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .name-cell {
+    flex-direction: column;
+    align-items: flex-start !important;
+  }
+
+  .status-badge {
+    min-width: 60px;
+    font-size: 0.7rem;
+  }
+
+  .row.g-3.mb-4 > .col-md-3,
+  .row.g-3.mb-4 > .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .d-flex.gap-2 {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,729 @@
+/* Base Styles (Light Mode Defaults) */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+    /* Light background */
+    color: #343a40;
+    /* Dark text */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode {
+    background-color: #343a40 !important;
+    /* Dark background */
+    color: #f8f9fa !important;
+    /* Light text */
+}
+
+/* --- General Typography & Layout --- */
+.main-heading {
+    color: #343a40;
+    /* Default for light mode */
+}
+
+.dark-mode .main-heading {
+    color: #f8f9fa;
+    /* Light text for dark mode */
+}
+
+.hr-line {
+    border-top: 1px solid #dee2e6;
+    margin-bottom: 1.5rem;
+}
+
+.dark-mode .hr-line {
+    border-color: #495057;
+}
+
+/* --- Card Styles --- */
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    background-color: #ffffff;
+    /* Default for light mode cards */
+    color: #343a40;
+    /* Default text for light mode cards */
+}
+
+.dark-mode .card {
+    background-color: #495057;
+    /* Dark background for cards */
+    border-color: #6c757d;
+    color: #e9ecef;
+}
+
+/* Specific card overrides for filter and table */
+.filter-card,
+.table-card {
+    background-color: #ffffff;
+    /* Explicitly set for light mode */
+}
+
+.dark-mode .filter-card,
+.dark-mode .table-card {
+    background-color: #495057;
+    /* Dark background for filter and table cards */
+    border-color: #6c757d;
+    color: #e9ecef;
+}
+
+
+.card-header-custom {
+    background-color: #f1f3f5;
+    border-bottom: 1px solid #e9ecef;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    color: #495057;
+}
+
+.dark-mode .card-header-custom {
+    background-color: #3a4047;
+    border-bottom-color: #5a6268;
+    color: #f8f9fa;
+}
+
+/* --- Stat Cards --- */
+.stat-card {
+    text-align: center;
+    background-color: #ffffff;
+    /* Always white in light mode */
+    border-color: #e9ecef;
+}
+
+.dark-mode .stat-card {
+    background-color: #3a4047;
+    /* Slightly darker for dark mode */
+    border-color: #5a6268;
+}
+
+.stat-card .card-title {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: #6c757d;
+    /* Default muted color */
+}
+
+.dark-mode .stat-card .card-title {
+    color: #ced4da;
+    /* Lighter muted color for dark mode */
+}
+
+.stat-card .stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+/* Specific colors for stat numbers - these will change based on theme */
+.present-card .stat-number {
+    color: #28a745;
+}
+
+/* Green */
+.dark-mode .present-card .stat-number {
+    color: #28a745;
+}
+
+/* Keep green for dark mode */
+
+.late-card .stat-number {
+    color: #ffc107;
+}
+
+/* Yellow */
+.dark-mode .late-card .stat-number {
+    color: #ffc107;
+}
+
+/* Keep yellow for dark mode */
+
+.on-leave-card .stat-number {
+    color: #17a2b8;
+}
+
+/* Cyan */
+.dark-mode .on-leave-card .stat-number {
+    color: #17a2b8;
+}
+
+/* Keep cyan for dark mode */
+
+.absent-card .stat-number {
+    color: #dc3545;
+}
+
+/* Red */
+.dark-mode .absent-card .stat-number {
+    color: #dc3545;
+}
+
+/* Keep red for dark mode */
+
+
+/* --- Filter Section --- */
+.filter-card .form-label {
+    font-weight: 500;
+    color: #495057;
+}
+
+.dark-mode .filter-card .form-label {
+    color: #e9ecef;
+}
+
+/* Custom styles for form-control inputs (includes datepicker and text input) */
+.form-control {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    color: #212529;
+    transition: all 0.15s ease-in-out;
+}
+
+.dark-mode .form-control {
+    background-color: #3a4047 !important;
+    /* Darker background for inputs */
+    border-color: #5a6268 !important;
+    /* Darker border for inputs */
+    color: #f8f9fa !important;
+    /* Light text for inputs */
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+.dark-mode .form-control::placeholder {
+    color: #ced4da !important;
+}
+
+.form-control:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+
+/* Datepicker Calendar Styles */
+.react-datepicker {
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .react-datepicker {
+    background-color: #444 !important;
+    border: 1px solid #666 !important;
+    color: #fff !important;
+}
+
+.react-datepicker__header {
+    background-color: #f1f3f5;
+    border-bottom: 1px solid #e9ecef;
+    padding-top: 0.8em;
+}
+
+.dark-mode .react-datepicker__header {
+    background-color: #555 !important;
+    border-bottom-color: #666 !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+    color: #495057;
+}
+
+.dark-mode .react-datepicker__current-month,
+.dark-mode .react-datepicker__day-name {
+    color: #f8f9fa !important;
+}
+
+.react-datepicker__day {
+    color: #212529;
+}
+
+.dark-mode .react-datepicker__day {
+    color: #fff !important;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+    background-color: #0d6efd !important;
+    /* Bootstrap primary blue */
+    color: #fff !important;
+    border-radius: 0.25rem;
+}
+
+.react-datepicker__day--in-range {
+    background-color: rgba(13, 110, 253, 0.1) !important;
+    color: #0d6efd !important;
+}
+
+.dark-mode .react-datepicker__day--in-range {
+    background-color: rgba(108, 117, 125, 0.3) !important;
+    /* Muted range for dark mode */
+    color: #fff !important;
+}
+
+.react-datepicker__day--in-selecting-range {
+    background-color: rgba(13, 110, 253, 0.2) !important;
+    color: #0d6efd !important;
+}
+
+.dark-mode .react-datepicker__day--in-selecting-range {
+    background-color: rgba(108, 117, 125, 0.5) !important;
+    color: #fff !important;
+}
+
+.react-datepicker__navigation--previous,
+.react-datepicker__navigation--next {
+    top: 10px;
+}
+
+.react-datepicker__navigation--previous::before,
+.react-datepicker__navigation--next::before {
+    border-color: #343a40;
+    /* Dark arrows for light mode */
+}
+
+.dark-mode .react-datepicker__navigation--previous::before,
+.dark-mode .react-datepicker__navigation--next::before {
+    border-color: #f8f9fa;
+    /* Light arrows for dark mode */
+}
+
+
+/* React-Select Customizations for Dark Mode */
+.react-select-dark .react-select__control {
+    background-color: #3a4047 !important;
+    border-color: #5a6268 !important;
+}
+
+.react-select-dark .react-select__single-value {
+    color: #f8f9fa !important;
+}
+
+.react-select-dark .react-select__input {
+    color: #f8f9fa !important;
+}
+
+.react-select-dark .react-select__placeholder {
+    color: #ced4da !important;
+}
+
+.react-select-dark .react-select__menu {
+    background-color: #3a4047 !important;
+    border: 1px solid #5a6268 !important;
+}
+
+.react-select-dark .react-select__option {
+    background-color: #3a4047 !important;
+    color: #f8f9fa !important;
+}
+
+.react-select-dark .react-select__option--is-focused {
+    background-color: #555 !important;
+}
+
+.react-select-dark .react-select__option--is-selected {
+    background-color: #0d6efd !important;
+    color: #fff !important;
+}
+
+/* --- Attendance Table --- */
+.attendance-table th,
+.attendance-table td {
+    vertical-align: middle;
+    padding: 0.75rem 1rem;
+}
+
+.attendance-table thead th {
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.dark-mode .attendance-table thead th {
+    background-color: #3a4047;
+    color: #f8f9fa;
+    border-bottom-color: #5a6268;
+}
+
+.attendance-table tbody tr {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.attendance-table tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+.dark-mode .attendance-table tbody tr:hover {
+    background-color: #5a6268;
+}
+
+/* Specific class for table content area to ensure dark mode applies */
+.table-dark {
+    /* This class is applied directly by React component */
+    background-color: #495057;
+    /* Dark table background */
+    color: #e9ecef;
+    /* Light text for dark table */
+}
+
+.table-dark th {
+    border-color: #6c757d;
+}
+
+.table-dark td {
+    border-color: #5a6268;
+}
+
+.table-row-clickable {
+    cursor: pointer;
+}
+
+/* --- Badges --- */
+.badge {
+    padding: 0.4em 0.7em;
+    border-radius: 0.35rem;
+    font-weight: 600;
+    font-size: 0.8em;
+}
+
+/* --- Popover for Actions --- */
+.custom-popover {
+    position: absolute;
+    z-index: 1060;
+    /* Higher than modal backdrop */
+    min-width: 150px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.4rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.175);
+    background-color: #fff;
+}
+
+.dark-mode .custom-popover {
+    background-color: #5a6268;
+    border-color: #6c757d;
+}
+
+.popover-item {
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.popover-item:hover {
+    background-color: #f1f3f5;
+}
+
+.dark-mode .popover-item {
+    background-color: #5a6268;
+    color: #e9ecef;
+}
+
+.dark-mode .popover-item:hover {
+    background-color: #6c757d;
+}
+
+/* --- Geolocation Modal --- */
+.custom-modal {
+    /* Specific styles for the custom modal if any */
+}
+
+.modal-backdrop.show {
+    opacity: 0.5;
+    background-color: #000;
+}
+
+.dark-mode .modal-content {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+.dark-mode .modal-header {
+    border-bottom-color: #495057;
+}
+
+.dark-mode .modal-footer {
+    border-top-color: #495057;
+}
+
+.dark-mode .btn-close-white {
+    filter: invert(1) grayscale(100%) brightness(200%);
+    /* Make close button visible on dark background */
+}
+
+/* --- Pagination Styles --- */
+.pagination .page-item .page-link {
+    color: #0d6efd;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    margin: 0 2px;
+    border-radius: 0.25rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+/* Dark mode pagination */
+.dark-mode .pagination .page-item .page-link {
+    color: #6ea8fe;
+    background-color: #495057;
+    border-color: #6c757d;
+}
+
+.dark-mode .pagination .page-item .page-link:hover {
+    background-color: #5a6268;
+    border-color: #6c757d;
+}
+
+.dark-mode .pagination .page-item.active .page-link {
+    background-color: #6ea8fe;
+    border-color: #6ea8fe;
+    color: #343a40;
+}
+
+.dark-mode .pagination .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: #3a4047;
+    border-color: #5a6268;
+}
+
+/* --- Utility Classes (if needed) --- */
+.text-muted {
+    color: #6c757d !important;
+}
+
+.dark-mode .text-muted {
+    color: #ced4da !important;
+}
+
+/* Removed .form-control-dark as .form-control now handles dark mode via .dark-mode parent */
+
+
+/* Bootstrap Overrides (ensure consistency) */
+.btn-outline-primary {
+    color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.dark-mode .btn-outline-primary {
+    color: #6ea8fe;
+    border-color: #6ea8fe;
+}
+
+.dark-mode .btn-outline-primary:hover {
+    background-color: #6ea8fe;
+    color: #343a40;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+.dark-mode .btn-secondary {
+    background-color: #adb5bd;
+    border-color: #adb5bd;
+    color: #343a40;
+}
+
+.dark-mode .btn-secondary:hover {
+    background-color: #9da6af;
+    border-color: #919aa1;
+}
+
+.btn-sm.btn-link {
+    color: #6c757d;
+}
+
+.dark-mode .btn-sm.btn-link {
+    color: #adb5bd;
+}
+
+/* ========= Base Pagination ========== */
+.pagination {
+    gap: 0.25rem;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.page-item {
+    transition: all 0.2s ease-in-out;
+}
+
+.page-item .page-link {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.95rem;
+    border-radius: 0.375rem;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    min-width: 36px;
+}
+
+/* ========= Light Mode ========== */
+.light .page-item .page-link {
+    color: #333;
+    background-color: #fff;
+    border-color: #dee2e6;
+}
+
+.light .page-item .page-link:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+.light .page-item.active .page-link {
+    background-color: var(--theme-color, #6610f2);
+    /* fallback violet */
+    color: #fff;
+    border-color: var(--theme-color, #6610f2);
+}
+
+.light .page-item.disabled .page-link {
+    color: #aaa;
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* ========= Dark Mode ========== */
+.dark .page-item .page-link {
+    background-color: #2c2f36;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+.dark .page-item .page-link:hover {
+    background-color: #3b3f46;
+    color: #fff;
+}
+
+.dark .page-item.active .page-link {
+    background-color: var(--theme-color, #7c4dff);
+    color: #fff;
+    border-color: var(--theme-color, #7c4dff);
+}
+
+.dark .page-item.disabled .page-link {
+    color: #777;
+    background-color: #222;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+/* ========= Optional: Theme Color Custom Props ========== */
+/* Set --theme-color dynamically in wrapper if needed */
+.theme-violet {
+    --theme-color: #6610f2;
+}
+
+.theme-blue {
+    --theme-color: #0d6efd;
+}
+
+.theme-green {
+    --theme-color: #198754;
+}
+
+.theme-red {
+    --theme-color: #dc3545;
+}
+
+.theme-orange {
+    --theme-color: #fd7e14;
+}
+
+.theme-rose {
+    --theme-color: #e83e8c;
+}
+
+
+/* Admin Leave Stylings */
+/* Tab container */
+.nav-tabs {
+    border-bottom: 1px solid var(--tab-border);
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.nav-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual tab button */
+.nav-tabs .nav-link {
+    border: none;
+    background-color: transparent;
+    color: var(--tab-inactive-color);
+    border-bottom: 2px solid transparent;
+    padding: 10px 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+}
+
+/* Active tab */
+.nav-tabs .nav-link.active {
+    color: var(--tab-active-color);
+    border-bottom: 2px solid var(--tab-active-color);
+    background-color: transparent;
+    border-radius: 0;
+}
+
+/* Hover effect */
+.nav-tabs .nav-link:hover {
+    color: var(--tab-hover-color);
+}
+
+/* Light Theme Variables */
+.light-mode {
+    --tab-border: #ddd;
+    --tab-active-color: #6f42c1;
+    --tab-inactive-color: #444;
+    --tab-hover-color: #6f42c1;
+}
+
+/* Dark Theme Variables */
+.dark-mode {
+    --tab-border: #444;
+    --tab-active-color: #bb86fc;
+    --tab-inactive-color: #aaa;
+    --tab-hover-color: #bb86fc;
+}

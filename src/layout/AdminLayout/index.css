@@ -1,0 +1,467 @@
+/*****************************************
+  STRUCTURE & BASE LAYOUT STYLES
+******************************************/
+
+.admin-layout {
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  min-height: 100vh;
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%); /* hidden by default */
+}
+
+/* Show sidebar when toggled */
+.sidebar.show {
+  transform: translateX(0);
+}
+
+/* Always visible on large screens */
+@media (min-width: 992px) {
+  .sidebar {
+    position: static;
+    transform: none !important;
+  }
+}
+
+.header {
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Sidebar Menu Layout */
+.sidebar-menu {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+}
+
+.menu-item {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 15px 0;
+}
+
+.menu-icon {
+  font-size: 18px;
+}
+
+.menu-item span {
+  font-size: 12px;
+}
+
+/* Dropdown/Profile */
+.profile-dropdown {
+  position: relative;
+}
+
+.profile-container,
+.profile-pic {
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* Dropdown Menu */
+.dropdown-panel {
+  position: absolute;
+  top: 60px; /* Increased for separation */
+  right: 0;
+  background: #fff;
+  color: #333;
+  width: 220px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* stronger shadow for floating effect */
+  padding: 12px 14px;
+  z-index: 1050;
+  transition: all 0.3s ease;
+}
+
+/* Optional: Fade effect when toggling */
+.dropdown-panel.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.dropdown-panel.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+.dropdown-options {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10px 0;
+}
+
+.dropdown-options li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.dropdown-menu-box {
+  position: absolute;
+  top: 60px; /* space below profile */
+  right: 0;
+  width: 240px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 1050;
+  padding: 10px 0;
+  animation: fadeInDrop 0.2s ease-in-out;
+}
+
+@keyframes fadeInDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base Dropdown Menu */
+.dropdown-menu-box {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 240px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 1050;
+  padding: 10px 0;
+  animation: fadeInDrop 0.2s ease-in-out;
+  transition: all 0.3s ease;
+}
+
+/* Theme: Light Mode */
+.dropdown-menu-box.light {
+  background-color: #fff;
+  color: #333;
+}
+
+.dropdown-menu-box.light .dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+/* Theme: Dark Mode */
+.dropdown-menu-box.dark {
+  background-color: #1f1f1f;
+  color: #f1f1f1;
+}
+
+.dropdown-menu-box.dark .dropdown-item .icon {
+  color: #ccc !important;
+}
+
+.dropdown-menu-box.dark .dropdown-item:hover {
+  background-color: #333;
+}
+
+/* Common Dropdown Item */
+.dropdown-item {
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.2s ease;
+}
+
+/* Animation */
+@keyframes fadeInDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.theme-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.violet { background-color: #63498d; }
+.blue { background-color: #1e40af; }
+.rose { background-color: #812c44; }
+.green { background-color: #2e7d32; }
+.orange { background-color: #b45309; }
+
+
+.dropdown-options li:hover {
+  background-color: #f2f2f2;
+}
+
+/* Color Swatches */
+.color-swatches {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.swatch.selected {
+  border-color: #333;
+}
+
+/* Theme Toggle */
+.mode-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* Toggle Switch Styling */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider,
+.slider.round {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.4s;
+}
+
+.slider:before,
+.slider.round:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider.round {
+  background-color: #333;
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+input:checked + .slider.round:before {
+  transform: translateX(20px);
+}
+
+.main-content {
+    height: 92vh;
+    overflow-y: auto;
+}
+
+/*****************************************
+  THEME COLOR STYLES (Apply Dynamically)
+******************************************/
+
+/* VIOLET THEME */
+.violet-sidebar {
+  background-color: #9874D3;
+}
+
+.violet-sidebar .logo-container {
+  background-color: #412f5f;
+  color: #fff;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.violet-sidebar .menu-item {
+  color: #e2dcec;
+}
+
+.violet-sidebar .menu-item:hover {
+  background-color: #eeeeee23;
+}
+
+.violet-sidebar .menu-item.active {
+  border-right: 3px solid #63498d;
+  background-image: linear-gradient(to left, #eeeeee63, transparent);
+}
+
+.violet-header {
+  background-color: #63498d;
+}
+
+/* BLUE THEME */
+.blue-sidebar {
+  background-color: #3b82f6;
+}
+
+.blue-sidebar .logo-container {
+  background-color: #162761;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.blue-sidebar .menu-item {
+  color: #dbeafe;
+}
+
+.blue-sidebar .menu-item:hover {
+  background-color: #eeeeee23;
+}
+
+.blue-sidebar .menu-item.active {
+  border-right: 3px solid #1e40af;
+  background-image: linear-gradient(to left, #eeeeee63, transparent);
+}
+
+.blue-header {
+  background-color: #1e40af;
+}
+
+/* ROSE THEME */
+.rose-sidebar {
+  background-color: #be4b6b;
+}
+
+.rose-sidebar .logo-container {
+  background-color: #501b2a;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.rose-sidebar .menu-item {
+  color: #ffe4ec;
+}
+
+.rose-sidebar .menu-item:hover {
+  background-color: #eeeeee23;
+}
+
+.rose-sidebar .menu-item.active {
+  border-right: 3px solid #812c44;
+  background-image: linear-gradient(to left, #eeeeee63, transparent);
+}
+
+.rose-header {
+  background-color: #812c44;
+}
+
+/* GREEN THEME */
+.green-sidebar {
+  background-color: #4caf50;
+}
+
+.green-sidebar .logo-container {
+  background-color: #18441a;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.green-sidebar .menu-item {
+  color: #e8f5e9;
+}
+
+.green-sidebar .menu-item:hover {
+  background-color: #eeeeee23;
+}
+
+.green-sidebar .menu-item.active {
+  border-right: 3px solid #2e7d32;
+  background-image: linear-gradient(to left, #eeeeee63, transparent);
+}
+
+.green-header {
+  background-color: #2e7d32;
+}
+
+/* ORANGE THEME */
+.orange-sidebar {
+  background-color: #f59e0b;
+}
+
+.orange-sidebar .logo-container {
+  background-color: #5e2b05;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.orange-sidebar .menu-item {
+  color: #fff7e6;
+}
+
+.orange-sidebar .menu-item:hover {
+  background-color: #eeeeee23;
+}
+
+.orange-sidebar .menu-item.active {
+  border-right: 3px solid #b45309;
+  background-image: linear-gradient(to left, #eeeeee63, transparent);
+}
+
+.orange-header {
+  background-color: #b45309;
+}

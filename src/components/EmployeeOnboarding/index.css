@@ -1,0 +1,114 @@
+.employee-onboarding-form {
+  transition: all 0.3s ease;
+}
+
+.light-mode {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: #2b2b2b;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-mode input::placeholder,
+.dark-mode select option {
+  color: #ccc;
+}
+
+.violet-theme .form-label {
+  color: #63498d;
+}
+
+.blue-theme .form-label {
+  color: #1e40af;
+}
+
+.rose-theme .form-label {
+  color: #812c44;
+}
+
+.green-theme .form-label {
+  color: #2e7d32;
+}
+
+.orange-theme .form-label {
+  color: #b45309;
+}
+
+/* === Step Circle === */
+.step-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  text-align: center;
+  line-height: 32px;
+  background-color: #fff;
+  font-weight: bold;
+  color: #999;
+  z-index: 1;
+}
+
+/* === Step Line === */
+.step-line {
+  flex-grow: 1;
+  height: 3px;
+  background-color: #ccc;
+  margin: 0 8px;
+  z-index: 0;
+}
+
+/* === Completed Style === */
+.step-circle.completed,
+.step-line.completed {
+  border-color: #28a745;
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* === Active Circle for Themes === */
+.step-circle.violet.active {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: #fff;
+}
+
+.step-circle.blue.active {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+
+.step-circle.rose.active {
+  background-color: #812c44;
+  border-color: #812c44;
+  color: #fff;
+}
+
+.step-circle.green.active {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.step-circle.orange.active {
+  background-color: #fd7e14;
+  border-color: #fd7e14;
+  color: #fff;
+}
+
+.step-circle.red.active {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}

@@ -1,0 +1,193 @@
+/* ========== GLOBAL PROFILE CONTAINER ========== */
+.about-employee {
+  transition: all 0.3s ease;
+}
+
+.about-employee.light {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.about-employee.dark {
+  background-color: #1f1f1f;
+  color: #f1f1f1;
+}
+
+/* ========== OUTER WRAPPER (Remove White Border) ========== */
+.section-wrapper {
+  background-color: transparent;
+  transition: all 0.3s ease;
+  margin-bottom: 1.5rem;
+}
+
+.section-wrapper.no-border {
+  box-shadow: none;
+  border: none;
+}
+
+/* ========== INNER SECTION CARDS ========== */
+.section-card {
+  background-color: inherit;
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.about-employee.dark .section-card {
+  background-color: #212529 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ========== SECTION TITLE ========== */
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* ========== TIMELINE STYLES ========== */
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 1rem;
+  padding-left: 12px;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.timeline-item.no-left-border {
+  border-left: none;
+}
+
+.timeline-badge {
+  background-color: #ddd;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.about-employee.dark .timeline-badge {
+  background-color: #444;
+  color: #f5f5f5;
+}
+
+.timeline-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: inherit;
+}
+
+.timeline-icon {
+  font-size: 1.3rem;
+}
+
+.about-employee.dark .timeline-content {
+  color: #e8e8e8;
+}
+
+/* ========== WALL ACTIVITY (Premium Grid Layout) ========== */
+.wall-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.wall-card {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wall-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.about-employee.dark .wall-card {
+  background-color: rgba(255, 255, 255, 0.07);
+  color: #f1f1f1;
+}
+
+/* ========== EMPTY STATES ========== */
+.no-activity-img {
+  max-width: 100px;
+  opacity: 0.6;
+}
+
+.loader, .error-msg, .empty-msg {
+  font-weight: 500;
+  font-size: 1rem;
+  color: inherit;
+}
+
+/* === Theme-Based Borders (dynamic left strip for timeline & wall) === */
+.about-employee.violet .section-card,
+.about-employee.violet .timeline-item,
+.about-employee.violet .wall-item {
+  border-left: 4px solid #6f42c1;
+}
+
+.about-employee.blue .section-card,
+.about-employee.blue .timeline-item,
+.about-employee.blue .wall-item {
+  border-left: 4px solid #007bff;
+}
+
+.about-employee.green .section-card,
+.about-employee.green .timeline-item,
+.about-employee.green .wall-item {
+  border-left: 4px solid #28a745;
+}
+
+.about-employee.rose .section-card,
+.about-employee.rose .timeline-item,
+.about-employee.rose .wall-item {
+  border-left: 4px solid #c0392b;
+}
+
+.about-employee.orange .section-card,
+.about-employee.orange .timeline-item,
+.about-employee.orange .wall-item {
+  border-left: 4px solid #f4a261;
+}
+
+/* === Dark Mode Enhancements === */
+.about-employee.dark .section-card {
+  background-color: #2d2d2d;
+  color: #f1f1f1;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.about-employee.dark .wall-item {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+}
+
+.about-employee.dark .timeline-badge {
+  background-color: #444;
+  color: #f5f5f5;
+}
+
+.about-employee.dark .timeline-content {
+  color: #e8e8e8;
+}
+
+/* Gradient Backgrounds */
+
+/* ========= Gradient Borders for Timeline and Wall ========= */
+

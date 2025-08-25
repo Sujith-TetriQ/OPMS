@@ -1,0 +1,145 @@
+/* =============================================
+   AboutEmployeeProfile - Updated Clean UI CSS
+   ============================================= */
+
+/* -------- Wrapper for entire component -------- */
+.employee-profile-container {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* -------- Mode Support (Light / Dark) -------- */
+.light {
+  background-color: #f9f9f9;
+  color: #222;
+}
+
+.dark {
+  background-color: #1e1e1e;
+  color: #f2f2f2;
+}
+
+/* -------- Dynamic Left Border Theme Accent -------- */
+.profile-card {
+  border-left: none;
+}
+
+.violet .profile-card {
+  border-left-color: #6c5ce7;
+}
+.blue .profile-card {
+  border-left-color: #0984e3;
+}
+.green .profile-card {
+  border-left-color: #00b894;
+}
+.orange .profile-card {
+  border-left-color: #e17055;
+}
+.red .profile-card {
+  border-left-color: #d63031;
+}
+
+/* -------- Profile Card Styling -------- */
+.profile-card {
+  background-color: inherit;
+  border-radius: 14px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  padding: 1.25rem 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* -------- Profile Card Header -------- */
+.profile-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.profile-card-header h6 {
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.theme-text {
+  color: inherit;
+}
+
+/* -------- Edit Link Styling -------- */
+.edit-link {
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+.edit-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* -------- Field Layout -------- */
+.field-item {
+  margin-bottom: 1rem;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #888;
+}
+
+.field-value {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* -------- Modal Styling -------- */
+.modal .form-label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.modal input,
+.modal select {
+  font-size: 0.95rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: inherit;
+  color: inherit;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.modal input:focus,
+.modal select:focus {
+  border-color: #888;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.12);
+}
+
+.modal .btn-primary {
+  font-weight: 500;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.modal .btn-secondary {
+  background-color: #ccc;
+  border-color: #ccc;
+  color: #333;
+}
+
+/* -------- Responsive Fixes -------- */
+@media (max-width: 768px) {
+  .profile-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .field-item {
+    width: 100%;
+  }
+}

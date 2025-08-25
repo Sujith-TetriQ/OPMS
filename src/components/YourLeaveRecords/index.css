@@ -1,0 +1,74 @@
+/* ========================= */
+/* --- General Styling --- */
+/* ========================= */
+.leave-records-container {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+.leave-records-table {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.search-box .form-control {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.btn-outline-secondary {
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+
+/* ========================= */
+/* --- Dark Mode Specifics --- */
+/* ========================= */
+.dark-mode {
+    --text-color: #f8f9fa;
+    --card-bg: #343a40;
+    --input-bg: #454d55;
+    --border-color: #495057;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================= */
+/* --- Light Mode Specifics --- */
+/* ========================= */
+.light-mode {
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --input-bg: #f8f9fa;
+    --border-color: #dee2e6;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================= */
+/* --- Badge Styling --- */
+/* ========================= */
+.badge {
+    padding: 0.5em 0.8em;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.bg-success {
+    background-color: #28a745 !important;
+    color: #fff;
+}
+
+.bg-danger {
+    background-color: #dc3545 !important;
+    color: #fff;
+}
+
+.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+.bg-warning.text-dark {
+    color: #212529 !important;
+}

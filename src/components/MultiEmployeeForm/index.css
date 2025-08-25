@@ -1,0 +1,244 @@
+/*
+ * ========================================
+ * AddMultipleEmployees - Component Styles
+ * ========================================
+ */
+
+/* * ========= General Page & Layout Styling =========
+ * These styles define the overall look of the page and the container.
+ * They include base colors and layout properties for both themes.
+ */
+.add-employees-page {
+    padding: 2rem;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: #f8fafc;
+    /* Light Mode background */
+}
+
+/* Dark mode specific styles for the page container */
+.add-employees-page.dark {
+    background-color: #121212;
+    /* Dark Mode background */
+    color: #e0e0e0;
+}
+
+/* * ========= Card Section Styling =========
+ * This section styles the card-like containers that hold the content.
+ * It uses box shadows and transitions for a modern feel.
+ */
+.card-section {
+    background: #ffffff;
+    /* Light Mode card background */
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+/* Dark mode specific styles for the card sections */
+.add-employees-page.dark .card-section {
+    background: #1e1e1e;
+    /* Dark Mode card background */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* * ========= Optional Fields Section Styling =========
+ * Styles for the left-hand panel containing the optional field checkboxes.
+ */
+.optional-fields-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.clickable-box {
+    transition: all 0.2s ease;
+    border: 1px solid #ccc;
+    /* Default border color */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    background-color: #f1f5f9;
+    /* Light Mode default */
+    cursor: pointer;
+}
+
+/* Dark mode specific override for the clickable box */
+.add-employees-page.dark .clickable-box {
+    background-color: #2c2c2c !important;
+    /* Override light mode background */
+    border-color: #444 !important;
+    /* Override light mode border */
+    color: #e0e0e0;
+    /* Set text color for dark mode */
+}
+
+/* Selected state for the clickable box in light mode */
+.clickable-box.selected {
+    background-color: #e9f3ff;
+    border-color: #007bff;
+    font-weight: 500;
+}
+
+/* Selected state for the clickable box in dark mode */
+.add-employees-page.dark .clickable-box.selected {
+    background-color: #3a4b64;
+    /* Dark Mode selected background */
+    border-color: #6c757d;
+}
+
+.clickable-box:hover {
+    background-color: #f0f0f0;
+    /* Light Mode hover background */
+    border-color: #999;
+}
+
+.add-employees-page.dark .clickable-box:hover {
+    background-color: #383838;
+    /* Dark Mode hover background */
+    border-color: #666;
+}
+
+.clickable-box .form-check {
+    margin: 0;
+    padding: 0;
+}
+
+/* * ========= CSV Upload and Form Elements =========
+ * Styles for the upload area, input fields, and instructions.
+ */
+.upload-instructions {
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.add-employees-page.dark .upload-instructions {
+    color: #a0a0a0;
+}
+
+.upload-area input[type="file"] {
+    display: block;
+    width: 100%;
+    padding: 0.65rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background-color: #f9fafb;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.add-employees-page.dark .upload-area input[type="file"] {
+    background-color: #2c2c2c;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+/* * ========= Tables and Data Display Styling =========
+ * This section styles the valid and invalid data tables.
+ */
+.table th,
+.table td {
+    vertical-align: middle;
+    font-size: 0.875rem;
+}
+
+.add-employees-page.dark .table {
+    --bs-table-bg: #1e1e1e;
+    --bs-table-striped-bg: #2c2c2c;
+    --bs-table-hover-bg: #383838;
+    color: #e0e0e0;
+}
+
+.table-danger td {
+    background-color: #ffe5e5 !important;
+}
+
+.add-employees-page.dark .table-danger td {
+    background-color: #5d3f44 !important;
+    /* Darker red for dark mode */
+}
+
+.table .btn-outline {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.add-employees-page.dark .table .btn-outline {
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+/* * ========= Responsive Design =========
+ * Adjustments for smaller screens to maintain a good user experience.
+ */
+@media (min-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+
+    .col-md-8 {
+        flex: 0 0 auto;
+        width: 75%;
+    }
+}
+
+@media (max-width: 768px) {
+    .add-employees-page {
+        padding: 1rem;
+    }
+
+    .card-section {
+        padding: 1.25rem;
+    }
+
+    .checkbox-list {
+        gap: 0.6rem;
+    }
+
+    .col-md-4,
+    .col-md-8 {
+        width: 100%;
+    }
+
+    .upload-area input[type="file"] {
+        font-size: 0.85rem;
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+
+    .table th:last-child,
+    .table td:last-child {
+        min-width: 60px;
+    }
+
+    .clickable-box {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* * ========= Utility & Reset Styles =========
+ * Small fixes and specific overrides.
+ */
+body {
+    overflow-x: hidden;
+    /* Prevents horizontal scrollbar on body */
+}

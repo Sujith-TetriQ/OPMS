@@ -727,3 +727,72 @@ body {
     --tab-inactive-color: #aaa;
     --tab-hover-color: #bb86fc;
 }
+.upComingEvents{
+    .card{
+   background-color: #fdf2f8;
+}
+
+}
+.Attendance-section{
+   .Attendance-card{
+      background-color: white;
+     
+   }
+}
+.holidayContainer{
+    .card{
+      background-color: #eff6ff;
+    }
+}
+.recentPost-cardContainer{
+  margin-top: 20px;
+  .card{
+    background-color: white;
+  }
+}
+.createPostCard{
+  background-color: white;
+  &:hover{
+    background-color: white;
+  }
+}
+.dashboardHeader-container{
+   display: flex;
+  justify-content: space-between; /* left & right */
+  align-items: center;
+  padding: 10px 20px;
+  .header-left h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.header-left p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;   /* vertically aligned */
+  gap: 10px;             /* spacing between text & badge */
+  text-align: right;
+  font-size: 13px;
+}
+
+.status-label {
+  color: #374151;  /* gray */
+  line-height: 1.2;
+}
+
+.status-badge {
+  background-color: #d1fae5; /* light green */
+  color: #065f46;           /* dark green */
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+}

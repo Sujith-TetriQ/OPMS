@@ -1,0 +1,129 @@
+.month-carousel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.month-card {
+    flex: 1 1 auto;
+    /* allow grow/shrink */
+    min-width: 120px;
+    max-width: 200px;
+    /* prevent oversized cards */
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+
+.month-card:hover {
+    box-shadow: 0 4px 10px #66636336;
+}
+
+.month-card .fw-bold {
+    font-size: 0.95rem;
+}
+
+.month-card .small {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.month-card .fw-semibold {
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* Active state with theme color class (bg-<theme>) */
+.bg-violet {
+    background-color: #8b5cf6 !important;
+}
+
+.bg-blue {
+    background-color: #3b82f6 !important;
+}
+
+.bg-green {
+    background-color: #10b981 !important;
+}
+
+.bg-rose {
+    background-color: #812c44 !important;
+}
+
+.bg-orange {
+    background-color: #f97316 !important;
+}
+
+.text-violet {
+    color: #8b5cf6 !important;
+}
+
+.text-blue {
+    color: #3b82f6 !important;
+}
+
+.text-green {
+    color: #10b981 !important;
+}
+
+.text-red {
+    color: #ef4444 !important;
+}
+
+.text-orange {
+    color: #f97316 !important;
+}
+
+/* Carousel buttons */
+.month-carousel .btn-link {
+    color: #6b7280;
+    border: none;
+    padding: 0;
+}
+
+.month-carousel .btn-link:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .month-card {
+        min-width: 120px;
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .month-card {
+        min-width: 110px;
+        max-width: 110px;
+        padding: 0.4rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .month-card {
+        min-width: 100px;
+        max-width: 100px;
+        font-size: 0.8rem;
+    }
+
+    .month-card .fw-bold {
+        font-size: 0.85rem;
+    }
+
+    .month-card .fw-semibold {
+        font-size: 0.85rem;
+    }
+}
+
+.bg-light-two .pay-amount {
+    color: #000;
+}
+
+.bg-dark-two .pay-amount {
+    color: #fff !important;
+}

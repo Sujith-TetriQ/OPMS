@@ -1,0 +1,57 @@
+.employee-records {
+    margin: 0px 0px !important;
+}
+
+.employee-management.light {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.employee-management.dark {
+  background-color: #1e1e2f;
+  color: #e0e0e0;
+}
+
+.employee-card {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.employee-card.dark {
+  background-color: #2c2c3e;
+}
+
+.employee-photo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.icon-button {
+  cursor: pointer;
+}
+
+.popover-box {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 260px;
+  padding: 10px;
+  z-index: 100;
+  font-size: 14px;
+}
+
+.popover-box.dark {
+  background-color: #333547;
+  color: #f1f1f1;
+}
+
+.popover-box p {
+  margin: 4px 0;
+  line-height: 1.3;
+}

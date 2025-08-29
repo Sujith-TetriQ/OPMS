@@ -1,0 +1,112 @@
+.stepper-container {
+    width: 100%;
+    margin: 20px 0;
+    position: relative;
+}
+
+.progressbar-wrapper {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #e0e0e0;
+    z-index: 1;
+}
+
+.progressbar-fill {
+    height: 100%;
+    transition: width 0.4s ease-in-out;
+    z-index: 2;
+}
+
+.progressbar-fill.violet {
+    background-color: #6c63ff;
+}
+
+.progressbar-fill.blue {
+    background-color: #007bff;
+}
+
+.progressbar-fill.green {
+    background-color: #28a745;
+}
+
+.progressbar-fill.red {
+    background-color: #dc3545;
+}
+
+.progressbar-fill.yellow {
+    background-color: #ffc107;
+}
+
+.steps-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+}
+
+.step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+}
+
+.step-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.step-circle.completed {
+    background: #28a745;
+    color: #fff;
+    border-color: #28a745;
+}
+
+.step-circle.active.violet {
+    border-color: #6c63ff;
+    color: #6c63ff;
+}
+
+.step-circle.active.blue {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.step-circle.active.green {
+    border-color: #28a745;
+    color: #28a745;
+}
+
+.step-circle.active.red {
+    border-color: #dc3545;
+    color: #dc3545;
+}
+
+.step-circle.active.yellow {
+    border-color: #ffc107;
+    color: #ffc107;
+}
+
+.step-circle.pending {
+    border-color: #ccc;
+    color: #aaa;
+}
+
+.step-label {
+    margin-top: 8px;
+    font-size: 14px;
+    text-align: center;
+    white-space: nowrap;
+}

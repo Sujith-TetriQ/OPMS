@@ -1,0 +1,38 @@
+.employee-trend-chart {
+  border-radius: 12px;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Light Mode */
+.employee-trend-chart.light {
+  background-color: #ffffff;
+  color: #111827;
+}
+
+/* Dark Mode */
+.employee-trend-chart.dark {
+  background-color: #212529;
+  color: #f3f4f6;
+}
+
+/* Legend */
+.legend-row {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-item .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}

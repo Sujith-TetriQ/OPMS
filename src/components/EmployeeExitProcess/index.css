@@ -1,0 +1,290 @@
+/* Container for the visual steps */
+.exit-step-visuals {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 20px;
+}
+
+.exit-step {
+    text-align: center;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step-icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    transition: all 0.3s ease;
+    border: 2px solid;
+    font-size: 24px;
+}
+
+.step-title,
+.step-subtitle {
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+.step-title {
+    font-weight: 600;
+}
+
+.step-subtitle {
+    color: #6c757d;
+}
+
+.step-status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.step-arrow-icon {
+    font-size: 30px;
+    color: #ccc;
+    margin-top: 15px;
+    flex-shrink: 0;
+}
+
+.step-icon-circle.completed {
+    background-color: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+.step-icon-circle.current {
+    color: white;
+    transform: scale(1);
+}
+
+.step-icon-circle.pending {
+    background-color: transparent;
+    color: #ccc;
+    border-color: #ccc;
+}
+
+.step-status-badge.completed {
+    background-color: #e2f4e4;
+    color: #28a745;
+}
+
+.step-status-badge.current {
+    background-color: #e6e0f4;
+    color: #6f42c1;
+}
+
+.step-status-badge.pending {
+    background-color: #fff3cd;
+    color: #ffc107;
+}
+
+/* --- Mobile-specific adjustments --- */
+@media (max-width: 768px) {
+    .exit-step-visuals {
+        /* This is the key change to force a single row with horizontal scrolling */
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .exit-step {
+        width: auto;
+        margin-right: 15px;
+        margin-bottom: 0;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step-icon-circle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .step-title,
+    .step-subtitle {
+        display: none;
+    }
+
+    .step-status-badge {
+        font-size: 10px;
+        padding: 3px 8px;
+    }
+
+    .step-arrow-icon {
+        display: block;
+        font-size: 20px;
+        margin: 0 10px;
+    }
+
+    /* Hide the vertical indicator that was causing the issue */
+    .exit-step:not(:last-child)::after {
+        display: none;
+    }
+
+    .exit-step:last-child .step-arrow-icon {
+        display: none;
+    }
+}
+
+/* --- General and other stylings from your original file --- */
+.employee-details-bar.light {
+    background-color: #fff;
+}
+
+.employee-details-bar.dark {
+    background-color: #2f2f2f;
+}
+
+.exit-tab-bar {
+    display: flex;
+    margin-top: 15px;
+}
+
+.exit-bar-btn-container.light {
+    background-color: #f5f5f5;
+    padding: 5px 5px;
+}
+
+.exit-bar-btn-container.dark {
+    background-color: #2f2f2f;
+    padding: 5px 5px;
+}
+
+.exit-tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 16px;
+    border: none;
+    border-radius: 5px;
+    background: #f5f5f5;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.dark .exit-tab-btn {
+    background: #2f2f2f;
+    color: #8d8c8c;
+}
+
+.light .exit-tab-btn {
+    background: #f5f5f5;
+}
+
+.exit-tab-btn svg {
+    font-size: 16px;
+}
+
+.exit-tab-btn.active {
+    background: #8b5cf6;
+    color: #fff;
+}
+
+.light .exit-tab-btn:not(.active):hover {
+    background: #eee;
+}
+
+.dark .exit-tab-btn:not(.active):hover {
+    background: #555;
+}
+
+.exit-steps-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.exit-step-card {
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    flex-grow: 1;
+}
+
+.exit-step-card:hover {
+    transform: translateY(-4px);
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 22px;
+    color: #444;
+    background: #fff;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.step-subtitle {
+    font-size: 13px;
+    color: #666;
+}
+
+.step-card-violet {
+    background: #f4ecff;
+}
+
+.step-card-green {
+    background: #e8f9f0;
+}
+
+.step-card-orange {
+    background: #fff3e6;
+}
+
+.step-card-purple {
+    background: #f0f0fc;
+}
+
+.step-card-yellow {
+    background: #fffde7;
+}
+
+.exit-step-card.dark {
+    background-color: #2f2f2f;
+}
+
+.dark .icon-circle {
+    background-color: #979797;
+}
+
+.vr {
+    align-self: stretch;
+    width: 1px;
+    background-color: #ccc;
+    opacity: 1;
+}
+
+/* General Layouts */
+.employee-exit-process {
+    padding: 20px 50px;
+}

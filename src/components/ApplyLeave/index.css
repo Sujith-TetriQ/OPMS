@@ -1,0 +1,23 @@
+.leave-management-container {
+    padding: 20px;
+}
+
+.card {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.circle-progress-container {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.badge {
+    padding: 0.5em 0.8em;
+    border-radius: 12px;
+}
+
+.apply-leave-table.dark {
+    background-color: #121212;
+}

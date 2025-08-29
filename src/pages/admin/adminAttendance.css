@@ -1,0 +1,222 @@
+/* ===============================
+   Base Layout
+=============================== */
+.container.py-4 {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+}
+
+/* Dark mode wrapper */
+.dark-mode {
+    background-color: #1c1c28;
+    color: #f0f0f0;
+}
+
+/* ===============================
+   Header
+=============================== */
+.main-heading {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.hr-line {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ===============================
+   Stat Cards
+=============================== */
+.stat-card {
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #fff;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.present-card {
+    background: #4caf50;
+}
+
+.late-card {
+    background: #ff9800;
+}
+
+.on-leave-card {
+    background: #2196f3;
+}
+
+.absent-card {
+    background: #f44336;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* ===============================
+   Filters
+=============================== */
+.filter-card {
+    border-radius: 10px;
+}
+
+.card-header-custom {
+    background: #f5f6fa;
+    font-weight: 600;
+}
+
+.dark-mode .card-header-custom {
+    background: #2c2c3a;
+    color: #ddd;
+}
+
+.custom-datepicker-input {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+.dark-datepicker-calendar {
+    background: #2c2c3a;
+    color: #f5f5f5;
+}
+
+/* react-select dark mode */
+.react-select-dark .react-select__control {
+    background-color: #2c2c3a !important;
+    border-color: #555 !important;
+    color: #f5f5f5 !important;
+}
+
+/* ===============================
+   Table
+=============================== */
+.table-card {
+    border-radius: 10px;
+}
+
+.attendance-table th,
+.attendance-table td {
+    vertical-align: middle;
+    padding: 12px;
+}
+
+.table-row-clickable:hover {
+    background: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+}
+
+.dark-mode .table-row-clickable:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Status badges */
+.badge.bg-purple {
+    background-color: #9c27b0;
+}
+
+.geolocation-icon {
+    cursor: pointer;
+}
+
+.geolocation-icon:hover {
+    transform: scale(1.1);
+}
+
+/* ===============================
+   Pagination
+=============================== */
+.custom-pagination .page-item.active .btn {
+    background: #2196f3;
+    color: #fff;
+    border: none;
+}
+
+.custom-pagination .btn {
+    min-width: 32px;
+}
+
+/* ===============================
+   Action Menu (floating menu)
+=============================== */
+.action-menu {
+    position: fixed;
+    z-index: 1055;
+    width: 240px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    animation: fadeIn 0.2s ease;
+}
+
+.dark .action-menu {
+    background: #2c2c3a;
+    color: #f5f5f5;
+}
+
+.action-menu .item {
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.action-menu .item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.dark .action-menu .item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.action-menu .icon {
+    margin-right: 10px;
+}
+
+/* ===============================
+   Modals (customized)
+=============================== */
+.custom-modal .modal-content {
+    border-radius: 12px;
+}
+
+.custom-modal .modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .custom-modal .modal-header {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-modal .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+/* ===============================
+   Animations
+=============================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

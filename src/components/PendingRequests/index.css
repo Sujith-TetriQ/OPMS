@@ -1,0 +1,116 @@
+.pending-requests-container {
+    padding: 1rem;
+    font-size: 14px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.pending-requests-container.light {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+.pending-requests-container.dark {
+    background-color: #1e1e2f;
+    color: #f1f1f1;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.subtitle {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.search-bar {
+    background-color: var(--bs-light);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 1rem;
+}
+
+.search-bar .section-title {
+    font-weight: 500;
+}
+
+.search-input {
+    background: #f2f2f2;
+    border: none;
+    border-radius: 6px;
+    padding: 0.4rem 0.6rem;
+    outline: none;
+}
+
+.pending-requests-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 5px var(--shadow-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.pending-requests-table th,
+.pending-requests-table td {
+    text-align: left;
+    padding: 0.75rem;
+    vertical-align: middle;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.pending-requests-table th {
+    font-weight: 600;
+}
+
+
+.employee-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.5rem;
+}
+
+.expand {
+    color: #6c63ff;
+    font-weight: 500;
+    margin-right: 0.8rem;
+    cursor: pointer;
+}
+
+.badge {
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 0.3rem;
+}
+
+.badge-approved {
+    background-color: #38d39f;
+    color: #fff;
+}
+
+.badge-rejected {
+    background-color: #f2f2f2;
+    color: #888;
+}
+
+.pending-requests-container.dark .search-bar {
+    background-color: #2c2f45;
+}
+
+.pending-requests-container.dark .search-input {
+    background-color: #3a3d5b;
+    color: #fff;
+}
+
+.pending-requests-container.dark .badge-rejected {
+    background-color: #444;
+    color: #aaa;
+}

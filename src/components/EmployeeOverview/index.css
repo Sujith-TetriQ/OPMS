@@ -1,0 +1,159 @@
+/* ============================================================================
+   EmployeeOverview.css
+   Styles for the Employee Overview stat cards
+   Supports theme colors and light/dark mode
+============================================================================ */
+
+/* Base Styles for the Employee Stat Card */
+.employee-stat-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px 20px;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    transition: all .3s ease-in-out;
+}
+
+.employee-stat-card:hover {
+    transform: translateY(-5px); /* lifts up */
+    box-shadow: 0 2px 15    px rgba(0, 0, 0, 0.15) !important; /* deeper shadow below */  
+}
+
+/* Info Section (Icon + Label + Count) */
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+}
+
+.card-info span .icon {
+    font-size: 2.5rem;
+}
+
+.card-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #808080;
+}
+
+.card-info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* View Icon Section */
+.icon-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.icon-container .btn {
+    padding: 0.4rem;
+    font-size: 1.1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+}
+/*---------------------------------
+   Theme Color Stylings for icons
+----------------------------------*/
+
+.employee-stat-card.violet .icon {
+    color: #7c3aed;
+}
+
+.employee-stat-card.blue .icon {
+    color: #2563eb;
+}
+
+.employee-stat-card.rose .icon {
+    color: #be4b6b;
+}
+
+.employee-stat-card.green .icon {
+    color: #059669;
+}
+
+.employee-stat-card.orange .icon {
+    color: #f97316;
+}
+
+.employee-stat-card.violet .icon-container {
+    color: #7c3aed;
+}
+
+.employee-stat-card.blue .icon-container {
+    color: #2563eb;
+}
+
+.employee-stat-card.rose .icon-container {
+    color: #be4b6b;
+}
+
+.employee-stat-card.green .icon-container {
+    color: #059669;
+}
+
+.employee-stat-card.orange .icon-container {
+    color: #f97316;
+}
+
+/* --------------------------
+   Light Mode Styles
+-------------------------- */
+.employee-stat-card.light {
+    background-color: #ffffff;
+    color: #1f2937;
+    /* gray-800 */
+}
+
+/* --------------------------
+   Dark Mode Styles
+-------------------------- */
+.employee-stat-card.dark {
+    background-color: #212529;
+    /* slate-800 */
+    color: #f1f5f9;
+    /* slate-100 */
+}
+
+/* --------------------------
+   Responsive Mobile Layout
+-------------------------- */
+@media (max-width: 576px) {
+    .employee-stat-card {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .card-info {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .card-info span .icon {
+        font-size: 1.4rem;
+    }
+
+    .card-info p {
+        font-size: 0.8rem;
+        margin: 0;
+    }
+
+    .card-info h2 {
+        font-size: 1.2rem;
+    }
+
+    .icon-container {
+        margin-top: 0;
+    }
+}

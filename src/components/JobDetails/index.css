@@ -1,0 +1,88 @@
+/* =============================================
+   JobDetails - Clean Layout for Job Tab
+   ============================================= */
+
+.job-details-wrapper {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.job-details-wrapper.light {
+  background-color: #f9f9f9;
+  color: #222;
+}
+
+.job-details-wrapper.dark {
+  background-color: #1e1e1e;
+  color: #f2f2f2;
+}
+
+.job-card {
+  background-color: inherit;
+  border-left: 4px solid;
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+/* ====== Section Title ====== */
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(180, 180, 180, 0.2);
+  padding-bottom: 0.5rem;
+}
+
+/* ====== Dynamic Left Border Theme Accent ====== */
+.violet .job-card {
+  border-left-color: #6c5ce7;
+}
+
+.blue .job-card {
+  border-left-color: #0984e3;
+}
+
+.green .job-card {
+  border-left-color: #00b894;
+}
+
+.orange .job-card {
+  border-left-color: #e17055;
+}
+
+.red .job-card {
+  border-left-color: #d63031;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .job-card {
+    margin-bottom: 1rem;
+  }
+}
+
+.info-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(100, 100, 100, 0.8);
+}
+
+.info-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: inherit;
+}
+
+.field-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(120, 120, 120, 0.85); /* lighter */
+}
+
+.field-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #212121; /* darker text for values */
+}

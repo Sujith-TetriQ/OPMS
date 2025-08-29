@@ -1,0 +1,981 @@
+/* ===================================================================
+   Theme tokens
+=================================================================== */
+:root {
+  --blue: #6f42c1;
+  /* default theme hue – will be overridden by --theme inline */
+  --green: #198754;
+  --violet: #6f42c1;
+  --rose: #e83e8c;
+  --orange: #fd7e14;
+
+  --eo-bg: #212529;
+  --eo-text: #f1f5f9;
+  --eo-muted: #9aa4b2;
+  --eo-card: #1b2026;
+  --eo-border: #2b3138;
+  --eo-input: #2a3036;
+  --eo-input-brd: #3a3f4a;
+
+  --chip-fg: #111827;
+  --chip-brd: #cfd4da;
+  --chip-dot: #9aa4b2;
+
+  --field-brd: #d0d7de;
+
+  --theme: var(--blue);
+}
+
+.form-wrapper {
+  /* focus colors for everything */
+  --focus: color-mix(in oklab, var(--theme) 56%, white);
+  --focus-soft: color-mix(in oklab, var(--theme) 24%, transparent);
+}
+
+/* ===================================================================
+   Page & container
+=================================================================== */
+.onboarding-page {
+  min-height: 90vh;
+  padding: 1.25rem 0 4rem;
+  /* ↓ less top/bottom padding */
+  transition: background-color .3s, color .3s;
+}
+
+.onboarding-page.light {
+  background: #f7f8fb;
+  color: #111827;
+}
+
+.onboarding-page.dark {
+  background: var(--eo-bg);
+  color: var(--eo-text);
+}
+
+.form-wrapper {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  /* ↓ tighter container padding */
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 12px 28px rgba(16, 24, 40, .12);
+}
+
+.form-wrapper.dark {
+  background: var(--eo-card);
+  color: var(--eo-text);
+  border-color: var(--eo-border);
+}
+
+/* Close (X) for the whole form (top-right) */
+.form-close {
+  position: absolute;
+  top: .5rem;
+  right: .5rem;
+  font-size: 20px;
+  /* ↓ */
+  line-height: 1;
+  width: 30px;
+  /* ↓ */
+  height: 30px;
+  /* ↓ */
+  border-radius: 50%;
+  border: 1px solid rgba(15, 23, 42, .12);
+  background: #fff;
+  color: #111827;
+  cursor: pointer;
+}
+
+.form-wrapper.dark .form-close {
+  background: var(--eo-input);
+  color: var(--eo-text);
+  border-color: var(--eo-input-brd);
+}
+
+.form-close:hover {
+  filter: brightness(0.96);
+}
+
+/* ===================================================================
+   Stepper tabs (chips)
+=================================================================== */
+.segchips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem .5rem;
+  /* ↓ spacing */
+  margin-bottom: .6rem;
+  /* ↓ */
+}
+
+.segchip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .3rem .55rem;
+  /* ↓ padding */
+  border-radius: 999px;
+  border: 1px solid var(--chip-brd);
+  background: transparent;
+  color: var(--chip-fg);
+  font-weight: 500;
+  font-size: .82rem;
+  /* ↓ font */
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow .15s, transform .06s, background-color .15s;
+}
+
+.segchip:active {
+  transform: translateY(1px);
+}
+
+.segchip .seg-dot {
+  width: 8px;
+  height: 8px;
+  /* ↓ dot */
+  border-radius: 50%;
+  background: var(--chip-dot);
+}
+
+/* Active look is applied inline from JSX for color, this only adds focus ring */
+.segchip.active {
+  box-shadow: 0 0 0 .2rem var(--focus-soft);
+}
+
+/* Completed = bold, no background tint */
+.segchip.completed {
+  background: transparent !important;
+  color: var(--chip-fg) !important;
+  border-color: var(--chip-brd) !important;
+  font-weight: 800;
+}
+
+.dark .segchip {
+  background-color: #f9f9f9 !important;
+}
+
+.dark .segchip .seg-dot {
+  background: #1e1e1e !important;
+}
+
+.dark .segchip.active {
+  background: var(--focus) !important;
+}
+
+/* ===================================================================
+   Grid & section heading
+=================================================================== */
+.form-content {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* grid-template-columns: repeat(3, minmax(0, 1fr)); */
+  gap: 0.6rem 0.75rem;
+  /* ↓ tighter gaps */
+  align-items: start;
+}
+
+.form-group {
+  min-width: 0;
+}
+
+.form-group.wide {
+  grid-column: span 2;
+}
+
+.form-group.full,
+.form-content>.col-12 {
+  grid-column: 1 / -1;
+}
+
+@media (max-width:1200px) {
+  .form-content {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width:576px) {
+  .form-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.section-heading {
+  grid-column: 1 / -1;
+  margin-top: .1rem;
+}
+
+.section-title {
+  margin: 0 0 .25rem;
+  /* ↓ */
+  font-weight: 800;
+  letter-spacing: .2px;
+  font-size: .92rem;
+  /* ↓ */
+  color: #1f2937;
+  border-bottom: 1px solid #eceff3;
+  padding-bottom: .25rem;
+  /* ↓ */
+}
+
+.onboarding-page.dark .section-title {
+  color: #e5e7eb;
+  border-bottom-color: var(--eo-border);
+}
+
+/* ===================================================================
+   Inputs (native)
+=================================================================== */
+input,
+select,
+textarea,
+.form-control,
+.form-select {
+  height: 36px;
+  /* ↓ was 44px */
+  padding: 4px 8px;
+  /* ↓ */
+  border-radius: 8px;
+  /* ↓ */
+  border: 1px solid var(--field-brd);
+  font-size: 0.85rem;
+  /* ↓ */
+  background: #fff;
+  color: #111827;
+  transition: border-color .15s, box-shadow .15s, background-color .3s, color .3s;
+}
+
+select,
+.form-select {
+  cursor: pointer;
+}
+
+textarea {
+  min-height: 72px;
+  /* ↓ */
+  height: auto;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+.form-control:focus,
+.form-select:focus {
+  outline: 0;
+  border-color: var(--focus);
+  box-shadow: 0 0 0 .2rem var(--focus-soft);
+  /* ↓ */
+}
+
+.onboarding-page.dark input,
+.onboarding-page.dark select,
+.onboarding-page.dark textarea,
+.onboarding-page.dark .form-control,
+.onboarding-page.dark .form-select {
+  background: var(--eo-input);
+  border-color: var(--eo-input-brd);
+  color: var(--eo-text);
+}
+
+.onboarding-page.dark input::placeholder,
+.onboarding-page.dark textarea::placeholder {
+  color: var(--eo-muted);
+}
+
+.form-label {
+  /* ↓ smaller labels */
+  font-size: .82rem;
+  margin-bottom: .2rem;
+}
+
+.error {
+  color: #dc3545;
+  font-size: .7rem;
+  /* ↓ */
+  margin-top: .15rem;
+  /* ↓ */
+}
+
+.error-ring {
+  animation: ring-pop .9s ease;
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 .2rem rgba(239, 68, 68, .2) !important;
+  /* ↓ */
+}
+
+@keyframes ring-pop {
+  0% {
+    transform: scale(1)
+  }
+
+  50% {
+    transform: scale(1.01)
+  }
+
+  100% {
+    transform: scale(1)
+  }
+}
+
+/* Native select arrow */
+.select-arrow {
+  position: relative;
+}
+
+.select-arrow>.form-select {
+  padding-right: 1.6rem;
+  /* ↓ */
+  background-image: none !important;
+}
+
+.select-arrow::after {
+  content: "";
+  position: absolute;
+  right: .55rem;
+  /* ↓ */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  /* ↓ */
+  pointer-events: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E") no-repeat center/contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E") no-repeat center/contain;
+  background: #666;
+}
+
+.onboarding-page.dark .select-arrow::after {
+  background: #cbd5e1;
+}
+
+/* ===================================================================
+   React-Select parity + errors + dark mode
+=================================================================== */
+:root {
+  --bs-input-height: 36px;
+  /* ↓ compact */
+  --bs-input-padding-x: 8px;
+  /* ↓ */
+  --bs-input-radius: 8px;
+  /* ↓ */
+}
+
+.select-shell {
+  position: relative;
+}
+
+.react-select__control {
+  height: var(--bs-input-height) !important;
+  min-height: var(--bs-input-height) !important;
+  border: 1px solid var(--field-brd) !important;
+  border-radius: var(--bs-input-radius) !important;
+  background: #fff !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  font-size: .85rem;
+  /* ↓ */
+}
+
+.react-select__value-container {
+  padding: 0 var(--bs-input-padding-x) !important;
+}
+
+.react-select__single-value {
+  margin: 0 !important;
+  transform: none !important;
+  position: static !important;
+  line-height: 1.2 !important;
+}
+
+.react-select__input-container {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.react-select__indicators {
+  padding-right: 6px;
+  margin-bottom: 0 !important;
+}
+
+/* ↓ remove extra space */
+.react-select__indicator {
+  padding: 6px;
+  color: #6b7280;
+}
+
+.react-select__indicator-separator,
+.react-select__clear-indicator {
+  display: none;
+}
+
+/* Focus ring */
+.react-select__control--is-focused {
+  border-color: var(--focus) !important;
+  box-shadow: 0 0 0 .2rem var(--focus-soft) !important;
+}
+
+.react-select__control:focus,
+.react-select__control *:focus {
+  outline: none !important;
+}
+
+/* Menu */
+.react-select__menu {
+  margin-top: 2px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  /* ↓ */
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(16, 24, 40, .18);
+  z-index: 1000;
+}
+
+.react-select__option {
+  padding: 6px 8px;
+  font-size: .85rem;
+}
+
+/* ↓ */
+.react-select__option--is-focused {
+  background: #f3f6ff !important;
+}
+
+.react-select__option--is-selected {
+  background: #e9efff !important;
+  font-weight: 600;
+}
+
+/* Error state for react-select (wrapper gets .has-error) */
+.select-shell.has-error .react-select__control {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .15) !important;
+  /* ↓ */
+}
+
+@supports(selector(:has(+ .error))) {
+  .select-shell:has(+ .error) .react-select__control {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .15) !important;
+    /* ↓ */
+  }
+}
+
+/* Remove green outline from react-select search input */
+.react-select__control input {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.react-select__control input:focus {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Dark mode */
+.onboarding-page.dark .react-select__control {
+  background: var(--eo-input) !important;
+  border-color: var(--eo-input-brd) !important;
+}
+
+.onboarding-page.dark .react-select__single-value,
+.onboarding-page.dark .react-select__input-container,
+.onboarding-page.dark .react-select__placeholder {
+  color: var(--eo-text) !important;
+}
+
+.onboarding-page.dark .react-select__menu {
+  background: var(--eo-card) !important;
+  border-color: var(--eo-input-brd) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+}
+
+.onboarding-page.dark .react-select__option {
+  color: var(--eo-text);
+}
+
+.onboarding-page.dark .react-select__option--is-focused {
+  background: #2b3138 !important;
+}
+
+.onboarding-page.dark .react-select__option--is-selected {
+  background: #39414a !important;
+}
+
+/* Slightly different border for office location group */
+.office-field .select-shell .react-select__control,
+.office-field .form-select {
+  border-color: #cdd6e1 !important;
+}
+
+/* ===================================================================
+   Phone input
+=================================================================== */
+.phone-intl-container {
+  width: 100% !important;
+}
+
+.phone-intl-input {
+  width: 100% !important;
+  height: 36px !important;
+  /* ↓ */
+  border-radius: 8px !important;
+  /* ↓ */
+  border: 1px solid var(--field-brd) !important;
+  padding-left: 46px !important;
+  /* ↓ */
+  background: #fff !important;
+  color: #111827 !important;
+  font-size: .85rem !important;
+  /* ↓ */
+  transition: border-color .15s, box-shadow .15s;
+}
+
+.phone-intl-input:focus {
+  outline: 0 !important;
+  border-color: var(--focus) !important;
+  box-shadow: 0 0 0 .2rem var(--focus-soft) !important;
+  /* ↓ */
+}
+
+/* error parity */
+.phone-intl-container.has-error .phone-intl-input {
+  border-color: #dc3545 !important;
+  box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .15) !important;
+  /* ↓ */
+}
+
+@supports(selector(:has(+ .error))) {
+  .phone-intl-container:has(+ .error) .phone-intl-input {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .15) !important;
+    /* ↓ */
+  }
+}
+
+/* dark */
+.onboarding-page.dark .phone-intl-input {
+  background: var(--eo-input) !important;
+  color: var(--eo-text) !important;
+  border-color: var(--eo-input-brd) !important;
+}
+
+.onboarding-page.dark .flag-dropdown,
+.onboarding-page.dark .phone-intl-button {
+  background: var(--eo-input) !important;
+  border-color: var(--eo-input-brd) !important;
+}
+
+.onboarding-page.dark .country-list {
+  background: var(--eo-card) !important;
+  color: var(--eo-text) !important;
+  border: 1px solid var(--eo-input-brd) !important;
+}
+
+/* ===================================================================
+   Datepicker
+=================================================================== */
+.react-datepicker {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  font-family: inherit;
+  box-shadow: 0 10px 28px rgba(16, 24, 40, .12);
+}
+
+.react-datepicker__triangle {
+  display: none;
+}
+
+.react-datepicker__header {
+  background: #f1f3f5;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name {
+  color: #495057;
+}
+
+.react-datepicker__day {
+  color: #212529;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+  background: color-mix(in oklab, var(--theme) 60%, #6ea8fe) !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
+
+.react-datepicker__navigation--previous::before,
+.react-datepicker__navigation--next::before {
+  border-color: #343a40;
+}
+
+.onboarding-page.dark .react-datepicker {
+  background: var(--eo-card);
+  border-color: var(--eo-input-brd);
+  color: var(--eo-text);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+}
+
+.onboarding-page.dark .react-datepicker__header {
+  background: #2a2f36;
+  border-bottom-color: var(--eo-input-brd);
+}
+
+.onboarding-page.dark .react-datepicker__current-month,
+.onboarding-page.dark .react-datepicker__day-name,
+.onboarding-page.dark .react-datepicker__day {
+  color: var(--eo-text);
+}
+
+.onboarding-page.dark .react-datepicker__day--selected,
+.onboarding-page.dark .react-datepicker__day--keyboard-selected {
+  background: color-mix(in oklab, var(--theme) 60%, #6ea8fe) !important;
+  color: #0e1720 !important;
+}
+
+.onboarding-page.dark .react-datepicker__navigation--previous::before,
+.onboarding-page.dark .react-datepicker__navigation--next::before {
+  border-color: var(--eo-text);
+}
+
+.form-group .react-datepicker-wrapper {
+  width: 100%;
+  display: block;
+}
+
+.form-group .react-datepicker__input-container {
+  width: 100%;
+}
+
+.form-group .react-datepicker__input-container input {
+  width: 100%;
+  height: 36px;
+  /* ↓ */
+  padding: 4px 8px;
+  /* ↓ */
+  border-radius: 8px;
+  /* ↓ */
+  border: 1px solid var(--field-brd);
+  font-size: .85rem;
+  /* ↓ */
+}
+
+.onboarding-page.dark .react-datepicker__input-container input {
+  background: var(--eo-input);
+  color: var(--eo-text);
+  border-color: var(--eo-input-brd);
+}
+
+/* ===================================================================
+   Compensation strip (CTC)
+=================================================================== */
+.calc-card {
+  border: 1px dashed color-mix(in srgb, var(--theme), #000 15%);
+  background: color-mix(in srgb, var(--theme), #fff 90%);
+  padding: .75rem;
+  /* ↓ */
+  border-radius: 10px;
+  /* ↓ */
+  margin-top: .2rem;
+  /* ↓ */
+  grid-column: 1 / -1;
+}
+
+.onboarding-page.dark .calc-card {
+  border-color: color-mix(in srgb, var(--theme), #000 45%);
+  background: rgba(255, 255, 255, .03);
+}
+
+.calc-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+
+/* ↓ */
+.calc-item {
+  flex: 1 1 240px;
+  /* ↓ */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  /* ↓ */
+  padding: .5rem .6rem;
+  /* ↓ */
+}
+
+.onboarding-page.dark .calc-item {
+  background: var(--eo-input);
+  border-color: var(--eo-input-brd);
+}
+
+.calc-label {
+  font-weight: 700;
+  opacity: .85;
+  font-size: .88rem;
+}
+
+/* ↓ */
+.calc-value {
+  font-weight: 800;
+  font-size: .9rem;
+}
+
+/* ↓ */
+
+/* ===================================================================
+   Footer – single centered primary button
+=================================================================== */
+.form-buttons.center-only {
+  grid-column: 1 / -1;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  gap: .6rem;
+  /* ↓ */
+  margin-top: .75rem;
+  /* ↓ */
+  width: 100%;
+  padding: .4rem .6rem;
+  /* ↓ */
+  /* background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .88) 40%, rgba(255, 255, 255, .98)); */
+  /* border-top: 1px solid rgba(15, 23, 42, .06); */
+  border-radius: 10px;
+  /* ↓ */
+}
+
+.onboarding-page.dark .form-buttons.center-only {
+  background: linear-gradient(180deg, rgba(27, 32, 38, 0), rgba(27, 32, 38, .86) 40%, rgba(27, 32, 38, .98));
+  border-top-color: rgba(148, 163, 184, .15);
+}
+
+.form-buttons.center-only button,
+.form-buttons.center-only .btn,
+.form-buttons.center-only [role="button"] {
+  min-width: 140px;
+  /* ↓ */
+  font-weight: 800;
+  height: 36px;
+  /* ↓ for consistency */
+  font-size: .9rem;
+  /* ↓ */
+}
+
+/* ===================================================================
+   Preview modal (sectioned list; headings bold)
+=================================================================== */
+.preview-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 8, 23, .55);
+  backdrop-filter: saturate(120%) blur(3px);
+  display: grid;
+  place-items: center;
+  z-index: 1999;
+}
+
+.preview-modal {
+  width: min(980px, 94vw);
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .98));
+  border: 1px solid rgba(15, 23, 42, .08);
+  box-shadow: 0 20px 60px rgba(2, 8, 23, .35);
+  position: relative;
+}
+
+.onboarding-page.dark .preview-modal {
+  background: linear-gradient(180deg, rgba(27, 32, 38, .92), rgba(27, 32, 38, .98));
+  border-color: rgba(148, 163, 184, .15);
+}
+
+.preview-hero {
+  padding: 14px 16px;
+  /* ↓ */
+  background: linear-gradient(90deg, color-mix(in oklab, var(--theme) 35%, #000), transparent 70%);
+  border-bottom: 1px solid rgba(15, 23, 42, .08);
+}
+
+/* preview hero theme colors */
+
+.preview-hero.violet {
+  background-color: #63498d;
+}
+
+.preview-hero.blue {
+  background-color: #1e409f;
+}
+
+.preview-hero.rose {
+  background-color: #812c44;
+}
+
+.preview-hero.green {
+  background-color: #2e7d32;
+}
+
+.preview-hero.orange {
+  background-color: #b45309;
+}
+
+.onboarding-page.dark .preview-hero {
+  border-bottom-color: rgba(148, 163, 184, .18);
+}
+
+.preview-title {
+  font-weight: 800;
+  font-size: .98rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.preview-title .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, .15);
+}
+
+.preview-sub {
+  color: #eef2ff;
+  font-size: .85rem;
+  opacity: .9;
+}
+
+.preview-body {
+  padding: 14px;
+  max-height: clamp(420px, 72vh, 780px);
+  overflow: auto;
+}
+
+/* Section wrapper + header */
+.pv-section {
+  border: 1px solid #e6e9ef;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 10px;
+  /* ↓ */
+}
+
+.onboarding-page.dark .pv-section {
+  background: var(--eo-card);
+  border-color: var(--eo-input-brd);
+}
+
+.pv-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .55rem .7rem;
+  /* ↓ */
+  border-bottom: 1px solid #eef1f6;
+}
+
+.onboarding-page.dark .pv-section-head {
+  border-bottom-color: var(--eo-input-brd);
+}
+
+.pv-section-title {
+  font-size: .95rem;
+  font-weight: 800;
+}
+
+/* ↓ */
+
+.kv-list {
+  border-top: 0;
+}
+
+.kv-row {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  /* ↓ */
+  gap: .5rem;
+  /* ↓ */
+  border-bottom: 1px solid #eef1f6;
+  align-items: center;
+  padding: .45rem .7rem;
+  /* ↓ */
+}
+
+.kv-row:nth-child(odd) {
+  background: #fbfcfe;
+}
+
+.kv-row:last-child {
+  border-bottom: 0;
+}
+
+.onboarding-page.dark .kv-row {
+  border-bottom-color: var(--eo-input-brd);
+}
+
+.onboarding-page.dark .kv-row:nth-child(odd) {
+  background: #232a33;
+}
+
+.kv-k {
+  font-weight: 700;
+  opacity: .85;
+}
+
+.kv-v {
+  font-weight: 700;
+}
+
+/* Preview close (×) – side decided by JSX class .right/.left */
+.preview-close {
+  position: absolute;
+  top: 8px;
+  /* ↓ */
+  font-size: 24px;
+  /* ↓ */
+  line-height: 1;
+  font-weight: 700;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  padding: 6px 10px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.preview-close.right {
+  right: 10px;
+}
+
+.preview-close.left {
+  left: 10px;
+}
+
+.preview-close:hover {
+  opacity: .9;
+}
+
+@media (max-width:576px) {
+  .preview-close {
+    right: 10px !important;
+    left: auto !important;
+  }
+}
+
+.preview-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 20px;
+}

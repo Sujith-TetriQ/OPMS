@@ -1,0 +1,640 @@
+/* Custom styles for the AdminAttendanceView component */
+.admin-attendance {
+    background-color: #f0f2f5;
+    /* A softer light background */
+    transition: background-color 0.3s ease;
+}
+
+.admin-attendance.dark {
+    background-color: #121212;
+    /* A deeper dark background */
+}
+
+/* Base card styling */
+.card {
+    border-radius: 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    /* Softer border */
+    background-color: #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.admin-attendance.dark .card {
+    background-color: #1e1e1e;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.admin-attendance.dark .card-body .text-muted,
+.admin-attendance.dark .card-body .text-light-muted {
+    color: #b0b0b0 !important;
+    /* Lighter text color for dark mode */
+}
+
+/* --- React-Calendar Overrides --- */
+
+/* Base calendar styling */
+.react-calendar {
+    width: 100%;
+    border: none;
+    font-family: inherit;
+    line-height: 1.125em;
+    background-color: transparent;
+    padding: 1rem;
+}
+
+.react-calendar.dark {
+    background-color: #1e1e1e;
+}
+
+.react-calendar__navigation button {
+    color: #8c8c8c;
+    min-width: 44px;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+    background-color: #e8e8e8;
+    /* Lighter hover state */
+}
+
+.react-calendar.dark .react-calendar__navigation button:enabled:hover,
+.react-calendar.dark .react-calendar__navigation button:enabled:focus {
+    background-color: #333;
+}
+
+/* Weekday header */
+.react-calendar__month-view__weekdays__weekday {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #8c8c8c;
+}
+
+/* Calendar day tiles */
+.react-calendar__tile {
+    padding: 10px 6.6667px;
+    text-align: center;
+    position: relative;
+    height: 55px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    color: #333;
+    /* Default text color for light mode */
+}
+
+.react-calendar.dark .react-calendar__tile {
+    color: #fff;
+    /* Default text color for dark mode */
+}
+
+.react-calendar__tile--now {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    border-radius: 0% !important;
+}
+
+.react-calendar.dark .react-calendar__tile--now {
+    background: rgba(0, 123, 255, 0.2);
+    color: #66b3ff;
+}
+
+.react-calendar__tile:disabled {
+    background-color: transparent;
+}
+
+/* Inactive days from other months */
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #b0b0b0;
+}
+
+.react-calendar.dark .react-calendar__month-view__days__day--neighboringMonth {
+    color: #666;
+}
+
+/* New Status Text Styling */
+.calendar-status-text {
+    font-size: 10px;
+    margin-top: 5px;
+    line-height: 1;
+    font-weight: 500;
+}
+
+/* Status-specific transparent colors for tiles */
+.status-OnTime {
+    background-color: #28a74526;
+    /* Transparent green */
+    color: #1c743e;
+}
+
+.status-Late {
+    background-color: #ffc10726;
+    /* Transparent yellow */
+    color: #856404;
+}
+
+.status-Leave {
+    background-color: #17a2b826;
+    /* Transparent blue */
+    color: #0c5460;
+}
+
+.status-WFH {
+    background-color: #6f42c126;
+    /* Transparent purple */
+    color: #49137c;
+}
+
+.status-Absent {
+    background-color: #dc354526;
+    /* Transparent red */
+    color: #721c24;
+}
+
+.status-Weekend {
+    background-color: #f8f9fa;
+    /* Lighter gray for weekends */
+    color: #6c757d;
+}
+
+.status-compoff {
+    background-color: #9b59b226;
+    /* transparent light purple */
+    color: #6f42c1;
+    /* dark purple text */
+    font-weight: 500;
+}
+
+.status-None {
+    background-color: transparent;
+}
+
+/* Dark mode colors for tiles */
+.admin-attendance.dark .status-OnTime {
+    background-color: rgba(40, 167, 69, 0.25);
+    color: #d4edda;
+}
+
+.admin-attendance.dark .status-Late {
+    background-color: rgba(255, 193, 7, 0.25);
+    color: #fff3cd;
+}
+
+.admin-attendance.dark .status-Leave {
+    background-color: rgba(23, 162, 184, 0.25);
+    color: #cff4fc;
+}
+
+.admin-attendance.dark .status-WFH {
+    background-color: rgba(111, 66, 193, 0.25);
+    color: #e6d8ff;
+}
+
+.admin-attendance.dark .status-Absent {
+    background-color: rgba(220, 53, 69, 0.25);
+    color: #f8d7da;
+}
+
+.admin-attendance.dark .status-Weekend {
+    background-color: #282828;
+    color: #8c8c8c;
+}
+
+/* The legend at the bottom of the calendar */
+.calendar-legend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.legend-items {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+    display: inline-block;
+    /* Use the same transparent colors here */
+    background-color: transparent;
+}
+
+.legend-color-box.status-OnTime {
+    background-color: rgba(40, 167, 69, 0.15);
+    border: 1px solid rgba(40, 167, 69, 0.25);
+}
+
+.legend-color-box.status-Late {
+    background-color: rgba(255, 193, 7, 0.15);
+    border: 1px solid rgba(255, 193, 7, 0.25);
+}
+
+.legend-color-box.status-Leave {
+    background-color: rgba(23, 162, 184, 0.15);
+    border: 1px solid rgba(23, 162, 184, 0.25);
+}
+
+.legend-color-box.status-WFH {
+    background-color: rgba(111, 66, 193, 0.15);
+    border: 1px solid rgba(111, 66, 193, 0.25);
+}
+
+.legend-color-box.status-Absent {
+    background-color: rgba(220, 53, 69, 0.15);
+    border: 1px solid rgba(220, 53, 69, 0.25);
+}
+
+.legend-color-box.status-Weekend {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+}
+
+.admin-attendance.dark .legend-color-box.status-OnTime {
+    background-color: rgba(40, 167, 69, 0.25);
+    border: 1px solid rgba(40, 167, 69, 0.4);
+}
+
+.admin-attendance.dark .legend-color-box.status-Late {
+    background-color: rgba(255, 193, 7, 0.25);
+    border: 1px solid rgba(255, 193, 7, 0.4);
+}
+
+.admin-attendance.dark .legend-color-box.status-Leave {
+    background-color: rgba(23, 162, 184, 0.25);
+    border: 1px solid rgba(23, 162, 184, 0.4);
+}
+
+.admin-attendance.dark .legend-color-box.status-WFH {
+    background-color: rgba(111, 66, 193, 0.25);
+    border: 1px solid rgba(111, 66, 193, 0.4);
+}
+
+.admin-attendance.dark .legend-color-box.status-Absent {
+    background-color: rgba(220, 53, 69, 0.25);
+    border: 1px solid rgba(220, 53, 69, 0.4);
+}
+
+.admin-attendance.dark .legend-color-box.status-Weekend {
+    background-color: #282828;
+    border: 1px solid #666;
+}
+
+.legend-text {
+    font-size: 0.85rem;
+}
+
+/* custom dropdown for action column */
+.action-dropdown .dropdown-toggle::after {
+    display: none;
+}
+
+.action-dropdown .dropdown-menu {
+    min-width: 160px;
+    font-size: 14px;
+}
+
+/* General container styles */
+.page-container {
+    min-height: 100vh;
+    padding-bottom: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Page header styling */
+.page-header {
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+/* Base card/info container styles */
+.info-card {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.bg-dark-two.info-card {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Badge for the attendance summary section */
+.summary-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 10px !important;
+    padding: 0.5rem;
+}
+
+.summary-badge-present {
+    background-color: #d4edda;
+    color: #1c743e;
+}
+
+.summary-badge-late {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.summary-badge-leave {
+    background-color: #cff4fc;
+    color: #0c5460;
+}
+
+.bg-dark-one .summary-badge-present,
+.bg-dark-two .summary-badge-present {
+    background-color: rgba(40, 167, 69, 0.25);
+    color: #d4edda;
+}
+
+.bg-dark-one .summary-badge-late,
+.bg-dark-two .summary-badge-late {
+    background-color: rgba(255, 193, 7, 0.25);
+    color: #fff3cd;
+}
+
+.bg-dark-one .summary-badge-leave,
+.bg-dark-two .summary-badge-leave {
+    background-color: rgba(23, 162, 184, 0.25);
+    color: #cff4fc;
+}
+
+/* Weekday pills in the timings card */
+.weekday-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #6c757d;
+    font-size: 0.875rem;
+}
+
+.weekday-pill.active-day {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.bg-dark-one .weekday-pill,
+.bg-dark-two .weekday-pill {
+    background-color: #343a40;
+    color: #adb5bd;
+}
+
+.bg-dark-one .weekday-pill.active-day,
+.bg-dark-two .weekday-pill.active-day {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+/* Clock and date text */
+.clock-text {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.current-date-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.bg-dark-one .current-date-text,
+.bg-dark-two .current-date-text {
+    color: #adb5bd;
+}
+
+/* Action links (WFH, Leave) */
+.action-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    font-weight: 500;
+    color: #dc3545;
+    background: none;
+    border: none;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.action-link:hover {
+    color: #b02a37;
+}
+
+.bg-dark-one .action-link,
+.bg-dark-two .action-link {
+    color: #adb5bd;
+}
+
+.bg-dark-one .action-link:hover,
+.bg-dark-two .action-link:hover {
+    color: #fff;
+}
+
+/* Calendar-specific styles */
+.calendar-container {
+    padding: 1.5rem !important;
+}
+
+.calendar-status-text {
+    font-size: 10px;
+    margin-top: 5px;
+    line-height: 1;
+    font-weight: 500;
+}
+
+.calendar-legend-container {
+    border-top: 1px solid #dee2e6;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.bg-dark-one .calendar-legend-container,
+.bg-dark-two .calendar-legend-container {
+    border-top: 1px solid #495057;
+}
+
+.calendar-legend-items {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-color-box {
+    width: 15px;
+    height: 15px;
+    border-radius: 4px;
+}
+
+/* Status-specific styles for calendar tiles and legend boxes */
+.status-on-time {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: #1c743e;
+}
+
+.status-late {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: #856404;
+}
+
+.status-leave {
+    background-color: rgba(23, 162, 184, 0.15);
+    color: #0c5460;
+}
+
+.status-wfh {
+    background-color: rgba(111, 66, 193, 0.15);
+    color: #49137c;
+}
+
+.status-absent {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #721c24;
+}
+
+.status-holiday {
+    background-color: rgba(112, 80, 255, 0.15);
+    color: #7650ff;
+}
+
+/* Holiday Color */
+.status-weekend {
+    background-color: #f8f9fa;
+    color: #6c757d;
+}
+
+/* Dark mode overrides for calendar tile colors */
+.bg-dark-one .status-on-time,
+.bg-dark-two .status-on-time {
+    background-color: rgba(40, 167, 69, 0.25);
+    color: #d4edda;
+}
+
+.bg-dark-one .status-late,
+.bg-dark-two .status-late {
+    background-color: rgba(255, 193, 7, 0.25);
+    color: #fff3cd;
+}
+
+.bg-dark-one .status-leave,
+.bg-dark-two .status-leave {
+    background-color: rgba(23, 162, 184, 0.25);
+    color: #cff4fc;
+}
+
+.bg-dark-one .status-wfh,
+.bg-dark-two .status-wfh {
+    background-color: rgba(111, 66, 193, 0.25);
+    color: #e6d8ff;
+}
+
+.bg-dark-one .status-absent,
+.bg-dark-two .status-absent {
+    background-color: rgba(220, 53, 69, 0.25);
+    color: #f8d7da;
+}
+
+.bg-dark-one .status-holiday,
+.bg-dark-two .status-holiday {
+    background-color: #6250ff40;
+    color: #7650ff;
+}
+
+/* Holiday dark mode */
+.bg-dark-one .status-weekend,
+.bg-dark-two .status-weekend {
+    background-color: #282828;
+    color: #adb5bd;
+}
+
+/* Badges for the logs table */
+.status-on-time-badge {
+    background-color: #198754 !important;
+}
+
+.status-late-badge {
+    background-color: #ffc107 !important;
+}
+
+.status-leave-badge {
+    background-color: #0dcaf0 !important;
+}
+
+.status-wfh-badge {
+    background-color: #6f42c1 !important;
+}
+
+.status-absent-badge {
+    background-color: #dc3545 !important;
+}
+
+.status-holiday-badge {
+    background-color: #505cff !important;
+}
+
+/* Holiday badge */
+.status-weekend-badge {
+    background-color: #6c757d !important;
+}
+
+/* Custom styles for table action button */
+.btn-action-icon {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #6c757d;
+}
+
+.btn-action-icon:hover {
+    color: #343a40;
+}
+
+.bg-dark-one .btn-action-icon,
+.bg-dark-two .btn-action-icon {
+    color: #adb5bd;
+}
+
+.bg-dark-one .btn-action-icon:hover,
+.bg-dark-two .btn-action-icon:hover {
+    color: #fff;
+}
+
+/* Custom styles for dropdown menu */
+.dropdown-menu {
+    font-size: 0.9rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.bg-dark-one .table-dropdown-item {
+    color: #c9c6c6;
+}
+
+.bg-dark-one .table-dropdown-item:hover {
+    background-color: #121212;
+    color: #fff;
+}

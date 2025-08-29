@@ -1,0 +1,398 @@
+/* ====================================
+   1. General Layout and Background
+   ==================================== */
+.employee-profile {
+    padding: 10px;
+}
+
+.employee-profile.light {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+.employee-profile.dark {
+    background-color: #1f1f1f;
+    color: #f1f1f1;
+}
+
+/* ====================================
+   2. Profile Card
+   ==================================== */
+.profile-card {
+    background-color: inherit;
+    border-radius: 12px;
+    border: none;
+}
+
+.employee-profile.light .profile-card {
+    background-color: #fff;
+}
+
+.employee-profile.dark .profile-card {
+    background-color: #212529;
+}
+
+/* ====================================
+   3. Profile Image and Initials
+   ==================================== */
+.profile-img,
+.profile-initials {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.profile-initials {
+    font-size: 36px;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ====================================
+   4. Text Styling
+   ==================================== */
+.employee-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    background-color: #28a745;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.employee-meta span {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.label {
+    font-weight: 600;
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.value {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* ====================================
+   5. Divider
+   ==================================== */
+.divider {
+    border-bottom: 1px dashed #ccc;
+}
+
+/* ====================================
+   6. Tabs - Common Styles
+   ==================================== */
+.custom-tabs .nav {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.custom-tabs .nav-link {
+    background-color: transparent;
+    border: none;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: inherit;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.custom-tabs .nav-link:hover {
+    opacity: 0.8;
+}
+
+/* ====================================
+   7. Tabs - Active State (Light Mode)
+   ==================================== */
+.nav-link.active.violet {
+    color: #6f42c1;
+    border-color: #6f42c1;
+}
+
+.nav-link.active.blue {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.nav-link.active.green {
+    color: #28a745;
+    border-color: #28a745;
+}
+
+.nav-link.active.rose {
+    color: #501b2a;
+    border-color: #501b2a;
+}
+
+.nav-link.active.orange {
+    color: #b45309;
+    border-color: #b45309;
+}
+
+/* ====================================
+   8. Tabs - Dark Mode Base
+   ==================================== */
+.employee-profile.dark .custom-tabs .nav {
+    border-bottom: 1px solid #444;
+}
+
+.employee-profile.dark .custom-tabs .nav-link {
+    color: #ccc;
+}
+
+/* ====================================
+   9. Tabs - Active Theme Color (Dark Mode)
+   ==================================== */
+.employee-profile.dark .nav-link.active.violet {
+    color: #c9a7ec;
+    border-color: #c9a7ec;
+}
+
+.employee-profile.dark .nav-link.active.blue {
+    color: #87cefa;
+    border-color: #87cefa;
+}
+
+.employee-profile.dark .nav-link.active.green {
+    color: #7dd87d;
+    border-color: #7dd87d;
+}
+
+.employee-profile.dark .nav-link.active.rose {
+    color: #e387a3;
+    border-color: #e387a3;
+}
+
+.employee-profile.dark .nav-link.active.orange {
+    color: #f4a261;
+    border-color: #f4a261;
+}
+
+/* ====================================
+   10. Optional Dynamic Theme (if using JS-injected --theme-color)
+   ==================================== */
+/*
+:root {
+    --theme-color: #6f42c1; 
+}
+
+.employee-profile.dark .custom-tabs .nav-link.active {
+    color: var(--theme-color);
+    border-color: var(--theme-color);
+}
+*/
+
+/* ====================================
+   11. Tabs - Light Mode Link Colors
+   ==================================== */
+.employee-profile.light .custom-tabs .nav-link {
+    color: #333;
+}
+
+/* ====================================
+   12. Responsive Tabs (Mobile / Tablet)
+   ==================================== */
+
+/* Mobile: Show only icons */
+@media (max-width: 575.98px) {
+    .custom-tabs .tab-label {
+        display: none;
+    }
+
+    .custom-tabs .tab-icon {
+        display: inline-flex;
+        font-size: 1.2rem;
+        margin-right: 0;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .custom-tabs .nav-link {
+        padding: 10px;
+        justify-content: center;
+        width: 50px;
+        height: 45px;
+    }
+}
+
+/* Tablet and up: Show icon + text */
+@media (min-width: 576px) {
+    .custom-tabs .tab-icon {
+        margin-right: 6px;
+        font-size: 1rem;
+    }
+
+    .custom-tabs .tab-label {
+        display: inline;
+    }
+
+    .custom-tabs .nav-link {
+        width: auto;
+        height: auto;
+        justify-content: flex-start;
+    }
+}
+
+/* Utility if needed for centered text on mobile */
+.custom-tabs .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    text-align: center;
+}
+
+/* custom popover */
+
+/* Custom Popover Styles */
+.custom-popover {
+    position: absolute;
+    top: 100%;
+    /* Position below the button */
+    right: 0;
+    z-index: 2000;
+    background-color: var(--card-bg-color);
+    /* Use theme variable for background */
+    border: 1px solid var(--border-color);
+    /* Use theme variable for border */
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    padding: 8px 0;
+    margin-top: 8px;
+    /* Spacing from the button */
+    list-style: none;
+    /* Remove list bullets */
+}
+
+.custom-popover-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.custom-popover-item {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.custom-popover-item:hover {
+    background-color: #f0f0f09a;
+    /* Use a theme-appropriate hover color */
+}
+
+/* Confirmation Modal Styles */
+.confirmation-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.confirmation-modal {
+    background-color: var(--card-bg-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(255, 34, 34, 0.274);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.confirmation-header {
+    margin-top: 0;
+    font-size: 24px;
+    color: var(--heading-color);
+}
+
+.confirmation-message {
+    font-size: 16px;
+    color: var(--text-color);
+    margin-bottom: 25px;
+}
+
+.confirmation-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.confirm-btn,
+.cancel-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.confirm-btn {
+    background-color: #dc3545;
+    /* Red color for a destructive action */
+    color: #fff;
+}
+
+.confirm-btn:hover {
+    background-color: #c82333;
+}
+
+.cancel-btn {
+    background-color: #6c757d;
+    /* Gray color for cancel */
+    color: #fff;
+}
+
+.cancel-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive styles for popover */
+@media (max-width: 576px) {
+    .custom-popover {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        min-width: 180px;
+    }
+}
+
+/* colors mode */
+
+/* .light .custom-popover {
+    background-color: #fff;
+}
+
+.dark .custom-popover {
+    background-color: #000;
+} */

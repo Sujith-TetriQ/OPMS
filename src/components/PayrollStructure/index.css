@@ -1,0 +1,12 @@
+.payroll-structure-container {
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.payroll-structure-container.light {
+    background-color: #fff;
+}
+
+.payroll-structure-container.dark {
+    background-color: #495057;
+}

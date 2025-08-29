@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    /* font-family: "Poppins", sans-serif; */
+    font-family: "Inter", sans-serif;
+    /* font-family: "Roboto", sans-serif; */
+}
+
+/* Base variables */
+:root {
+    /* Light mode (default) */
+    --color-bg: #ffffff;
+    --color-text: #1a1a1a;
+    --color-card: #f8f9fa;
+
+    /* Theme colors */
+    --theme-violet: #6f42c1;
+    --theme-blue: #007bff;
+    --theme-green: #28a745;
+    --theme-red: #dc3545;
+    --theme-yellow: #ffc107;
+
+    /* Common elements */
+    --color-border: #dee2e6;
+    --color-muted: #6c757d;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] {
+    --color-bg: #121212;
+    --color-text: #f8f9fa;
+    --color-card: #1e1e1e;
+
+    --color-border: #2c2c2c;
+    --color-muted: #9ca3af;
+}
+
+/* Utility classes */
+.bg-theme-violet {
+    background-color: var(--theme-violet) !important;
+}
+
+.bg-theme-blue {
+    background-color: var(--theme-blue) !important;
+}
+
+.bg-theme-green {
+    background-color: var(--theme-green) !important;
+}
+
+.bg-theme-red {
+    background-color: var(--theme-red) !important;
+}
+
+.bg-theme-yellow {
+    background-color: var(--theme-yellow) !important;
+}
+
+.text-theme-violet {
+    color: var(--theme-violet) !important;
+}
+
+.text-theme-blue {
+    color: var(--theme-blue) !important;
+}
+
+.text-theme-green {
+    color: var(--theme-green) !important;
+}
+
+.text-theme-red {
+    color: var(--theme-red) !important;
+}
+
+.text-theme-yellow {
+    color: var(--theme-yellow) !important;
+}
+
+
+.bg-light-one {
+    background-color: #f9f9f9 !important;
+}
+
+.bg-light-two {
+    background-color: #fff !important;
+}
+
+.bg-dark-one {
+    background-color: #1e1e1e !important;
+    color: #fff !important;
+}
+
+.bg-dark-two {
+    background-color: #212529 !important;
+    color: #fff !important;
+}

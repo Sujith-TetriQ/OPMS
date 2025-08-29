@@ -209,7 +209,7 @@ export default function EmployeeAttendanceView() {
           <div className="col-12 col-md-6 col-lg-4">
             <div className="card timings-card shadow-sm h-100">
               <div className="card-body">
-                <h6 className="card-title mb-3">Timings Overview</h6>
+                <h6 className="card-title mb-3">Shift Timings</h6>
                 <div className="d-flex justify-content-start gap-2 mb-3">
                   {weekDays.map((day, idx) => (
                     <span

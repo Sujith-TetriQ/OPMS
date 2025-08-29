@@ -54,6 +54,6 @@ export default function Avatar({ name, firstName, lastName, imageUrl, size = 30 
   );
 }
 
-// ✅ Example usage
+// Example usage
 // <Avatar name="Pavan Kurme" size={60} />
 // <Avatar firstName="Pavan" lastName="Kurme" imageUrl={null} size={60} />

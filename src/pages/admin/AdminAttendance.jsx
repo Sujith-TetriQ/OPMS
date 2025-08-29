@@ -538,7 +538,7 @@ const AdminAttendance = () => {
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h5 className="mb-0 main-heading">Attendance Management</h5>
         <div className="d-flex align-items-center">
-          <Button label="My Attendance" variant="outline" size="sm" className="me-3" onClick={() => navigate('/my-attendance')} />
+          <Button label="My Attendance" variant="outline" size="sm" className="me-3" onClick={() => navigate('/admin/attendance/1')} />
         </div>
       </div>
       <hr className="hr-line" />

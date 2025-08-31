@@ -10,44 +10,9 @@ import { BsCalendarDate } from "react-icons/bs";
 
 import "./index.css";
 
-const RecentPost = () => {
+const RecentPost = ({recentPosts}) => {
 
-  const recentPosts = [
-    {
-
-      id: 1,
-      user: "Sarah Johnson",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-      type: "announcement",
-      role: "HR Manager",
-      team: "Human Resources",
-      timeAgo: "3d ago",
-      date: "13/08/2025",
-      content:
-        "Exciting news! We're expanding our remote work policy starting next month. All employees will have the flexibility to work from home up to 3 days per week. Check your email for the complete guidelines.",
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&h=300&fit=crop",
-      likes: 24,
-      comments: 8,
-      shares: 3,
-
-    },
-    {
-      id: 2,
-      user: "Sarah Johnson",
-      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
-      type: "announcement",
-      role: "HR Manager",
-      team: "Human Resources",
-      timeAgo: "3d ago",
-      date: "13/08/2025",
-      content:
-        "Exciting news! We're expanding our remote work policy starting next month. All employees will have the flexibility to work from home up to 3 days per week. Check your email for the complete guidelines.",
-      image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=500&h=300&fit=crop",
-      likes: 24,
-      comments: 8,
-      shares: 3,
-    },
-  ];
+ 
   const getPostIcon = (type) => {
     switch (type) {
       case "announcement":

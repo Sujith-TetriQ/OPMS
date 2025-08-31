@@ -1,22 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FaCaretDown, FaClock, FaGlobe, FaCaretUp } from "react-icons/fa";
+import { FaCaretDown, FaGlobe, FaCaretUp } from "react-icons/fa";
 import { GiPartyPopper } from "react-icons/gi";
-import { format } from "date-fns";
+import { format, differenceInCalendarDays } from "date-fns";
 import "./index.css";
 import { MdAccessTime } from "react-icons/md";
 
-
-
-const HolidayCard = () => {
+const HolidayCard = ({ holidays }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
-
-  const holidays = [
-    { date: "Sep 01", name: "Labor Day", type: "public", days: "in 18 days" },
-    { date: "Jul 04", name: "Independence Day", type: "public", days: "in 45 days" },
-    { date: "Nov 28", name: "Thanksgiving", type: "public", days: "in 106 days" },
-    { date: "Dec 25", name: "Christmas Day", type: "public", days: "in 133 days" },
-  ];
 
   // update every second
   useEffect(() => {
@@ -29,6 +20,17 @@ const HolidayCard = () => {
     setIsOpen((prev) => !prev);
   };
 
+  // Helper: get "in X days"
+  const getDaysLeft = (holidayDate) => {
+    const today = new Date();
+    const target = new Date(holidayDate);
+    const diff = differenceInCalendarDays(target, today);
+    if (diff < 0) return "passed";
+    if (diff === 0) return "today";
+    if (diff === 1) return "tomorrow";
+    return `in ${diff} days`;
+  };
+
   return (
     <div className="dropdown-container">
       {/* Header */}
@@ -37,24 +39,23 @@ const HolidayCard = () => {
         onClick={toggleDropdown}
       >
         <div className="holiday-box">
-          {/* Date Badge */}
+          {/* Date Badge (first holiday) */}
           <div className="date-badge">
-            <span className="month">SEP</span>
-            <span className="day">01</span>
+            <span className="month">{format(new Date(holidays[0].date), "MMM").toUpperCase()}</span>
+            <span className="day">{format(new Date(holidays[0].date), "dd")}</span>
           </div>
 
           {/* Content */}
           <div className="holiday-content">
             <div className="holiday-top">
               <span className="holiday-title">
-                Labor Day <GiPartyPopper className="text-pink-500" />
+                {holidays[0].name} <GiPartyPopper className="text-pink-500" />
               </span>
-              <span className="more-link">+5 more</span>
+              <span className="more-link">+{holidays.length - 1} more</span>
             </div>
             <div className="holiday-bottom">
-              <span className="public-badge">Public</span>
-              <span className="days-left">in 18 days</span>
-              {/* <span className="caret">▼</span> */}
+              {holidays[0].type === "public" && <span className="public-badge">Public</span>}
+              <span className="days-left">{getDaysLeft(holidays[0].date)}</span>
               <div className="caret">{isOpen ? <FaCaretUp /> : <FaCaretDown />}</div>
             </div>
           </div>
@@ -73,14 +74,15 @@ const HolidayCard = () => {
             {holidays.map((holiday, index) => (
               <div key={index} className="holiday-item d-flex align-items-center">
                 <div className="date-badge">
-                  <div className="month">{holiday.date.split(" ")[0]}</div>
-                  <div className="day">{holiday.date.split(" ")[1]}</div>
+                  {/*formatted as ex: SEP 01 */}
+                  <div className="month">{format(new Date(holiday.date), "MMM").toUpperCase()}</div>
+                  <div className="day">{format(new Date(holiday.date), "dd")}</div>
                 </div>
                 <div className="holiday-details ms-2">
                   <div className="holiday-title">{holiday.name}</div>
                   <div className="holiday-meta">
                     {holiday.type === "public" && <span className="badge-public">public</span>}
-                    <span className="days-left">{holiday.days}</span>
+                    <span className="days-left">{getDaysLeft(holiday.date)}</span>
                   </div>
                 </div>
               </div>
@@ -92,9 +94,7 @@ const HolidayCard = () => {
       {/* Current Time */}
       <div className="time-section ">
         <div className="d-flex align-items-center">
-          {/* <FaClock className="me-2 text-primary" /> */}
           <MdAccessTime color="#2563eb" />
-
           <span className="time-label fw-semibold">Current Time</span>
         </div>
 

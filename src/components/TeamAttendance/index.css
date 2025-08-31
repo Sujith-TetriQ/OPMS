@@ -4,7 +4,7 @@
   font-family: Arial, sans-serif;
 
   .card {
-    background-color: #f3f4f6;
+    background-color: #fafafa;
 
     &:hover {
       background-color: #e5e7eb;

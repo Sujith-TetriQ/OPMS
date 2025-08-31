@@ -1,62 +1,20 @@
-import React, { useState } from "react";
-import { FaChevronLeft, FaChevronRight, FaBirthdayCake, FaArrowUp, FaBriefcase } from "react-icons/fa";
+import React, { useState, useRef, useEffect } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaBirthdayCake,
+  FaArrowUp,
+  FaBriefcase,
+} from "react-icons/fa";
 import { GiPartyPopper } from "react-icons/gi";
-import './index.css';
+import "keen-slider/keen-slider.min.css";
+import "./index.css"; // Your styles
 
-
-
-const UpcomingEvents = () => {
-  // Sample Data
-  const events = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      team: "Engineering",
-      eventType: "Birthday",
-      when: "Tomorrow",
-      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
-    },
-    {
-      id: 2,
-      name: "Michael Chen",
-      team: "Marketing",
-      eventType: "Work Anniversary",
-      when: "In 3 days",
-      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-    {
-      id: 3,
-      name: "Emily Davis",
-      team: "Sales",
-      eventType: "Promotion",
-      when: "Today",
-      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-    },
-    {
-      id: 4,
-      name: "David Wilson",
-      team: "HR",
-      eventType: "Birthday",
-      when: "In 5 days",
-      avatar: "https://randomuser.me/api/portraits/men/12.jpg",
-    },
-    {
-      id: 5,
-      name: "Olivia Brown",
-      team: "Finance",
-      eventType: "Birthday",
-      when: "Next Week",
-      avatar: "https://randomuser.me/api/portraits/women/21.jpg",
-    },
-    {
-      id: 6,
-      name: "James Smith",
-      team: "Design",
-      eventType: "Work Anniversary",
-      when: "Today",
-      avatar: "https://randomuser.me/api/portraits/men/45.jpg",
-    },
-  ];
+const UpcomingEvents = ({ events }) => {
+  /**
+   * Utility: Get event icon based on type
+   */
   const getEventIcon = (type) => {
     switch (type) {
       case "Birthday":
@@ -70,62 +28,201 @@ const UpcomingEvents = () => {
     }
   };
 
+  /**
+   * Utility: Get "when" label (Today, Tomorrow, In X days, etc.)
+   */
+  const getWhenLabel = (eventDateStr) => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-  // Show 2 per slide
-  const itemsPerSlide = 2;
-  const totalSlides = Math.ceil(events.length / itemsPerSlide);
+    const eventDate = new Date(eventDateStr);
+    eventDate.setHours(0, 0, 0, 0);
 
+    const diffTime = eventDate - today;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays < 0) return null; // Past events → hide
+    if (diffDays === 0) return "Today";
+    if (diffDays === 1) return "Tomorrow";
+    if (diffDays === 7) return "Next Week";
+    if (diffDays > 30) return null; // Only show events within 30 days
+    return `In ${diffDays} days`;
+  };
+
+  /**
+   * Utility: Get initials (fallback avatar)
+   */
+  const getInitials = (name) => {
+  if (!name) return "?";
+  const parts = name.split(" ");
+  const initials = parts
+    .map((p) => p.charAt(0).toUpperCase())
+    .slice(0, 2) // only first 2 parts
+    .join(" ");  //  put space between letters
+  return initials;
+};
+
+
+  /**
+   * Preprocess events → add "when" and filter past/outside range
+   */
+  const upcomingEvents = events
+    .map((e) => ({ ...e, when: getWhenLabel(e.eventDate) }))
+    .filter((e) => e.when !== null);
+
+  /**
+   * Group events by type
+   */
+  const groupedEvents = upcomingEvents.reduce((acc, event) => {
+    if (!acc[event.eventType]) acc[event.eventType] = [];
+    acc[event.eventType].push(event);
+    return acc;
+  }, {});
+
+  const eventTypes = Object.keys(groupedEvents);
+
+  // Slider state
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [pause, setPause] = useState(false);
+  const eventListRef = useRef(null);
 
-  // Next/Prev Slide
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  // Keen slider setup
+  const [sliderRef, instanceRef] = useKeenSlider(
+    {
+      initial: 0,
+      slideChanged(s) {
+        setCurrentSlide(s.track.details.rel);
+      },
+      loop: true,
+    },
+    [
+      (slider) => {
+        let timeout;
+        let mouseOver = false;
+        function clearNextTimeout() {
+          clearTimeout(timeout);
+        }
+        function nextTimeout() {
+          clearTimeout(timeout);
+          if (!mouseOver && !pause) {
+            timeout = setTimeout(() => {
+              slider.next();
+            }, 5000); // Auto-slide every 5s
+          }
+        }
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
+            mouseOver = true;
+            clearNextTimeout();
+          });
+          slider.container.addEventListener("mouseout", () => {
+            mouseOver = false;
+            nextTimeout();
+          });
+          nextTimeout();
+        });
+        slider.on("dragStarted", clearNextTimeout);
+        slider.on("animationEnded", nextTimeout);
+        slider.on("updated", nextTimeout);
+      },
+    ]
+  );
+
+  /**
+   * Pause auto-slide when scrolling inside event list
+   */
+  useEffect(() => {
+  const listEl = eventListRef.current;
+  const sectionEl = document.querySelector(".upcoming-events");
+  if (!listEl || !sectionEl) return;
+
+  //  Pause when scrolling inside event list
+  const handleScroll = () => {
+    setPause(true);
+    clearTimeout(listEl._scrollTimeout);
+    listEl._scrollTimeout = setTimeout(() => setPause(false), 1000);
   };
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
-  };
+  //  Pause when hovering entire section
+  const handleMouseEnter = () => setPause(true);
+  const handleMouseLeave = () => setPause(false);
 
-  // Slice events for current slide
-  const startIndex = currentSlide * itemsPerSlide;
-  const currentEvents = events.slice(startIndex, startIndex + itemsPerSlide);
+  listEl.addEventListener("scroll", handleScroll);
+  sectionEl.addEventListener("mouseenter", handleMouseEnter);
+  sectionEl.addEventListener("mouseleave", handleMouseLeave);
+
+  return () => {
+    listEl.removeEventListener("scroll", handleScroll);
+    sectionEl.removeEventListener("mouseenter", handleMouseEnter);
+    sectionEl.removeEventListener("mouseleave", handleMouseLeave);
+  };
+}, []);
+
 
   return (
-    <div className="upcoming-events">
+    <div className="upcoming-events" >
       {/* Header */}
       <div className="header">
-        <h3>  <GiPartyPopper className="text-pink-500" /> Upcoming Events</h3>
+        <h3>
+          <GiPartyPopper className="text-pink-500" /> Upcoming Events
+        </h3>
         <div className="nav-buttons">
-          <button className="nav-icons" onClick={prevSlide}><FaChevronLeft /></button>
-          <button className="nav-icons" onClick={nextSlide}><FaChevronRight /></button>
+          <button
+            className="nav-icons"
+            onClick={() => instanceRef.current?.prev()}
+          >
+            <FaChevronLeft />
+          </button>
+          <button
+            className="nav-icons"
+            onClick={() => instanceRef.current?.next()}
+          >
+            <FaChevronRight />
+          </button>
         </div>
       </div>
 
-      {/* Event Cards */}
-      <div className="event-list">
-        {currentEvents.map((e) => (
-          <div key={e.id} className="event-card">
-            <img src={e.avatar} alt={e.name} className="avatar" />
-            <div className="info">
-              <h4>{e.name}</h4>
-              <p>{e.team}</p>
-              <span className={`badge ${e.eventType.toLowerCase().replace(" ", "-")}`}>
-                {getEventIcon(e.eventType)} {e.eventType}
+      {/* Slider */}
+      <div ref={sliderRef} className="keen-slider">
+        {eventTypes.map((type, idx) => (
+          <div key={idx} className="keen-slider__slide">
+            {/* Sub-header with centered icon + line */}
+            <div className="sub-header-with-line">
+              <span className="line" />
+              <span className="icon-text">
+                {getEventIcon(type)} {type}
               </span>
-
+              <span className="line" />
             </div>
-            <div className="when">{e.when}</div>
+
+            {/* Events list */}
+            <div ref={eventListRef} className="event-list scrollable">
+              {groupedEvents[type].map((e) => (
+                <div key={e.id} className="event-card">
+                  {e.avatar ? (
+                    <img src={e.avatar} alt={e.name} className="avatar" />
+                  ) : (
+                    <div className="avatar-fallback">{getInitials(e.name)}</div>
+                  )}
+                  <div className="info">
+                    <h4>{e.name}</h4>
+                    <p>{e.team}</p>
+                  </div>
+                  <div className="when">{e.when}</div>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Carousel Dots */}
+      {/* Dots */}
       <div className="dots">
-        {Array.from({ length: totalSlides }).map((_, idx) => (
+        {eventTypes.map((_, idx) => (
           <span
             key={idx}
             className={idx === currentSlide ? "dot active" : "dot"}
-            onClick={() => setCurrentSlide(idx)}
+            onClick={() => instanceRef.current?.moveToIdx(idx)}
           />
         ))}
       </div>

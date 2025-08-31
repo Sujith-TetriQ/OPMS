@@ -16,6 +16,7 @@
     "bs-stepper": "^1.7.0",
     "date-fns": "^4.1.0",
     "formik": "^2.4.6",
+    "keen-slider": "^6.8.6",
     "papaparse": "^5.5.3",
     "props-type": "^1.0.1",
     "react": "^19.1.0",

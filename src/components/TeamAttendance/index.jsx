@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaCheckCircle, FaClock, FaTimesCircle, FaCoffee } from "react-icons/fa";
 import { FiFilter, FiUsers } from "react-icons/fi";
 import { AiOutlineClockCircle, AiOutlineExclamationCircle } from "react-icons/ai";
 import { PiCoffeeLight } from "react-icons/pi";
@@ -41,30 +40,33 @@ const CustomSingleValue = (props) => {
 const customStyles = {
   control: (provided, state) => ({
     ...provided,
-    minWidth: "200px",   // consistent width for select box
-    maxWidth: "200px",   // lock width
+    minWidth: "200px",
+    maxWidth: "200px",
     backgroundColor: "#f5f5f5",
-    borderColor: state.isFocused ? "#ccc" : "#ccc",   // gray always
-    boxShadow: "none",                                // remove blue glow
+    borderColor: "#ccc",
+    boxShadow: "none",
     "&:hover": {
       borderColor: "#999",
-    }                         // darker gray on hover
+    },
   }),
   menu: (provided) => ({
     ...provided,
-    minWidth: "200px",   // menu matches select box
+    minWidth: "200px",
     maxWidth: "200px",
   }),
   menuList: (provided) => ({
     ...provided,
     maxHeight: "300px",
     overflowY: "auto",
-    overflowX: "hidden"
+    overflowX: "hidden",
   }),
 };
 
-const TeamAttendance = () => {
-  const [selectedTeam, setSelectedTeam] = useState({ value: "All Teams", label: "All Teams" });
+const TeamAttendance = ({ employees }) => {
+  const [selectedTeam, setSelectedTeam] = useState({
+    value: "All Teams",
+    label: "All Teams",
+  });
 
   // Dropdown Teams
   const teams = [
@@ -78,23 +80,26 @@ const TeamAttendance = () => {
     { value: "Product", label: "Product" },
   ];
 
-  // Employees Data
-  const employees = [
-    { id: 1, name: "Sarah Johnson", role: "Senior Developer", team: "Engineering", status: "Clocked In", time: "09:00 AM", type: "Office", avatar: "https://randomuser.me/api/portraits/women/44.jpg" },
-    { id: 2, name: "Michael Chen", role: "Marketing Manager", team: "Marketing", status: "On Break", time: "08:45 AM", type: "Remote", avatar: "https://randomuser.me/api/portraits/men/32.jpg" },
-    { id: 3, name: "Emily Davis", role: "Sales Representative", team: "Sales", status: "Clocked In", time: "09:15 AM", type: "Office", avatar: "https://randomuser.me/api/portraits/women/68.jpg" },
-    { id: 4, name: "David Wilson", role: "HR Specialist", team: "Human Resources", status: "Late", time: "09:30 AM", type: "Office", avatar: "https://randomuser.me/api/portraits/men/12.jpg" },
-    { id: 5, name: "Lisa Rodriguez", role: "Financial Analyst", team: "Finance", status: "Clocked Out", time: "08:30 AM", type: "Remote", avatar: "https://randomuser.me/api/portraits/women/21.jpg" },
-    { id: 6, name: "James Thompson", role: "UI/UX Designer", team: "Design", status: "Clocked In", time: "09:00 AM", type: "Office", avatar: "https://randomuser.me/api/portraits/men/51.jpg" },
-    { id: 7, name: "Maria Garcia", role: "Product Manager", team: "Product", status: "On Break", time: "08:45 AM", type: "Office", avatar: "https://randomuser.me/api/portraits/women/75.jpg" },
-    { id: 8, name: "Robert Kim", role: "DevOps Engineer", team: "Engineering", status: "Clocked In", time: "08:30 AM", type: "Remote", avatar: "https://randomuser.me/api/portraits/men/64.jpg" },
-  ];
-
   // Filter Employees
   const filteredEmployees =
     selectedTeam.value === "All Teams"
       ? employees
       : employees.filter((emp) => emp.team === selectedTeam.value);
+
+  // Sort employees by desired status order
+  const statusOrder = {
+    "Late": 1,
+    "Clocked Out": 2,
+    "Leave": 3,
+    "On Break": 4,
+    "Clocked In": 5,
+  };
+
+  const sortedEmployees = [...filteredEmployees].sort((a, b) => {
+    const orderDiff = (statusOrder[a.status] || 999) - (statusOrder[b.status] || 999);
+    if (orderDiff !== 0) return orderDiff;
+    return a.name.localeCompare(b.name); // tie-breaker: alphabetical
+  });
 
   // Count Status
   const activeCount = filteredEmployees.filter((emp) => emp.status === "Clocked In").length;
@@ -105,13 +110,35 @@ const TeamAttendance = () => {
   const getStatusBadge = (status) => {
     switch (status) {
       case "Clocked In":
-        return <span className="status green"><AiOutlineClockCircle size={20} /> Clocked In</span>;
+        return (
+          <span className="status green">
+            <AiOutlineClockCircle size={20} /> Clocked In
+          </span>
+        );
       case "On Break":
-        return <span className="status orange"><PiCoffeeLight size={20} /> On Break</span>;
+        return (
+          <span className="status orange">
+            <PiCoffeeLight size={20} /> On Break
+          </span>
+        );
       case "Late":
-        return <span className="status red"><AiOutlineExclamationCircle size={20} /> Late</span>;
+        return (
+          <span className="status red">
+            <AiOutlineExclamationCircle size={20} /> Late
+          </span>
+        );
       case "Clocked Out":
-        return <span className="status gray"><LuLogOut size={20} /> Clocked Out</span>;
+        return (
+          <span className="status gray">
+            <LuLogOut size={20} /> Clocked Out
+          </span>
+        );
+      case "Leave":
+        return (
+          <span className="status gray">
+            <LuLogOut size={20} /> Leave
+          </span>
+        );
       default:
         return null;
     }
@@ -122,7 +149,9 @@ const TeamAttendance = () => {
       {/* Header */}
       <div className="header">
         {/* Left Side */}
-        <h3><FiUsers /> Team Attendance</h3>
+        <h3>
+          <FiUsers /> Team Attendance
+        </h3>
 
         {/* Right Side */}
         <div className="header-right">
@@ -133,7 +162,7 @@ const TeamAttendance = () => {
           </div>
           <div className="filters">
             <FiFilter size={22} color="gray" />
-            {/* ✅ React Select with tick mark */}
+            {/* React Select with tick mark */}
             <Select
               options={teams}
               value={selectedTeam}
@@ -142,19 +171,18 @@ const TeamAttendance = () => {
                 Option: CustomOption,
                 SingleValue: CustomSingleValue,
               }}
-              styles={customStyles}   // ✅ Apply no-scroll styles
+              styles={customStyles}
               isSearchable={false}
               className="team-select"
               classNamePrefix="react-select"
             />
-
           </div>
         </div>
       </div>
 
       {/* Employee Cards */}
       <div className="cards">
-        {filteredEmployees.map((emp) => (
+        {sortedEmployees.map((emp) => (
           <div key={emp.id} className="card">
             <div className="user-info">
               <img src={emp.avatar} alt={emp.name} className="avatar" />

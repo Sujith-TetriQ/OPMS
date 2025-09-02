@@ -2,6 +2,7 @@ export const mockEmployees = [
     // --- HR ---
     {
         id: 1,
+        employeeId: 1,
         profileUrl: 'https://placehold.co/150x150',
         firstName: "Ananya",
         middleName: "",
@@ -32,12 +33,14 @@ export const mockEmployees = [
         holidayList: "India General",
         leavePlan: "HR Leave Plan",
         attendanceScheme: "Biometric",
-        trackingPolicy: "Office Only"
+        trackingPolicy: "Office Only",
+        location: 'Hyderabad',
     },
 
     // --- Managers ---
     {
         id: 2,
+        employeeId: 2,
         profileUrl: 'https://placehold.co/150x150',
         firstName: "Rohan",
         middleName: "S.",
@@ -68,10 +71,12 @@ export const mockEmployees = [
         holidayList: "India General",
         leavePlan: "Manager Plan",
         attendanceScheme: "Swipe Card",
-        trackingPolicy: "Hybrid"
+        trackingPolicy: "Hybrid",
+        location: "Bengaluru"
     },
     {
         id: 3,
+        employeeId: 3,
         profileUrl: 'https://placehold.co/150x150',
         firstName: "Priya",
         middleName: "",
@@ -102,12 +107,14 @@ export const mockEmployees = [
         holidayList: "Telangana Holidays",
         leavePlan: "Manager Plan",
         attendanceScheme: "Fingerprint",
-        trackingPolicy: "Remote Allowed"
+        trackingPolicy: "Remote Allowed",
+        location: 'Hyderabad'
     },
 
     // --- 10 Employees ---
     {
         id: 4,
+        employeeId: 4,
         profileUrl: 'https://placehold.co/150x150',
         firstName: "Srikanth",
         middleName: "",
@@ -138,10 +145,12 @@ export const mockEmployees = [
         holidayList: "Hyderabad Holiday List",
         leavePlan: "Casual Leave",
         attendanceScheme: "Face ID",
-        trackingPolicy: "Standard"
+        trackingPolicy: "Standard",
+        location: 'Hyderabad',
     },
     {
         id: 5,
+        employeeId: 5,
         profileUrl: 'https://placehold.co/150x150',
         firstName: "Amit",
         middleName: "",
@@ -172,10 +181,12 @@ export const mockEmployees = [
         holidayList: "North India Holidays",
         leavePlan: "Standard Plan",
         attendanceScheme: "Biometric",
-        trackingPolicy: "Strict"
+        trackingPolicy: "Strict",
+        location: 'Bengaluru',
     },
     {
         id: 6,
+        employeeId: 6,
         profileUrl: 'https://placehold.co/150x150',
         firstName: "Meena",
         middleName: "",
@@ -206,10 +217,12 @@ export const mockEmployees = [
         holidayList: "South India Holidays",
         leavePlan: "Casual Leave",
         attendanceScheme: "Swipe Card",
-        trackingPolicy: "Hybrid"
+        trackingPolicy: "Hybrid",
+        location: 'Hyderabad',
     },
     {
         id: 7,
+        employeeId: 7,
         profileUrl: 'https://placehold.co/150x150',
         firstName: "Tanvi",
         middleName: "M.",
@@ -240,10 +253,12 @@ export const mockEmployees = [
         holidayList: "India General",
         leavePlan: "Standard Plan",
         attendanceScheme: "Fingerprint",
-        trackingPolicy: "Office Only"
+        trackingPolicy: "Office Only",
+        location: 'Bengaluru',
     },
     {
         id: 8,
+        employeeId: 8,
         profileUrl: 'https://placehold.co/150x150',
         "firstName": "Suresh",
         "middleName": "",
@@ -274,10 +289,12 @@ export const mockEmployees = [
         "holidayList": "Telangana Holidays",
         "leavePlan": "Sick Leave",
         "attendanceScheme": "Face ID",
-        "trackingPolicy": "Hybrid"
+        "trackingPolicy": "Hybrid",
+        location: 'Hyderabad',
     },
     {
         id: 9,
+        employeeId: 9,
         profileUrl: 'https://placehold.co/150x150',
         "firstName": "Neha",
         "middleName": "",
@@ -308,10 +325,12 @@ export const mockEmployees = [
         "holidayList": "Maharashtra Holidays",
         "leavePlan": "Casual Leave",
         "attendanceScheme": "Swipe Card",
-        "trackingPolicy": "Hybrid"
+        "trackingPolicy": "Hybrid",
+        "location": 'Hyderabad',
     },
     {
         id: 10,
+        employeeId: 10,
         profileUrl: 'https://placehold.co/150x150',
         "firstName": "Imran",
         "middleName": "",
@@ -342,10 +361,12 @@ export const mockEmployees = [
         "holidayList": "UP Holidays",
         "leavePlan": "Casual Leave",
         "attendanceScheme": "Biometric",
-        "trackingPolicy": "Office Only"
+        "trackingPolicy": "Office Only",
+        "location": 'Hyderabad',
     },
     {
         id: 11,
+        employeeId: 11,
         profileUrl: 'https://placehold.co/150x150',
         "firstName": "Pooja",
         "middleName": "",
@@ -376,10 +397,12 @@ export const mockEmployees = [
         "holidayList": "Delhi Holidays",
         "leavePlan": "Casual Leave",
         "attendanceScheme": "Face ID",
-        "trackingPolicy": "Remote"
+        "trackingPolicy": "Remote",
+        "location": 'Hyderabad',
     },
     {
         id: 12,
+        employeeId: 12,
         profileUrl: 'https://placehold.co/150x150',
         "firstName": "Akash",
         "middleName": "",
@@ -410,7 +433,8 @@ export const mockEmployees = [
         "holidayList": "Gujarat Holidays",
         "leavePlan": "Earned Leave",
         "attendanceScheme": "RFID",
-        "trackingPolicy": "Office Only"
+        "trackingPolicy": "Office Only",
+        "location": 'Hyderabad',
     },
 ];
 

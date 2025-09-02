@@ -14,6 +14,7 @@ import EmployeeOnboardForm from '@components/EmployeeOnboardForm';
 import MultiEmployeeForm from '@components/MultiEmployeeForm';
 import EmployeeProfile from '@components/EmployeeProfile';
 import EmployeeExitProcess from '@components/EmployeeExitProcess';
+import FilteredEmployeeList from '@components/FilteredEmployeeList';
 
 import EmployeeAttendanceView from '@components/EmployeeAttendanceView'
 
@@ -31,6 +32,7 @@ export default function AdminRoutes() {
           <Route path='add-multi-employee' element={<MultiEmployeeForm />} />
           <Route path=':id' element={<EmployeeProfile />} />
           <Route path='exit-process/:id' element={<EmployeeExitProcess />} />
+          <Route path='filter/:filterKey' element={<FilteredEmployeeList />} />
         </Route>
 
         <Route path='attendance' element={<AdminAttendance />} />

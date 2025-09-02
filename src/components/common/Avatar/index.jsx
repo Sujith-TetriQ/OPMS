@@ -1,7 +1,14 @@
 import React from "react";
 import randomColor from "randomcolor";
 
-export default function Avatar({ name, firstName, lastName, imageUrl, size = 30 }) {
+export default function Avatar({
+  name,
+  firstName,
+  lastName,
+  imageUrl,
+  size = 30,
+  type = "rounded",
+}) {
   // Determine the display name
   let displayName = "";
   if (name) {
@@ -28,12 +35,15 @@ export default function Avatar({ name, firstName, lastName, imageUrl, size = 30 
     luminosity: "dark", // keep good contrast for white text
   });
 
+  // Shape classes
+  const shapeClass = type === "square" ? "rounded-2" : "rounded-circle";
+
   if (imageUrl) {
     return (
       <img
         src={imageUrl}
         alt={displayName}
-        className="rounded-circle object-cover"
+        className={`${shapeClass} object-cover`}
         style={{ width: size, height: size }}
       />
     );
@@ -41,7 +51,7 @@ export default function Avatar({ name, firstName, lastName, imageUrl, size = 30 
 
   return (
     <div
-      className="d-flex align-items-center justify-content-center rounded-circle text-white fw-bold"
+      className={`d-flex align-items-center justify-content-center text-white fw-bold ${shapeClass}`}
       style={{
         backgroundColor: bgColor,
         width: size,
@@ -55,5 +65,6 @@ export default function Avatar({ name, firstName, lastName, imageUrl, size = 30 
 }
 
 // ✅ Example usage
-// <Avatar name="Pavan Kurme" size={60} />
-// <Avatar firstName="Pavan" lastName="Kurme" imageUrl={null} size={60} />
+// <Avatar name="Pavan Kurme" size={60} type="rounded" />
+// <Avatar name="Pavan Kurme" size={60} type="square" />
+// <Avatar firstName="Pavan" lastName="Kurme" imageUrl={null} size={60} type="square" />

@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { mockEmployees } from '@data/mockData';
 import { useTheme } from '@context/ThemeContext';
 import Button from '@components/common/Button';
+import Avatar from '@components/common/Avatar';
 // profile icons
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaIdBadge } from 'react-icons/fa';
 // tab icons
@@ -77,24 +78,6 @@ export default function EmployeeProfile() {
         );
     }
 
-    // Helper function to get initials from a full name
-    const getInitials = (fullName) => {
-        const names = fullName.trim().split(' ');
-        return names.length >= 2
-            ? `${names[0][0]}${names[1][0]}`.toUpperCase()
-            : names[0][0].toUpperCase();
-    };
-
-    // Helper function to generate a consistent color based on a name
-    const generateColor = (name) => {
-        const colors = ['#f44336', '#2196f3', '#4caf50', '#ff9800', '#9c27b0', '#3f51b5', '#009688'];
-        const hash = [...name].reduce((acc, char) => acc + char.charCodeAt(0), 0);
-        return colors[hash % colors.length];
-    };
-
-    const initials = getInitials(employee.displayName);
-    const bgColor = generateColor(employee.displayName);
-
     // Function to handle the "Exit Employee" action
     const handleExitEmployee = () => {
         setIsPopoverOpen(false); // Close popover
@@ -128,20 +111,13 @@ export default function EmployeeProfile() {
                 <div className="profile-card shadow-sm p-4 rounded">
                     <div className="row align-items-center">
                         <div className="col-12 col-md-2 text-center">
-                            {employee.profilePic ? (
-                                <img
-                                    src={employee.profilePic}
-                                    alt="profile"
-                                    className="profile-img rounded"
-                                />
-                            ) : (
-                                <div
-                                    className="profile-initials rounded"
-                                    style={{ backgroundColor: bgColor }}
-                                >
-                                    {initials}
-                                </div>
-                            )}
+                            {/* ✅ Avatar Component */}
+                            <Avatar
+                                name={employee.displayName}
+                                imageUrl={employee.profilePic}
+                                size={130}
+                                type="square"
+                            />
                         </div>
 
                         <div className="col-12 col-md-10">
@@ -203,21 +179,13 @@ export default function EmployeeProfile() {
                             <div className="me-2">
                                 <div className="label">Reporting Manager</div>
                                 <div className="value d-flex align-items-center">
-                                    {employee.reportingManagerProfile ? (
-                                        <img
-                                            src={employee.reportingManagerProfile}
-                                            alt="profile"
-                                            className="rounded-circle me-2"
-                                        />
-                                    ) : (
-                                        <div
-                                            className="rounded-5 p-1 small me-1"
-                                            style={{ backgroundColor: generateColor('Sujith Chandra') }}
-                                        >
-                                            {getInitials('Sujith Chandra')}
-                                        </div>
-                                    )}
-                                    Sujith Chandra
+                                    <Avatar
+                                        name="Sujith Chandra"
+                                        imageUrl={employee.reportingManagerProfile}
+                                        size={30}
+                                        type="rounded"
+                                    />
+                                    <span className="ms-2">Sujith Chandra</span>
                                 </div>
                             </div>
                         </div>

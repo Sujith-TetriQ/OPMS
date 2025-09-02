@@ -10,15 +10,15 @@ export default function EmployeeRecordCard({ employee }) {
     const navigate = useNavigate();
 
     const {
-        id,
+        employeeId,
         firstName,
         middleName,
         lastName,
-        jobTitle,
+        designation,
         employeeNumber,
         department,
-        workEmail,
-        phone,
+        email,
+        contactNumber,
         location,
         profileImage
     } = employee;
@@ -26,8 +26,8 @@ export default function EmployeeRecordCard({ employee }) {
     const fullName = [firstName, middleName, lastName].filter(Boolean).join(' ');
 
     const handleViewProfile = () => {
-        if (id) {
-            navigate(`/admin/employees/${id}`);
+        if (employeeId) {
+            navigate(`/admin/employees/${employeeId}`);
         }
     };
 
@@ -36,16 +36,11 @@ export default function EmployeeRecordCard({ employee }) {
             <div className={`employee-card ${themeMode} shadow-sm`}>
                 <div className="card-body d-flex">
                     <Avatar firstName={firstName} lastName={lastName} imageUrl={null} size={100} />
-                    {/* <img
-                        src={profileImage || 'https://placehold.co/150x150?text=No+Image'}
-                        alt={fullName}
-                        className="employee-photo"
-                    /> */}
                     <div className="employee-details ms-3 flex-grow-1">
                         <div className="d-flex justify-content-between align-items-start">
                             <div>
                                 <h6 className={`employee-name ${themeColor}`}>{fullName}</h6>
-                                <small className="employee-role text-muted">{jobTitle}</small>
+                                <small className="employee-role text-muted">{designation}</small>
                             </div>
                             <button
                                 className="border-0 bg-transparent"
@@ -56,10 +51,10 @@ export default function EmployeeRecordCard({ employee }) {
                             </button>
                         </div>
                         <div className="employee-meta mt-2">
-                            <p><strong>Employee ID:</strong> {employeeNumber}</p>
+                            <p><strong>Employee ID:</strong> {employeeId}</p>
                             <p><strong>Department:</strong> {department}</p>
-                            <p><strong>Email-ID:</strong> {workEmail}</p>
-                            <p><strong>Mobile No:</strong> {phone}</p>
+                            <p><strong>Email-ID:</strong> {email}</p>
+                            <p><strong>Mobile No:</strong> {contactNumber}</p>
                             <p><strong>Location:</strong> {location}</p>
                         </div>
                     </div>

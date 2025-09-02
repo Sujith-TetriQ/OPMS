@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from './context/ThemeContext.jsx';
+import { LoadingProvider } from "@context/LoadingContext";
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootstrap css
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; //bootstrap js
@@ -16,7 +17,9 @@ import App from './App.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider>
-      <App /> 
+      <LoadingProvider>
+        <App />
+      </LoadingProvider>
       <ToastContainer position="top-right" autoClose={3000} />
     </ThemeProvider>
   </StrictMode>,

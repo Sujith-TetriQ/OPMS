@@ -1,15 +1,19 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import axios from 'axios';
-import EmployeeRecordCard from '@components/EmployeeRecordCard';
-import { Spinner, Form, Row, Col } from 'react-bootstrap';
-import Loading from '@components/common/Loading';
-import noDataFoundImg from '@assets/no-data-found.png';
-import { useTheme } from '@context/ThemeContext';
+import React, { useEffect, useState, useMemo } from "react";
+import { useParams } from "react-router-dom";
+import EmployeeRecordCard from "@components/EmployeeRecordCard";
+import { Form, Row, Col } from "react-bootstrap";
+import noDataFoundImg from "@assets/no-data-found.png";
+import { useTheme } from "@context/ThemeContext";
+import { useLoading } from "@context/LoadingContext";
 
-export default function FilteredEmployeeList({ filterKey }) {
-    const [loading, setLoading] = useState(true);
-    const [allEmployees, setAllEmployees] = useState([]); // store all employees
+// Import mock employees
+import { mockEmployees } from "@data/mockData";
+
+export default function FilteredEmployeeList() {
+    const { filterKey } = useParams(); //  route param
+    const [allEmployees, setAllEmployees] = useState([]);
     const { themeMode } = useTheme();
+    const { showLoading, hideLoading } = useLoading();
 
     // 🔹 Filter States
     const [searchName, setSearchName] = useState("");
@@ -17,28 +21,86 @@ export default function FilteredEmployeeList({ filterKey }) {
     const [location, setLocation] = useState("");
     const [designation, setDesignation] = useState("");
 
-    // 🔹 Fetch employees once when filterKey changes
-    useEffect(() => {
-        async function fetchData() {
-            setLoading(true);
-            try {
-                const response = await axios.get(
-                    `https://sogo-temp-backend.onrender.com/api/employees`,
-                    {
-                        params: { q: filterKey }
-                    }
-                );
-                setAllEmployees(response.data.data || []);
-            } catch (err) {
-                console.error("Error fetching employees:", err);
-                setAllEmployees([]);
-            }
-            setLoading(false);
-        }
-        fetchData();
-    }, [filterKey]);
+    // 🔹 Extract unique dropdown values dynamically
+    const uniqueDepartments = useMemo(() => {
+        return [...new Set(mockEmployees.map((e) => e.department?.trim()))].filter(Boolean);
+    }, []);
 
-    // 🔹 Apply filters locally
+    const uniqueLocations = useMemo(() => {
+        return [...new Set(mockEmployees.map((e) => e.location?.trim()))].filter(Boolean);
+    }, []);
+
+    const uniqueDesignations = useMemo(() => {
+        return [...new Set(mockEmployees.map((e) => e.designation?.trim()))].filter(Boolean);
+    }, []);
+
+    // 🔹 Simulate API fetch with mock data
+    useEffect(() => {
+        const fetchData = async () => {
+            showLoading({
+                type: "spinner",
+                size: "lg",
+                message: "Loading employees...",
+                fullScreen: true,
+            });
+
+            let filtered = [];
+            switch (filterKey) {
+                case "total-employees":
+                    filtered = mockEmployees;
+                    break;
+
+                case "on-probation":
+                    filtered = mockEmployees.filter((e) => e.status?.toLowerCase() === "on probation");
+                    break;
+
+                case "new-joiners":
+                    filtered = mockEmployees.filter((e) => e.status?.toLowerCase() === "new joiner");
+                    break;
+
+                case "exit-employees":
+                    filtered = mockEmployees.filter((e) => e.status?.toLowerCase() === "exited");
+                    break;
+
+                case "full-time":
+                    filtered = mockEmployees.filter((e) => e.employmentType?.toLowerCase() === "full time");
+                    break;
+
+                case "contingent":
+                    filtered = mockEmployees.filter((e) => e.employmentType?.toLowerCase() === "contingent");
+                    break;
+
+                case "onboarded":
+                    filtered = mockEmployees.filter((e) => e.status?.toLowerCase() === "onboarded");
+                    break;
+
+                case "pending-onboarding":
+                    filtered = mockEmployees.filter((e) => e.status?.toLowerCase() === "pending onboarding");
+                    break;
+
+                case "uiux":
+                    filtered = mockEmployees.filter((e) => e.department?.toLowerCase().includes("ui/ux"));
+                    break;
+
+                default:
+                    filtered = [];
+            }
+
+            setAllEmployees(filtered);
+
+            //  Hide loader after 3s
+            const timer = setTimeout(() => {
+                hideLoading();
+            }, 3000);
+
+            //  Cleanup timer if component unmounts
+            return () => clearTimeout(timer);
+        };
+
+        fetchData();
+    }, [filterKey, showLoading, hideLoading]);
+
+    // 🔹 Apply local filters
     const filteredData = useMemo(() => {
         return allEmployees.filter((emp) => {
             const matchesName = searchName
@@ -56,16 +118,15 @@ export default function FilteredEmployeeList({ filterKey }) {
                 : true;
 
             const matchesDesignation = designation
-                ? emp.jobTitle?.toLowerCase().trim() === designation.toLowerCase().trim()
+                ? emp.designation?.toLowerCase().trim() === designation.toLowerCase().trim()
                 : true;
 
             return matchesName && matchesDept && matchesLocation && matchesDesignation;
         });
     }, [allEmployees, searchName, department, location, designation]);
 
-
     return (
-        <div>
+        <div className="container">
             {/* 🔹 Filters Bar */}
             <Form
                 className={`mb-3 p-3 border rounded shadow-sm mt-3 ${themeMode === "dark" ? "bg-dark text-light" : "bg-white text-dark"
@@ -81,6 +142,7 @@ export default function FilteredEmployeeList({ filterKey }) {
                             className={themeMode === "dark" ? "bg-secondary text-light" : ""}
                         />
                     </Col>
+
                     <Col md={3} sm={6}>
                         <Form.Select
                             value={department}
@@ -88,12 +150,14 @@ export default function FilteredEmployeeList({ filterKey }) {
                             className={themeMode === "dark" ? "bg-secondary text-light" : ""}
                         >
                             <option value="">All Departments</option>
-                            <option value="HR">HR</option>
-                            <option value="Engineering">Engineering</option>
-                            <option value="Sales">Sales</option>
-                            <option value="Marketing">Marketing</option>
+                            {uniqueDepartments.map((dept, idx) => (
+                                <option key={idx} value={dept}>
+                                    {dept}
+                                </option>
+                            ))}
                         </Form.Select>
                     </Col>
+
                     <Col md={3} sm={6}>
                         <Form.Select
                             value={location}
@@ -101,12 +165,14 @@ export default function FilteredEmployeeList({ filterKey }) {
                             className={themeMode === "dark" ? "bg-secondary text-light" : ""}
                         >
                             <option value="">All Locations</option>
-                            <option value="Bangalore">Bangalore</option>
-                            <option value="Hyderabad">Hyderabad</option>
-                            <option value="Delhi">Delhi</option>
-                            <option value="Mumbai">Mumbai</option>
+                            {uniqueLocations.map((loc, idx) => (
+                                <option key={idx} value={loc}>
+                                    {loc}
+                                </option>
+                            ))}
                         </Form.Select>
                     </Col>
+
                     <Col md={3} sm={6}>
                         <Form.Select
                             value={designation}
@@ -114,35 +180,34 @@ export default function FilteredEmployeeList({ filterKey }) {
                             className={themeMode === "dark" ? "bg-secondary text-light" : ""}
                         >
                             <option value="">All Designations</option>
-                            <option value="Software Engineer">Software Engineer</option>
-                            <option value="Developer">Developer</option>
-                            <option value="Product Manager">Product Manager</option>
-                            <option value="Intern">Intern</option>
+                            {uniqueDesignations.map((desig, idx) => (
+                                <option key={idx} value={desig}>
+                                    {desig}
+                                </option>
+                            ))}
                         </Form.Select>
                     </Col>
                 </Row>
             </Form>
 
-            {/* 🔹 Loader */}
-            {loading && (
-                <div className="text-center my-4">
-                    {/* <Spinner animation="border" /> */}
-                    <Loading type='spinner' size="lg" fullScreen message="Loading employees..." />
-                </div>
-            )}
-
             {/* 🔹 No Data */}
-            {!loading && filteredData.length === 0 && (
+            {filteredData.length === 0 && (
                 <div className="text-center my-5">
-                    <img src={noDataFoundImg} style={{ maxWidth: "250px" }} alt="no-data-found" />
+                    <img
+                        src={noDataFoundImg}
+                        style={{ maxWidth: "250px" }}
+                        alt="no-data-found"
+                    />
                     <h5 className="text-muted">No employees found for this filter.</h5>
                 </div>
             )}
 
-            {/* 🔹 Employee Cards */}
+            {/* 🔹 Employee Cards (equal height per row) */}
             <div className="row mt-3">
                 {filteredData.map((emp) => (
-                    <EmployeeRecordCard employee={emp} key={emp.id} />
+                    <div key={emp.id} className="col-md-4 d-flex align-items-stretch">
+                        <EmployeeRecordCard employee={emp} className="w-100" />
+                    </div>
                 ))}
             </div>
         </div>

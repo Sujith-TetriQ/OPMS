@@ -1,0 +1,378 @@
+.post {
+  background: white; /* brighter white */
+  border-radius: 14px;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 2px 6px rgba(0, 0, 0, 0.04); softer layered shadow */
+  margin-bottom: 6px;
+ padding: 1px 20px 2px 20px;
+  font-family: "Segoe UI", sans-serif;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+/* .post:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08), 0 3px 10px rgba(0, 0, 0, 0.06);
+  transform: translateY(-2px); /* subtle lift on hover 
+} */
+
+/* ================== Header ================== */
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+.user-header{
+  display: flex;
+  align-items: center;
+}
+.postType{
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.post-profile-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  border: 2px solid #eee;
+}
+
+.post-user-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+  display: flex;
+}
+
+.post-user-meta {
+  font-size: 12px;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.post-time {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* ================== Content ================== */
+.post-content {
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.post-image {
+  width: 100%;
+  border-radius: 10px;
+  margin: 14px 0;
+  object-fit: cover;
+  max-height: 380px;
+}
+
+/* ================== Actions ================== */
+.post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid #f1f1f1;
+  border-bottom: 1px solid #f1f1f1;
+  padding: 10px 0;
+}
+
+.post-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #444;
+  transition: color 0.2s;
+}
+
+.post-action:hover {
+  color: #0073e6;
+}
+
+.post-date {
+  font-size: 12px;
+  color: #999;
+}
+
+/* ================== Comments ================== */
+.post-comments {
+  margin-top: 12px;
+  border-top: 1px solid #f1f1f1;
+  padding-top: 12px;
+}
+
+.comment-input-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.comment-profile-pic {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.comment-input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.comment-input:focus {
+  border-color: #0073e6;
+}
+
+.comment-send-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  color: #0073e6;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.comment-send-btn:hover {
+  transform: scale(1.2);
+  color: #005bb5;
+}
+
+/* ================== Comment List ================== */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.comment-body {
+  flex: 1;
+  background: #f8f9fa;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #eee;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-user-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+
+.comment-user-role {
+  font-size: 12px;
+  color: #777;
+}
+
+.comment-text {
+  font-size: 14px;
+  margin-top: 4px;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.comment-icon-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 6px;
+  color: #666;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.comment-icon-btn:hover {
+  transform: scale(1.1);
+  color: #0073e6;
+}
+.post-video {
+  display: flex;
+  justify-content: center;
+}
+
+
+.comment-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.comment-profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+.comment-input-container {
+  position: relative;
+  flex: 1;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 10px 80px 10px 10px; /* space for separator + icons */
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  outline: none;
+}
+
+.comment-input-icons {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateY(-50%);
+}
+
+/* --- Separator --- */
+.icon-separator {
+  width: 1px;
+  height: 18px;
+  background-color: #e0e0e0; /* softer gray */
+  margin: 0 6px;
+  align-self: center;
+}
+
+/* --- Send Button --- */
+.comment-send-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;  /* round clickable area */
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.comment-send-btn:hover {
+  background: #f0f0f0; /* subtle hover background */
+  color: #007bff;      /* modern blue */
+}
+
+/* Tooltip */
+.comment-send-btn::after {
+  content: "Send";
+  position: absolute;
+  bottom: 130%; /* above button */
+  left: 50%;
+  transform: translateX(-50%);
+  background: #007bff;
+  color: #fff;
+  padding: 3px 6px;
+  font-size: 11px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.comment-send-btn:hover::after {
+  opacity: 1;
+}
+
+
+/* ///////////////////// */
+.comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.comment-profile-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.comment-body {
+  flex: 1;
+  background: #f9f9f9;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.comment-user-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+
+.comment-user-role {
+  font-size: 12px;
+  color: #777;
+}
+
+.comment-text {
+  margin-top: 4px;
+  font-size: 14px;
+  color: #333;
+}
+
+.comment-edit-input {
+  margin-top: 4px;
+  width: 100%;
+  padding: 6px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.comment-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.comment-icon-btn:hover {
+  color: #007bff;
+  background: #f0f0f0;
+}
+.comment-time{
+  font-size: 12px;
+  margin-left: 10px;
+}

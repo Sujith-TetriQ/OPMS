@@ -746,6 +746,7 @@ body {
 }
 .recentPost-cardContainer{
   margin-top: 20px;
+  padding-top: 10px;
   .card{
     background-color: white;
   }

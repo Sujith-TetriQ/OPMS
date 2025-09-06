@@ -1,20 +1,42 @@
+// import CreatePost from "@components/CreatePost";
+// import RecentPost from "@components/RecentPost";
+
+// const PostSection = ({postDeatils  }) => {
+//   return (
+//      <div className="row">
+//       {/* CreatePost */}
+//       <div className="col-12 mb-3">
+//         <div className="card createPostCard">
+//           <CreatePost />
+//         </div>
+//       </div>
+
+//       {/* RecentPost */}
+//       <div className="col-12">
+//         <div className="card recentPost-cardContainer">
+//           <RecentPost postDeatils={postDeatils} />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default PostSection;
 import CreatePost from "@components/CreatePost";
 import RecentPost from "@components/RecentPost";
 
-const PostSection = ({ recentPosts }) => {
+const PostSection = ({ posts, setPosts }) => {
   return (
-     <div className="row">
-      {/* CreatePost */}
+    <div className="row">
       <div className="col-12 mb-3">
         <div className="card createPostCard">
-          <CreatePost />
+          <CreatePost setPosts={setPosts} />
         </div>
       </div>
 
-      {/* RecentPost */}
       <div className="col-12">
         <div className="card recentPost-cardContainer">
-          <RecentPost recentPosts={recentPosts} />
+          <RecentPost posts={posts} setPosts={setPosts} />
         </div>
       </div>
     </div>
@@ -22,3 +44,4 @@ const PostSection = ({ recentPosts }) => {
 };
 
 export default PostSection;
+

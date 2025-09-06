@@ -53,15 +53,46 @@ const departmentOptions = [
   { value: "hr", label: "Human Resources" },
 ];
  
-const CreatePost = () => {
-  const [postType, setPostType] = useState(postTypeOptions[0]); // Default Normal Post
+const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
+   const [postType, setPostType] = useState(postTypeOptions[0]); 
   const [departments, setDepartments] = useState([]);
   const [content, setContent] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileType, setFileType] = useState("image");
   const [openAccordian, setOpenAccordian] = useState(false);
- 
+
   const isFormValid = postType && departments.length > 0 && content;
+   // ✅ New: Handle Post Submit
+  const handlePost = () => {
+    if (!isFormValid) return;
+
+    const newPost = {
+      id: Date.now(),
+      user: {
+        name: "You",
+        role: "Frontend Developer",
+        profilePic: "https://randomuser.me/api/portraits/lego/1.jpg",
+      },
+      createdAt: new Date().toISOString(),
+      content,
+      postType,            // ✅ Save selected post type (announcement, etc.)
+      departments,         // ✅ Save selected departments
+      [fileType]: selectedFile ? URL.createObjectURL(selectedFile) : null,
+      reactions: { likes: 0 },
+      comments: [],
+    };
+
+    setPosts((prev) => [newPost, ...prev]);  // ✅ add new post on top
+
+    // reset fields
+    setContent("");
+    setDepartments([]);
+    setSelectedFile(null);
+    setPostType(postTypeOptions[0]);
+    setFileType("image");
+    setOpenAccordian(false);
+  };
+
  
   const handleFileChange = (e) => {
     if (e.target.files.length > 0) {
@@ -331,16 +362,17 @@ const CreatePost = () => {
             </div>
  
             {/* Post Button */}
-            <div className="postButtonContainer">
-              <button
-                className={`postButtonCss ${
-                  isFormValid ? "postButtonCssActive" : "postButtonCssDisabled"
-                } `}
-                disabled={!isFormValid}
-              >
-                {<postType.icon></postType.icon>} Post {postType?.label}
-              </button>
-            </div>
+      <div className="postButtonContainer">
+        <button
+          className={`postButtonCss ${
+            isFormValid ? "postButtonCssActive" : "postButtonCssDisabled"
+          } `}
+          disabled={!isFormValid}
+          onClick={handlePost}   // ✅ trigger post creation
+        >
+          {<postType.icon />} Post {postType?.label}
+        </button>
+      </div>
           </>
         )}
       </div>

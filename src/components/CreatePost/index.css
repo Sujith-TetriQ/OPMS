@@ -213,5 +213,29 @@
  
 .header-title-text {
   margin-left: 8px;
+  font-size: 14px;
 }
+.access-info {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.public-access {
+  color: #04a741;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.restricted-access {
+  color: #e7000b;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
  

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { useTheme } from '@context/ThemeContext';
 import {
   MdAnnouncement,
   MdNotifications,
@@ -9,6 +10,7 @@ import {
   MdOutlineChatBubbleOutline,
   MdKeyboardArrowDown,
   MdKeyboardArrowUp,
+  MdLock, MdLockOpen 
 } from "react-icons/md";
 import { FiUpload, FiImage, FiVideo } from "react-icons/fi";
 import "./index.css";
@@ -48,19 +50,45 @@ const CreatePost = ({ setPosts }) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileType, setFileType] = useState("image");
   const [openAccordian, setOpenAccordian] = useState(false);
+   const { themeColor, themeMode } = useTheme();
  
   const isFormValid = postType && departments.length > 0 && content;
+  const roleMapping = {
+    "All Organisation": "Super Admin",
+    "Multiple Departments": "Admin",
+    Engineering: "Software Developer",
+    Marketing: "Marketing Specialist",
+    Sales: "Sales Executive",
+    "Human Resources": "HR Manager",
+};
+const getInitials = (fullName) => {
+  if (!fullName) return "";
+  return fullName
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase();
+};
+
+
  
   const handlePost = () => {
     if (!isFormValid) return;
+      const selectedDepartment = departments[0]?.label || "Engineering";
+
+      const role = roleMapping[selectedDepartment] || "Employee"; // default if not found
+      // Example: you may get name & profilePic from user session/login
+      const name = "John Smith";
  
     const newPost = {
       id: Date.now(),
       user: {
-        name: "You",
-        role: "Frontend Developer",
-        profilePic: "https://randomuser.me/api/portraits/lego/1.jpg",
-      },
+      name,
+      profilePic: "https://randomuser.me/api/portraits/men/99.jpg", // static
+      
+      department: selectedDepartment, // dynamic
+      role, // dynamic from mapping
+    },
       createdAt: new Date().toISOString(),
       content,
       postType,
@@ -208,6 +236,16 @@ const CreatePost = ({ setPosts }) => {
                 ),
               }}
             />
+            {/* Access Info based on Department Selection */}
+            {departments.length > 0 && (
+              <div className="access-info">
+                {departments[0]?.value === "all" ? (
+                  <span className="public-access"><MdLockOpen />Public Access</span>
+                ) : (
+                  <span className="restricted-access"><MdLock />Restricted Access</span>
+                )}
+              </div>
+            )}
  
             <label className="label">Content</label>
             <textarea

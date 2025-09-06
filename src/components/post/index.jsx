@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./index.css";
 import {FiSend,FiEdit2, FiSave,FiMessageCircle, FiCalendar } from "react-icons/fi";
-import { MdCampaign, MdWarning, MdNotifications, MdMessage } from "react-icons/md";
+import { MdCampaign, MdWarning, MdNotifications, MdMessage} from "react-icons/md";
+
 
 
 export default function Post({ post, onLike, onAddComment, onEditComment, onDeleteComment }) {

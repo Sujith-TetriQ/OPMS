@@ -747,6 +747,9 @@ body {
 .recentPost-cardContainer{
   margin-top: 20px;
   padding-top: 10px;
+   &:hover{
+    background-color: white;
+  }
   .card{
     background-color: white;
   }

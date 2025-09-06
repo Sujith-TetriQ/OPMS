@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Select from "react-select";
- 
-// Icons
 import {
   MdAnnouncement,
   MdNotifications,
@@ -15,35 +13,25 @@ import {
 import { FiUpload, FiImage, FiVideo } from "react-icons/fi";
 import "./index.css";
  
-// 🔹 Post Type Options (Single Select)
+// Post Type Options
 const postTypeOptions = [
-  {
-    value: "normal",
-    label: "Normal Post",
-    color: "blue",
-    icon: MdPostAdd, // 📝 Normal Post → PostAdd icon
-  },
+  { value: "normal", label: "Normal Post", color: "blue", icon: MdPostAdd },
   {
     value: "announcement",
     label: "Announcement",
     color: "green",
-    icon: MdAnnouncement, // 📢 Announcement → Announcement icon
+    icon: MdAnnouncement,
   },
   {
     value: "notification",
     label: "Notification",
     color: "orange",
-    icon: MdNotifications, // 🔔 Notification → Notifications icon
+    icon: MdNotifications,
   },
-  {
-    value: "alert",
-    label: "Alert",
-    color: "red",
-    icon: MdWarning, // ⚠️ Alert → Warning icon
-  },
+  { value: "alert", label: "Alert", color: "red", icon: MdWarning },
 ];
  
-// 🔹 Department Access Options (Multi Select)
+// Department Options
 const departmentOptions = [
   { value: "all", label: "All Organisation" },
   { value: "multiple", label: "Multiple Departments" },
@@ -53,19 +41,19 @@ const departmentOptions = [
   { value: "hr", label: "Human Resources" },
 ];
  
-const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
-   const [postType, setPostType] = useState(postTypeOptions[0]); 
+const CreatePost = ({ setPosts }) => {
+  const [postType, setPostType] = useState(postTypeOptions[0]);
   const [departments, setDepartments] = useState([]);
   const [content, setContent] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
   const [fileType, setFileType] = useState("image");
   const [openAccordian, setOpenAccordian] = useState(false);
-
+ 
   const isFormValid = postType && departments.length > 0 && content;
-   // ✅ New: Handle Post Submit
+ 
   const handlePost = () => {
     if (!isFormValid) return;
-
+ 
     const newPost = {
       id: Date.now(),
       user: {
@@ -75,16 +63,15 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
       },
       createdAt: new Date().toISOString(),
       content,
-      postType,            // ✅ Save selected post type (announcement, etc.)
-      departments,         // ✅ Save selected departments
+      postType,
+      departments,
       [fileType]: selectedFile ? URL.createObjectURL(selectedFile) : null,
       reactions: { likes: 0 },
       comments: [],
     };
-
-    setPosts((prev) => [newPost, ...prev]);  // ✅ add new post on top
-
-    // reset fields
+ 
+    setPosts((prev) => [newPost, ...prev]);
+ 
     setContent("");
     setDepartments([]);
     setSelectedFile(null);
@@ -92,7 +79,6 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
     setFileType("image");
     setOpenAccordian(false);
   };
-
  
   const handleFileChange = (e) => {
     if (e.target.files.length > 0) {
@@ -100,20 +86,15 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
     }
   };
  
-  // 🔹 Handle Department Select with Smart "All" Logic
   const handleDepartmentChange = (selected) => {
     if (!selected) {
       setDepartments([]);
       return;
     }
- 
-    // 1️⃣ If "All Organisation" is selected → keep only that
     if (selected.some((d) => d.value === "all")) {
       setDepartments([{ value: "all", label: "All Organisation" }]);
       return;
     }
- 
-    // 2️⃣ If all other departments are selected → switch to "All Organisation"
     const allOtherDepartments = departmentOptions.filter(
       (d) => d.value !== "all"
     );
@@ -121,50 +102,36 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
       setDepartments([{ value: "all", label: "All Organisation" }]);
       return;
     }
- 
-    // 3️⃣ Otherwise → just set normally
     setDepartments(selected);
   };
  
-  // 🔹 Filtered Options (Remove selected)
   const filteredDepartments = departments.some((d) => d.value === "all")
-    ? [] // nothing visible if "All Organisation" selected
+    ? []
     : departmentOptions.filter(
         (opt) => !departments.some((d) => d.value === opt.value)
       );
+ 
   return (
     <>
-      {/* Create Post Section */}
       <div
-        style={{
-          position: "absolute",
-          top: "0px",
-          width: "100%",
-          height: "68px",
-          zIndex: "1",
-          left: "0px",
-        }}
-        onClick={() => {
-          setOpenAccordian(!openAccordian);
-        }}
-      ></div>
+        className="overlay"
+        onClick={() => setOpenAccordian(!openAccordian)}
+      />
       <div className="create-post">
-        <div className="createPost-header">
-          <div>
-            <span>
-              <MdOutlineChatBubbleOutline />
-            </span>
-            <span style={{ margin: "5px" }}>Create Post</span>
+        <div className="create-post-header">
+          <div className="header-title">
+            <MdOutlineChatBubbleOutline />
+            <span className="header-title-text">Create Post</span>
           </div>
           <div>
             {openAccordian ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
           </div>
         </div>
+ 
         {openAccordian && (
           <>
-            {/* 🔹 Post Type Single Select */}
             <hr />
-            <label className="block mb-1 font-medium">Post Type</label>
+            <label className="label">Post Type</label>
             <Select
               options={postTypeOptions}
               value={postType}
@@ -181,54 +148,29 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
                   <div
                     ref={innerRef}
                     {...innerProps}
-                    style={{
-                      backgroundColor: isSelected
-                        ? "#8193aeff"
-                        : isFocused
-                        ? "#f3f4f6"
-                        : "",
-                      padding: "10px",
-                    }}
+                    className={`option ${isSelected ? "selected" : ""} ${
+                      isFocused ? "focused" : ""
+                    }`}
                   >
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <div className={`text-${data.color}-600`}>
+                    <div className="option-inner">
+                      <div className="option-label">
                         <span
-                          style={{
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50%",
-                            display: "inline-block",
-                            backgroundColor: data.color,
-                          }}
+                          className="color-dot"
+                          style={{ backgroundColor: data.color }}
                         />
-                        <span style={{ margin: "5px" }}>
-                          {data.icon && (
-                            <data.icon className={`text-${data.color}-600`} />
-                          )}
+                        <span className="option-icon">
+                          {data.icon && <data.icon />}
                         </span>
                         <span>{data.label}</span>
                       </div>
-                      {isSelected && (
-                        <div>
-                          <MdCheck className="grey-100" />
-                        </div>
-                      )}
+                      {isSelected && <MdCheck />}
                     </div>
                   </div>
                 ),
               }}
             />
  
-            {/* 🔹 Department Multi Select */}
-            <label className="block mt-4 mb-1 font-medium">
-              Department Access
-            </label>
+            <label className="label">Department Access</label>
             <Select
               options={filteredDepartments}
               value={departments}
@@ -248,65 +190,40 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
                   <div
                     ref={innerRef}
                     {...innerProps}
-                    style={{
-                      backgroundColor: isSelected
-                        ? "#8193aeff"
-                        : isFocused
-                        ? "#f3f4f6"
-                        : "",
-                      padding: "10px",
-                    }}
+                    className={`option ${isSelected ? "selected" : ""} ${
+                      isFocused ? "focused" : ""
+                    }`}
                   >
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                      }}
-                    >
-                      <div className={`text-${data.color}-600`}>
+                    <div className="option-inner">
+                      <div className="option-label">
                         <span
-                          style={{
-                            width: "10px",
-                            height: "10px",
-                            borderRadius: "50%",
-                            display: "inline-block",
-                            backgroundColor: data.color,
-                            marginRight: "8px",
-                          }}
+                          className="color-dot"
+                          style={{ backgroundColor: data.color }}
                         />
                         {data.label}
                       </div>
-                      {isSelected && (
-                        <div>
-                          <MdCheck className="grey-100" />
-                        </div>
-                      )}
+                      {isSelected && <MdCheck />}
                     </div>
                   </div>
                 ),
               }}
             />
  
-            {/* Content */}
-            <label>Content</label>
+            <label className="label">Content</label>
             <textarea
               placeholder="What would you like to share?"
               value={content}
               className="textarea-focus"
               onChange={(e) => {
                 const val = e.target.value;
-                // Prevent leading space
                 if (val.length === 1 && val[0] === " ") return;
-                //  Prevent double space at the end
                 if (val.length > 1 && val.endsWith("  ")) return;
-                // Prevent Enter (new lines)
                 if (val.includes("\n")) return;
                 setContent(val);
               }}
             />
-            {/* File Upload */}
-            <div className="file-upload">
+ 
+            <div className="file-upload" tabIndex={0}>
               <div
                 className="upload-placeholder"
                 onClick={() => document.getElementById("fileInput").click()}
@@ -314,8 +231,6 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
                 <FiUpload className="upload-icon" />
                 <p>Add {fileType === "image" ? "images" : "videos"}</p>
               </div>
- 
-              {/* Hidden input */}
               <input
                 id="fileInput"
                 type="file"
@@ -341,7 +256,6 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
                 </button>
               </div>
  
-              {/* Preview selected file */}
               {selectedFile && (
                 <div className="file-preview">
                   <span className="file-meta">
@@ -361,18 +275,17 @@ const CreatePost =({ setPosts }) => {   // ✅ accept setPosts from parent
               )}
             </div>
  
-            {/* Post Button */}
-      <div className="postButtonContainer">
-        <button
-          className={`postButtonCss ${
-            isFormValid ? "postButtonCssActive" : "postButtonCssDisabled"
-          } `}
-          disabled={!isFormValid}
-          onClick={handlePost}   // ✅ trigger post creation
-        >
-          {<postType.icon />} Post {postType?.label}
-        </button>
-      </div>
+            <div className="postButtonContainer">
+              <button
+                className={`postButtonCss ${
+                  isFormValid ? "postButtonCssActive" : "postButtonCssDisabled"
+                }`}
+                disabled={!isFormValid}
+                onClick={handlePost}
+              >
+                <postType.icon /> Post {postType?.label}
+              </button>
+            </div>
           </>
         )}
       </div>

@@ -87,7 +87,7 @@ const postDetails = [
       "https://images.pexels.com/photos/3184450/pexels-photo-3184450.jpeg?auto=compress",
     reactions: { likes: 18 },
     comments: [],
-    postType: { value: "normal", label: "Normal Post" },
+    postType: { value: "normal", label: "Normal" },
   },
 ];
 

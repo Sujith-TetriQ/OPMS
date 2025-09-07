@@ -3,11 +3,13 @@ import { FaCaretDown, FaGlobe, FaCaretUp } from "react-icons/fa";
 import { GiPartyPopper } from "react-icons/gi";
 import { format, differenceInCalendarDays } from "date-fns";
 import { MdAccessTime } from "react-icons/md";
+import { useTheme } from '@context/ThemeContext';
 import "./index.css";
 
 const HolidayList = ({ holidays }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const { themeMode } = useTheme();
 
   // update every second
   useEffect(() => {
@@ -50,7 +52,7 @@ const HolidayList = ({ holidays }) => {
   }
 
   return (
-    <div className="dropdown-container">
+    <div className={`hoidatList  dropdown-container ${themeMode === "dark" ? "dark-mode" : ""}`}>
       {/* Header */}
       <div
         className="dropdown-header d-flex align-items-center justify-content-between"

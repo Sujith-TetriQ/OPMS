@@ -5,6 +5,7 @@ import PostSection from '@components/PostSection';
 import TeamAttendance from '@components/TeamAttendance';
 import './admin.css';
 import { AiOutlineClockCircle} from "react-icons/ai";
+import { useTheme } from '@context/ThemeContext'; // get themeMode + themeColor from context
 
 const postDetails = [
   {
@@ -94,6 +95,8 @@ const postDetails = [
 
 export default function AdminDashboard() {
   const [posts, setPosts] = useState(postDetails);
+    const { themeMode, themeColor } = useTheme(); // ← themeMode: 'dark' | 'light', themeColor: 'violet' | 'blue' | ...
+  
   
    const holidays = [
     { date: "2025-09-01", name: "Labor Day", type: "public" },
@@ -236,7 +239,8 @@ export default function AdminDashboard() {
 
 
   return (
-    <div className="container container-fluid p-3">
+    <div className={`admin-dashboard container container-fluid p-3 ${themeMode === "dark" ? "dark-mode" : ""}`}>
+
       <div className="dashboardHeader-container">
         <div className="header-left">
           <h2>HRMS Dashboard</h2>

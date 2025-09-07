@@ -10,7 +10,7 @@
  
 /* Main create post box */
 .create-post {
-  background-color: #fff;
+  /* background-color: #fff; */
   border-radius: 8px;
   width: 100%;
 }
@@ -237,5 +237,3 @@
   align-items: center;
   gap: 5px;
 }
-
- 

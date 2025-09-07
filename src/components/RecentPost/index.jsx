@@ -1,5 +1,6 @@
 import React from "react";
 import Post from "@components/post";
+import { useTheme } from '@context/ThemeContext';
 import {
   MdAnnouncement,
   MdNotifications,
@@ -10,6 +11,7 @@ import {
 import "./index.css";
 
 export default function PostList({ posts, setPosts }) {
+  const { themeMode } = useTheme();
   const API_URL = "https://demomain.com/dashboard/post";
 
   /** 🔹 Like Toggle */
@@ -163,7 +165,7 @@ export default function PostList({ posts, setPosts }) {
                 {/* Right: Text */}
                 <span className="text-muted small">Last 3 months</span>
               </div>
-              <div className="postSection">
+              <div className={`postSection ${themeMode === "dark" ? "dark-mode" : ""}`}>
       {posts.map((post) => (
         <div key={post.id} className="">
                   {/* <div key={post.id} className="mb-4 p-3 bg-white shadow rounded-lg"> */}

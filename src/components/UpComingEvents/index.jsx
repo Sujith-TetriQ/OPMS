@@ -10,8 +10,10 @@ import {
 import { GiPartyPopper } from "react-icons/gi";
 import "keen-slider/keen-slider.min.css";
 import "./index.css"; // Your styles
+import { useTheme } from '@context/ThemeContext';
 
 const UpcomingEvents = ({ events }) => {
+   const { themeMode } = useTheme();
   /**
    * Utility: Get event icon based on type
    */
@@ -170,7 +172,7 @@ const UpcomingEvents = ({ events }) => {
   }
 
   return (
-    <div className="upcoming-events">
+       <div className={`upcoming-events ${themeMode === "dark" ? "dark-mode" : ""}`}>
       {/* Header */}
       <div className="header">
         <h3>

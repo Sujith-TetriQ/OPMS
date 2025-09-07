@@ -138,14 +138,15 @@ const getInitials = (fullName) => {
     : departmentOptions.filter(
         (opt) => !departments.some((d) => d.value === opt.value)
       );
- 
   return (
     <>
       <div
         className="overlay"
         onClick={() => setOpenAccordian(!openAccordian)}
       />
-      <div className="create-post">
+     
+        
+      <div className={`create-post ${themeMode === "dark" ? "dark-mode" : ""}`}>
         <div className="create-post-header">
           <div className="header-title">
             <MdOutlineChatBubbleOutline />
@@ -161,6 +162,7 @@ const getInitials = (fullName) => {
             <hr />
             <label className="label">Post Type</label>
             <Select
+              classNamePrefix="Select"
               options={postTypeOptions}
               value={postType}
               isSearchable={false}
@@ -200,6 +202,7 @@ const getInitials = (fullName) => {
  
             <label className="label">Department Access</label>
             <Select
+              classNamePrefix="Select"
               options={filteredDepartments}
               value={departments}
               onChange={handleDepartmentChange}

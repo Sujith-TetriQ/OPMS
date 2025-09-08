@@ -1318,6 +1318,9 @@ body {
 .hoidatList.dark-mode .holiday-title {
   color: #f1f5f9;
 }
+.hoidatList.dark-mode.holiday-header{
+  color: #f1f5f9;
+}
 
 .hoidatList.dark-mode .more-link {
   color: #38bdf8;

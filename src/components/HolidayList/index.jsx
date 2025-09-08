@@ -99,7 +99,7 @@ const HolidayList = ({ holidays }) => {
         <div className="dropdown-menu show">
           <div className="holiday-header d-flex align-items-center justify-content-between px-2">
             <h6 className="fw-semibold mb-0 title">All Upcoming Holidays</h6>
-            <button className="add-btn">+ Add</button>
+            {/* <button className="add-btn">+ Add</button> */}
           </div>
 
           <div className="holidays-list">

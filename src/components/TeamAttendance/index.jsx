@@ -5,37 +5,36 @@ import { PiCoffeeLight } from "react-icons/pi";
 import { LuLogOut } from "react-icons/lu";
 import Select, { components } from "react-select";
 import { MdCheck } from "react-icons/md";
+import { useTheme } from '@context/ThemeContext';
 import "./index.css";
 
-// 🔹 Custom Option Renderer (tick mark aligned right)
-const CustomOption = (props) => {
-  const { data, innerProps, isSelected, isFocused } = props;
 
+// Custom Option with Tick Mark
+const CustomOption = (props) => {
+  const { isSelected, data } = props;
   return (
-    <div
-      {...innerProps}
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        cursor: "pointer",
-        backgroundColor: isFocused ? "#f1f1f1" : "white",
-        borderRadius: "6px",
-        padding: "8px 12px",
-        margin: "2px 4px",
-      }}
-    >
-      <span>{data.label}</span>
-      {isSelected && <MdCheck size={18} style={{ color: "gray" }} />}
-    </div>
+    <components.Option {...props}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        <span>{data.label}</span>
+        {isSelected && <MdCheck size={18} style={{ color: "gray" }} />}
+      </div>
+    </components.Option>
   );
 };
 
-// 🔹 Custom SingleValue Renderer
-const CustomSingleValue = (props) => {
-  const { data } = props;
-  return <components.SingleValue {...props}>{data.label}</components.SingleValue>;
-};
+// ✅ Custom Single Value Renderer
+const CustomSingleValue = (props) => (
+  <components.SingleValue {...props}>
+    {props.data.label}
+  </components.SingleValue>
+);
 
 const customStyles = {
   control: (provided, state) => ({
@@ -63,6 +62,7 @@ const customStyles = {
 };
 
 const TeamAttendance = ({ employees }) => {
+   const { themeMode } = useTheme();
   const [selectedTeam, setSelectedTeam] = useState({
     value: "All Teams",
     label: "All Teams",
@@ -145,7 +145,7 @@ const TeamAttendance = ({ employees }) => {
   };
 
   return (
-    <div className="team-attendance">
+    <div className={`team-attendance ${themeMode === "dark" ? "dark-mode" : ""}`}>
       {/* Header */}
       <div className="header">
         {/* Left Side */}
@@ -206,3 +206,4 @@ const TeamAttendance = ({ employees }) => {
 };
 
 export default TeamAttendance;
+

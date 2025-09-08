@@ -1,0 +1,274 @@
+.post {
+  margin-bottom: 12px;
+  padding:  10px 10px 0px;
+  padding-bottom: 5px;
+  font-family: "Segoe UI", sans-serif;
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+  border-bottom: 1px solid #e0e0e0; /* border for each post */
+}
+
+/* Header */
+.post-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.post .post-profile-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  border: 2px solid #eee;
+}
+
+.post .user-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.post .post-user-name {
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+}
+
+.post .postType {
+  font-size: 12px;
+}
+
+.post .post-user-meta {
+  font-size: 12px;
+  color: #888;
+  margin-top: 2px;
+}
+
+/* Content */
+.post .post-content {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.post .post-image {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+.post .post-video {
+  width: 100%;
+  max-height: 380px;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+/* Actions */
+.post .post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  /* color: #555; */
+  border-top: 1px solid #f0f0f0;
+  /* border-bottom: 1px solid #f0f0f0; */
+  padding: 10px 0;
+}
+
+.post .post-action {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 2px 5px;
+}
+
+.post .post-action:hover {
+  
+  background-color: #e9ebef;
+  padding: 2px 5px;
+  border-radius: 5px;
+  color: black;
+}
+
+.post .post-date {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Comments - appear above border */
+.post .post-comments {
+  margin-top: -1px; /* show above border-bottom */
+  padding: 12px 0;
+  padding-bottom: 0px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Comment input */
+.post .comment-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.post .comment-profile-pic {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #eee;
+}
+
+.post .comment-input-container {
+  flex: 1;
+  position: relative;
+}
+
+.post .comment-input {
+  width: 100%;
+  padding: 10px 80px 10px 12px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 12px;
+  transition: border-color 0.2s;
+}
+
+.post .comment-input:focus {
+  border-color: #0073e6;
+}
+
+.post .comment-input-icons {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.post .icon-separator {
+  width: 1px;
+  height: 18px;
+  background-color: #e0e0e0;
+}
+
+.post .comment-send-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0073e6;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.post .comment-send-btn:hover {
+  background: #f0f0f0;
+  transform: scale(1.1);
+}
+
+/* Comment list */
+.post .comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.post .comment-body {
+  flex: 1;
+  background: #f9f9f9;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 8px 12px;
+}
+
+.post .comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post .comment-user-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: #222;
+}
+
+.post .comment-user-role {
+  font-size: 12px;
+  color: #777;
+}
+
+.post .comment-text {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #333;
+}
+
+.post .comment-edit-input {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-top: 4px;
+}
+
+.post .comment-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #666;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.post .comment-icon-btn:hover {
+  color: #0073e6;
+  background: #f0f0f0;
+}
+
+.post .comment-time {
+  font-size: 12px;
+  color: #999;
+  margin-left: 6px;
+}
+
+
+.postType {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff; 
+}
+
+.postType-icon {
+  font-size: 14px;
+}
+
+.postType-label {
+  font-size: 12px;
+}
+
+/* Colors per type */
+.postType-Announcement { background-color: #c2e0ce; color: #016630; } 
+.postType-Alert { background-color: #fef2f2;color: #b23740; }        
+.postType-Notification { background-color: #fefce8;color: #894b00; } 
+.postType-Normal { background-color: #eff6ff;color: #2648bc; }       
+

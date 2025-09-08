@@ -1,14 +1,103 @@
-import React from 'react';
+import React,{ useState } from 'react';
 import HolidayList from '@components/HolidayList';
 import UpcomingEvents from '@components/UpcomingEvents';
 import PostSection from '@components/PostSection';
 import TeamAttendance from '@components/TeamAttendance';
 import './admin.css';
 import { AiOutlineClockCircle} from "react-icons/ai";
+import { useTheme } from '@context/ThemeContext'; // get themeMode + themeColor from context
 
+const postDetails = [
+  {
+    id: 1,
+    user: {
+      name: "Sarah Johnson",
+      role: "HR Manager",
+      department: "Human Resources",
+      profilePic: "https://randomuser.me/api/portraits/women/44.jpg",
+    },
+    createdAt: "2025-09-01T10:00:00Z",
+    content: "It is a long established fact that a reader will be distracted...",
+    image:
+      "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress",
+    reactions: { likes: 34 },
+    comments: [],
+    postType: { value: "announcement", label: "Announcement" },
+  },
+  {
+    id: 2,
+    user: {
+      name: "John Smith",
+      role: "Software Engineer",
+      department: "Development",
+      profilePic: "https://randomuser.me/api/portraits/men/33.jpg",
+    },
+    createdAt: "2025-09-02T08:30:00Z",
+    content: "We just launched a new feature in our app! 🚀 Excited to hear your feedback.",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    reactions: { likes: 12 },
+    comments: [
+      {
+        id: 201,
+        body: "Congratulations!! Sarah Johnson",
+        user: {
+          name: "Bhanu Prakash Bellamkonda",
+          role: "Junior Application Developer",
+          profilePic: "https://randomuser.me/api/portraits/men/46.jpg",
+        },
+        createdAt: "2025-08-20T10:00:00Z",   //  change `date` → `createdAt`
+      },
+      {
+        id: 202,
+        body: "Congratulations!! Sarah Johnson",
+        user: {
+          name: "Pavan Kurme",
+          role: "PHP Developer",
+          profilePic: "https://randomuser.me/api/portraits/men/52.jpg",
+        },
+            createdAt: "2025-08-15T14:00:00Z",   // ✅ change `date` → `createdAt`
+      },
+    ],
+    postType: { value: "notification", label: "Notification" },
+  },
+  {
+    id: 3,
+    user: {
+      name: "Priya Reddy",
+      role: "Team Lead",
+      department: "QA",
+      profilePic: "https://randomuser.me/api/portraits/women/47.jpg",
+    },
+    createdAt: "2025-09-03T09:15:00Z",
+    content: "Reminder: The QA team meeting is scheduled for tomorrow at 10AM.",
+    reactions: { likes: 5 },
+    comments: [],
+    postType: { value: "alert", label: "Alert" },
+  },
+  {
+    id: 4,
+    user: {
+      name: "Alex Carter",
+      role: "Designer",
+      department: "UI/UX",
+      profilePic: "https://randomuser.me/api/portraits/men/49.jpg",
+    },
+    createdAt: "2025-09-04T12:00:00Z",
+    content: "Here’s a sneak peek at our upcoming redesign! 🎨",
+    image:
+      "https://images.pexels.com/photos/3184450/pexels-photo-3184450.jpeg?auto=compress",
+    reactions: { likes: 18 },
+    comments: [],
+    postType: { value: "normal", label: "Normal" },
+  },
+];
 
 
 export default function AdminDashboard() {
+  const [posts, setPosts] = useState(postDetails);
+    const { themeMode, themeColor } = useTheme(); // ← themeMode: 'dark' | 'light', themeColor: 'violet' | 'blue' | ...
+  
+  
    const holidays = [
     { date: "2025-09-01", name: "Labor Day", type: "public" },
     { date: "2025-07-04", name: "Independence Day", type: "public" },
@@ -146,9 +235,12 @@ export default function AdminDashboard() {
       shares: 3,
     },
   ];
+  
+
 
   return (
-    <div className="container container-fluid p-3">
+    <div className={`admin-dashboard container container-fluid p-3 ${themeMode === "dark" ? "dark-mode" : ""}`}>
+
       <div className="dashboardHeader-container">
         <div className="header-left">
           <h2>HRMS Dashboard</h2>
@@ -189,7 +281,8 @@ export default function AdminDashboard() {
           </div>
         </div>
         <div className="col-lg-4 col-md-12 mb-3">
-          <PostSection recentPosts={recentPosts} />
+          <PostSection  posts={posts} setPosts={setPosts}  />
+          {/* //postDeatils={postDeatils} */}
         </div>
       </div>
     </div>

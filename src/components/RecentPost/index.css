@@ -5,7 +5,6 @@
   background-color: #fff;
   border-radius: 8px;
 }
-
 .user-info {
   display: flex;
   align-items: center;
@@ -103,3 +102,25 @@
     color: black;
   }
 }
+.postSection{
+  max-height: 600px;  /* adjust height based on 2 posts height */
+  overflow-y: auto;   /* enable vertical scroll */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #cbd5e0 transparent; /* thumb color + track */
+
+  /* smooth scroll on Mac / Chrome */
+}
+
+.postSection::-webkit-scrollbar {
+  width: 4px; /* thin scrollbar */
+}
+
+.postSection::-webkit-scrollbar-thumb {
+  background-color: #cbd5e0; /* light gray */
+  border-radius: 4px;
+}
+
+.postSection::-webkit-scrollbar-track {
+  background: transparent;
+}
+

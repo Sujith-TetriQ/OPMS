@@ -746,6 +746,10 @@ body {
 }
 .recentPost-cardContainer{
   margin-top: 20px;
+  padding-top: 10px;
+   &:hover{
+    background-color: white;
+  }
   .card{
     background-color: white;
   }
@@ -795,4 +799,671 @@ body {
   align-items: center;
   gap: 6px;
 }
+}
+/* .adminDashboard{
+    .dashboardHeader-container {
+  gap: 10px;
+}
+
+.status-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.status-badge {
+  background: #f0f4ff;
+  color: #007bff;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .dashboardHeader-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-left h2 {
+    font-size: 1.5rem;
+  }
+
+  .status-label {
+    margin-top: 10px;
+  }
+
+  .status-badge {
+    margin-top: 5px;
+  }
+}
+
+} */
+
+/* light mode */
+.admin-dashboard {
+  background: #fff;
+  color: #111;
+}
+
+/* dark mode */
+.admin-dashboard.dark-mode {
+  background: #1f1f23;
+  color: #f5f5f5;
+ .dashboardHeader-container {
+    color: #f9fafb;
+  }
+
+  .header-left {
+    h2 {
+      color: #f9fafb;
+    }
+    p {
+      color: #d1d5db;
+    }
+  }
+
+  .header-right {
+    .status-label {
+      color: #d1d5db;
+    }
+    .status-badge {
+      background-color: #374151;
+      color: #f9fafb;
+    }
+  }
+
+
+
+  .create-post.dark-mode {
+  background-color: unset !important;
+  color: #f5f5f5;
+ 
+
+.css-13cymwt-control{
+  background-color: #2b2b30;
+  color: #f5f5f5;
+}
+.css-1dimb5e-singleValue{
+     color: #f5f5f5;
+}
+
+ .textarea-focus {
+  background-color: #2b2b30;
+  color: #f5f5f5;
+  border: 1px solid #444;
+}
+.textarea-focus:focus {
+  border: 2px solid rgba(47, 137, 255, 1);
+  box-shadow: 0px 0px 4px rgba(47, 137, 255, 0.8);
+}
+
+.file-upload {
+  background: #2b2b30;
+  border: 2px dashed #555;
+}
+
+ .upload-placeholder {
+  color: #ccc;
+}
+
+ .tab-btn {
+  background: #2b2b30;
+  border: 1px solid #555;
+  color: #eee;
+}
+ .tab-btn.active {
+  background: #3a3a40;
+  border-color: #888;
+}
+
+.file-meta {
+  background: #2f2f36;
+  border: 1px solid #555;
+  color: #ddd;
+}
+
+.postButtonCss {
+  background-color: #444;
+  color: #f5f5f5;
+}
+ .postButtonCssDisabled {
+  background-color: #666;
+  color: #999;
+}
+
+/* Labels */
+  .label {
+    color: #e5e7eb;
+  }
+
+  /* Textarea */
+  .textarea-focus {
+    background-color: #2b2b30;
+    color: #f5f5f5;
+    border: 1px solid #444;
+  }
+  .textarea-focus:focus {
+    border: 2px solid #2563eb;
+    box-shadow: 0px 0px 4px rgba(37, 99, 235, 0.6);
+  }
+
+  /* File upload */
+  .file-upload {
+    background: #2b2b30;
+    border: 2px dashed #555;
+  }
+  .upload-placeholder {
+    color: #ccc;
+  }
+
+  /* Tabs */
+  .tab-btn {
+    background: #2b2b30;
+    border: 1px solid #555;
+    color: #eee;
+  }
+  .tab-btn.active {
+    background: #3a3a40;
+    border-color: #888;
+  }
+
+  /* File preview */
+  .file-meta {
+    background: #2f2f36;
+    border: 1px solid #555;
+    color: #ddd;
+  }
+
+  /* Post button */
+  .postButtonCss {
+    background-color: #444;
+    color: #f5f5f5;
+  }
+  .postButtonCssDisabled {
+    background-color: #666;
+    color: #999;
+  }
+
+  /* react-select options */
+  .option {
+    background-color: #2b2b30;
+    color: #f5f5f5;
+  }
+  .option.focused {
+    background-color: #3a3a40;
+  }
+  .option.selected {
+    background-color: #2563eb; /* blue highlight */
+    color: #fff;
+  }
+
+  /* ////////////// */
+   /* React-Select main control (box) */
+  .Select__control {
+    background-color: #2b2b30 !important;
+    border: 1px solid #444 !important;
+    color: #f5f5f5 !important;
+  }
+
+  .Select__control--is-focused {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 4px rgba(37, 99, 235, 0.6) !important;
+  }
+
+  /* Text inside input */
+  .Select__input-container {
+    color: #f5f5f5 !important;
+  }
+
+  /* Placeholder */
+  .Select__placeholder {
+    color: #aaa !important;
+  }
+
+  /* Selected value */
+  .Select__single-value {
+    color: #f5f5f5 !important;
+  }
+
+  /* Multi-select chips */
+  .Select__multi-value {
+    background-color: #3a3a40 !important;
+    border: 1px solid #555 !important;
+  }
+  .Select__multi-value__label {
+    color: #f5f5f5 !important;
+  }
+  .Select__multi-value__remove {
+    color: #bbb !important;
+  }
+
+  /* Dropdown menu */
+  .Select__menu {
+    background-color: #2b2b30 !important;
+    border: 1px solid #444 !important;
+  }
+ 
+}
+
+/* Post Sectiondark Mode CSS */
+.postSection.dark-mode{
+  background-color: unset !important;
+  color: #f5f5f5;
+
+   .post-user-name {
+    color: #fff;
+  }
+  .post-user-meta {
+    color: #aaa;
+  }
+
+  /* PostType badges */
+  .postType {
+    background: #2b2b30;
+    border: 1px solid #444;
+    color: #eee;
+  }
+  .postType-icon {
+    color: #2563eb;
+  }
+  .postType-Announcement {
+    border-color: #facc15;
+  }
+  .postType-Alert {
+    border-color: #ef4444;
+  }
+  .postType-Notification {
+    border-color: #3b82f6;
+  }
+  .postType-Normal {
+    border-color: #6b7280;
+  }
+
+  /* Content */
+  .post-content {
+    color: #e5e7eb;
+  }
+  .post-image,
+  .post-video {
+    border-radius: 6px;
+    border: 1px solid #444;
+  }
+
+  /* Actions */
+  .post-actions {
+    border-top: 1px solid #333;
+    color: #ddd;
+  }
+  .post-action {
+    cursor: pointer;
+  }
+  .post-date {
+    color: #aaa;
+  }
+
+  /* Comments wrapper */
+  .post-comments {
+    border-top: 1px solid #333;
+  }
+
+  /* Input wrapper */
+  .comment-input-wrapper {
+    background: #2b2b30;
+    border-radius: 6px;
+    padding: 6px;
+  }
+  .comment-input {
+    background: #1f1f23;
+    border: 1px solid #444;
+    color: #f5f5f5;
+    padding: 6px 8px;
+  }
+  .comment-input::placeholder {
+    color: #888;
+  }
+  .comment-send-btn {
+    background: transparent;
+    color: #f5f5f5;
+  }
+  .comment-send-btn:hover {
+    color: #2563eb;
+  }
+
+  /* Comment list */
+  .comment {
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .comment-user-name {
+    color: #fff;
+  }
+  .comment-user-role {
+    color: #bbb;
+  }
+  .comment-text {
+    color: #e5e7eb;
+  }
+
+  /* Editing comment */
+  .comment-edit-input {
+    background: #1f1f23;
+    border: 1px solid #444;
+    color: #f5f5f5;
+    padding: 4px 6px;
+  }
+
+  /* Comment icons */
+  .comment-icon-btn {
+    color: #ccc;
+    background: transparent;
+  }
+  .comment-icon-btn:hover {
+    color: #2563eb;
+  }
+
+
+  /* ............... prev comments */
+  .comment {
+    background-color: transparent; /* keep transparent */
+    border-bottom: 1px solid #2a2a2a; /* subtle divider */
+  }
+
+  .comment-body {
+    color: #e5e7eb; /* light gray text */
+    background-color: #1f2937;
+  }
+
+  .comment-user-name {
+    color: #ffffff; /* white for username */
+  }
+
+  .comment-time {
+    color: #9ca3af; /* muted gray */
+  }
+
+  .comment-user-role {
+    color: #a1a1aa; /* slightly lighter gray */
+  }
+
+  .comment-text {
+    color: #e5e7eb; /* main comment text */
+  }
+
+  .comment-icon-btn {
+    color: #d1d5db; /* icons default */
+  }
+  .comment-icon-btn:hover {
+    color: #2563eb; /* blue highlight */
+  }
+
+}
+
+/* ///////////////////////Team Attendance CSS Dark mode */
+.team-attendance.dark-mode {
+  background-color: unset !important; /* dark gray container */
+  color: #f3f4f6; /* light text */
+
+  /* --- Header --- */
+  .header h3 {
+    color: #f9fafb;
+  }
+
+  .header-right {
+    .summary {
+      .badge.green {
+        background-color: #065f46;
+        color: #d1fae5;
+      }
+      .badge.yellow {
+        background-color: #92400e;
+        color: #fef3c7;
+      }
+      .badge.orange {
+        background-color: #7c2d12;
+        color: #fee2e2;
+      }
+    }
+  }
+
+  /* --- React Select --- */
+  .team-select {
+    .react-select__control {
+      background-color: #2d3748 !important; /* dark gray input */
+      border: 1px solid #4a5568 !important; /* softer border */
+      color: #e2e8f0 !important;
+      box-shadow: none !important;
+    }
+
+    .react-select__single-value {
+      color: #f1f5f9 !important;
+    }
+
+    .react-select__menu {
+      background-color: #1f2937 !important; /* match dark panel */
+      border: 1px solid #374151 !important;
+      border-radius: 8px !important;
+      padding: 4px 0;
+    }
+
+    .react-select__option {
+      background-color: transparent !important;
+      color: #e5e7eb !important;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin: 2px 6px;
+      transition: background 0.2s ease;
+    }
+
+    .react-select__option--is-focused {
+      background-color: #374151 !important; /* subtle hover */
+      color: #fff !important;
+    }
+
+    .react-select__option--is-selected {
+      background-color: #2563eb !important; /* blue highlight */
+      color: #fff !important;
+    }
+
+    .react-select__indicator-separator {
+      background-color: #4b5563 !important;
+    }
+
+    .react-select__dropdown-indicator {
+      color: #9ca3af !important;
+    }
+
+    .react-select__dropdown-indicator:hover {
+      color: #f3f4f6 !important;
+    }
+  }
+  
+
+  /* --- Employee Cards --- */
+  .cards {
+    .card {
+      background-color: #111827;
+      border: 1px solid #374151;
+      color: #f3f4f6;
+
+      .employee-Name {
+        color: #f9fafb;
+      }
+      .employee-role {
+        color: #d1d5db;
+      }
+      .clock,
+      .type {
+        color: #9ca3af;
+      }
+    }
+  }
+}
+
+/* Holiday List Dark mode css */
+.hoidatList.dark-mode {
+  background-color: unset !important;
+  color: #e2e8f0;
+}
+
+.hoidatList.dark-mode .holiday-box {
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+
+.hoidatList.dark-mode .date-badge {
+  background-color: #475569;
+  color: #f8fafc;
+}
+
+.hoidatList.dark-mode .holiday-title {
+  color: #f1f5f9;
+}
+.hoidatList.dark-mode.holiday-header{
+  color: #f1f5f9;
+}
+
+.hoidatList.dark-mode .more-link {
+  color: #38bdf8;
+}
+
+.hoidatList.dark-mode .public-badge {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+.hoidatList.dark-mode .days-left {
+  color: #94a3b8;
+}
+
+.hoidatList.dark-mode .caret svg {
+  color: #e2e8f0;
+}
+
+.hoidatList.dark-mode .time-section {
+  color: #f8fafc;
+  margin-top: 20px;
+}
+
+.hoidatList.dark-mode .time-label {
+  color: #e2e8f0;
+}
+
+.hoidatList.dark-mode .time-display {
+  color: #f8fafc;
+}
+
+.hoidatList.dark-mode .time {
+  color: #38bdf8;
+}
+
+.hoidatList.dark-mode .ampm {
+  color: #94a3b8;
+}
+
+.hoidatList.dark-mode .date {
+  color: #cbd5e1;
+}
+
+.hoidatList.dark-mode .timezone {
+  color: #94a3b8;
+}
+
+.hoidatList.dark-mode .breakdown-value {
+  color: #38bdf8;
+}
+
+.hoidatList.dark-mode .breakdown-label {
+  color: #cbd5e1;
+}
+.hoidatList.dark-mode .dropdown-menu {
+  background-color: #111827;
+  color: #e2e8f0;
+}
+
+
+.hoidatList.dark-mode .dropdown-menu .holiday-details .holiday-title {
+  color: #f1f5f9;
+}
+
+.hoidatList.dark-mode .dropdown-menu .holiday-meta {
+  color: #94a3b8;
+}
+
+/* Add button inside dropdown (if present) */
+.hoidatList.dark-mode .dropdown-menu .add-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+
+
+}
+
+/* upComingEvents section darkmode CSS */
+.upcoming-events.dark-mode{
+    background-color: unset !important;
+}
+
+
+/* Header */
+.upcoming-events.dark-mode .header h3 {
+  color: #f9fafb; /* bright heading */
+}
+.upcoming-events.dark-mode .nav-icons {
+  background-color: #374151;
+  color: #e5e7eb;
+}
+
+/* Sub-header with line */
+.upcoming-events.dark-mode .sub-header-with-line {
+  color: #f3f4f6;
+}
+.upcoming-events.dark-mode .sub-header-with-line .line {
+  background-color: #4b5563;
+}
+
+
+.upcoming-events.dark-mode .event-card {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+.upcoming-events.dark-mode .avatar-fallback {
+  background-color: #374151;
+  color: #f9fafb;
+}
+.upcoming-events.dark-mode .info h4 {
+  color: #f9fafb;
+}
+.upcoming-events.dark-mode .info p {
+  color: #d1d5db;
+}
+.upcoming-events.dark-mode .when {
+  color: #9ca3af;
+}
+
+/* Dots */
+.upcoming-events.dark-mode .dot {
+  background-color: #4b5563;
+}
+.upcoming-events.dark-mode .dot.active {
+  background-color: #f9fafb;
+}
+
+/* Fallback no events */
+.upcoming-events.dark-mode.no-events {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+.upcoming-events.dark-mode .no-events-message h4 {
+  color: #f9fafb;
+}
+.upcoming-events.dark-mode .no-events-message p {
+  color: #d1d5db;
+}
+
+
+
+.admin-dashboard.dark-mode .card {
+  background: #2b2b30;
+  border-color: #444;
 }

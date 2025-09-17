@@ -9,6 +9,8 @@
       "@pages/*": ["pages/*"],
       "@routes/*": ["routes/*"],
       "@data/*": ["data/*"],
+      "@utils/*": ["utils/*"],
+      "@hooks/*": ["hooks/*"],
     }
   },
   "include": ["src"]

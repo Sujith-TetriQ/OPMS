@@ -6,11 +6,11 @@ import Sidebar from '@components/Sidebar';
 import Header from '@components/Header';
 import './index.css';
 
-export default function AdminLayout() {
+export default function EmployeeLayout() {
     const { themeColor, changeTheme, themeMode, toggleThemeMode } = useTheme();
     const [showSidebar, setShowSidebar] = useState(true);
 
-    const role = 'admin';
+    const role = 'employee';
 
     return (
         <div className={`admin-layout ${themeMode === 'dark' ? 'dark-mode' : 'light-mode'} d-flex`}>

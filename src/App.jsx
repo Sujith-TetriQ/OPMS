@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter, Routes } from 'react-router-dom'
 import AdminRoutes from '@routes/AdminRoutes'
 import LoginRoutes from '@routes/LoginRoutes'
+import EmployeeRoutes from '@routes/EmployeeRoutes'
 
 export default function App() {
   return (
@@ -11,6 +12,9 @@ export default function App() {
 
       {/* AdminRoutes */}
       <AdminRoutes />
+
+      {/* Employee Routes */}
+      <EmployeeRoutes />
     </BrowserRouter>
   )
 }

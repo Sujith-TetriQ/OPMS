@@ -1,147 +1,114 @@
-.login-container {
+/*====================
+  Base Page & Layout
+  ====================*/
+.login-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+/*====================
+  Carousel Styles
+  ====================*/
+.carousel-container {
+    flex: 1;
+    position: relative;
+    width: 50%;
+    /* This is redundant with flex: 1 but kept for clarity */
+    height: 100vh;
+}
+
+.login-carousel-img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+.carousel-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.753), rgba(0, 0, 0, 0.7), transparent);
+    color: #fff;
+}
+
+.carousel-overlay h5 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.carousel-overlay p {
+    font-size: 1.1rem;
+}
+
+/*====================
+  Form Styles
+  ====================*/
+.form-container {
+    flex: 1;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
-    color: #fff;
-    overflow: hidden;
-    /* so mascot can drop below ground */
+    background: #f8f9fa;
 }
 
-.mascot {
-    display: none;
+.login-form {
+    max-width: 400px;
+    width: 100%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 768px) {
-    .mascot {
-        display: block;
-        margin-right: 50px;
-        position: relative;
+.password-toggle-icon {
+    position: absolute;
+    top: 45%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.error-message {
+    font-size: 14px;
+}
+
+/*====================
+  Responsiveness
+  ====================*/
+@media (max-width: 768px) {
+    .login-page {
+        background-image: url('@assets/1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .carousel-container {
+        display: none;
+    }
+
+    .form-container {
+        width: 100%;
+        flex: none;
+        /* Override flex on mobile to allow width to take effect */
+    }
+
+    .login-form {
+        background: rgba(255, 255, 255, 0.9);
     }
 }
 
-.face {
-    width: 120px;
-    height: 120px;
-    background: #fff;
-    border-radius: 50%;
-    position: relative;
-    display: flex;
+.otp-input-group {
     justify-content: center;
-    align-items: center;
 }
 
-.eye {
-    width: 20px;
-    height: 20px;
-    background: #000;
-    border-radius: 50%;
-    position: absolute;
-    top: 40px;
-}
-
-.left-eye {
-    left: 30px;
-}
-
-.right-eye {
-    right: 30px;
-}
-
-/* Eyes closed */
-.eyes-closed .eye {
-    height: 4px;
-    border-radius: 2px;
-    top: 50px;
-}
-
-/* One eye open wink */
-.one-eye-open .left-eye {
-    height: 20px;
-    border-radius: 50%;
-    top: 40px;
-}
-
-.one-eye-open .right-eye {
-    height: 4px;
-    border-radius: 2px;
-    top: 50px;
-}
-
-/* Mouth */
-.mouth {
-    width: 40px;
-    height: 10px;
-    background: #000;
+.otp-box {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    border: 1px solid #ced4da;
     border-radius: 5px;
-    position: absolute;
-    bottom: 30px;
-    border-radius: 0 0 50px 50px;
-}
-
-/* Smile mouth for username */
-.smile .mouth {
-    width: 50px;
-    height: 25px;
-    border-radius: 0 0 50px 50px;
-    background: transparent;
-    border: 4px solid #000;
-    border-top: none;
-    position: absolute;
-    bottom: 25px;
-}
-
-/* Login form styles */
-.login-form {
-    background: #fff;
-    color: #333;
-    padding: 30px;
-    border-radius: 12px;
-    width: 300px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.login-form h2 {
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.login-form input {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.password-field {
-    position: relative;
-}
-
-.show-btn {
-    position: absolute;
-    right: 10px;
-    top: 8px;
-    background: none;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.login-btn {
-    margin-top: 15px;
-    width: 100%;
-    padding: 12px;
-    background: #2575fc;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.login-btn:hover {
-    background: #1d5edc;
 }
